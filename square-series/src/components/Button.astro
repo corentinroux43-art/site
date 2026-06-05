@@ -1,0 +1,66 @@
+---
+interface Props {
+    text: string;
+    href?: string;
+}
+
+const {
+    text,
+    href = "#"
+} = Astro.props;
+---
+
+<a href={href} class="button">
+    {text}
+</a>
+
+<style>
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 215px;
+
+        padding: 1rem 2rem;
+
+        background: #c85a5a;
+        color: white;
+
+        text-decoration: none;
+
+        font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "Segoe UI",
+                sans-serif;
+
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+
+        border-radius: 0 0 18px 18px;
+
+        transition:
+                transform 0.25s ease,
+                background-color 0.25s ease,
+                box-shadow 0.25s ease;
+
+        box-shadow:
+                0 4px 12px rgba(200, 90, 90, 0.18);
+    }
+
+    .button:hover {
+        background: #b54f4f;
+
+        transform: translateY(-3px);
+
+        box-shadow:
+                0 10px 24px rgba(200, 90, 90, 0.25);
+    }
+
+    .button:active {
+        transform: translateY(-1px);
+    }
+</style>

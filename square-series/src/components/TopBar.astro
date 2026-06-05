@@ -1,0 +1,26 @@
+---
+const {
+    image = "/Banner.png"
+} = Astro.props;
+---
+
+<header class="hero">
+    <img src={image} alt="Bannière" />
+</header>
+
+<style>
+    .hero {
+        width: min(1600px, calc(100% - 2rem));
+        margin: 1.5rem auto;
+    }
+
+    .hero img {
+        width: 100%;
+        height: clamp(180px, 25vw, 220px);
+
+        object-fit: cover;
+        display: block;
+
+        border-radius: 0 0 24px 24px;
+    }
+</style>
