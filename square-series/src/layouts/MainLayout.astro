@@ -1,6 +1,7 @@
 ---
 import TopBar from "../components/TopBar.astro";
 import NavigationButtons from "../components/NavigationButtons.astro";
+import background from "../assets/Background.png";
 
 const { title = "Corentin Roux - Ostéopathe D.O." } = Astro.props;
 ---
@@ -13,21 +14,28 @@ const { title = "Corentin Roux - Ostéopathe D.O." } = Astro.props;
     <title>{title}</title>
 </head>
 
-<body>
-<TopBar />
-<NavigationButtons />
+<body style={`background-image: url(${background.src});`}>
+    <TopBar />
+    <NavigationButtons />
 
-<main>
-    <slot />
-</main>
+    <main>
+        <slot />
+    </main>
 </body>
 </html>
 
 <style is:global>
     body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-    }
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
 </style>
 
 <style>
