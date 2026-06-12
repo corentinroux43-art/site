@@ -1,5 +1,7 @@
 ---
 import Button from "../components/Button.astro";
+import maps from "../assets/maps.png";
+import mappy from "../assets/mappy.png";
 ---
 
 <div class="content">
@@ -9,7 +11,11 @@ import Button from "../components/Button.astro";
   <div class="left">
     <p>Au Cabinet</p>
     <p> 8 rue du Bas Vernay 43240 Saint-Just-Malmont</p>
-    <p> INTEGRER IMAGE</p>
+    <img
+  src={maps.src}
+  alt="Carte du cabinet"
+  style="width: 500px; height: auto;"
+/>
   <Button
     text="Cliquer ici pour afficher dans Google Maps"
     href="https://www.google.com/maps/dir/45.4701888,4.3679017/8+Rue+du+Bas+Vernay,+42100+Saint-%C3%89tienne/@45.4387892,4.3192515,20840m/data=!3m2!1e3!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x47f5a983f2c0bcaf:0x238d0b6bd6a2975d!2m2!1d4.4406777!2d45.4336246?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
@@ -21,7 +27,11 @@ import Button from "../components/Button.astro";
   <div class="right">
     <p>A Domicile</p>
     <p> Dans un rayon de ... Km autour de Saint-Just-Malmont</p>
-    <p> INTEGRER IMAGE</p>
+    <img
+  src={mappy.src}
+  alt="Carte de la zone de déplacement"
+  style="width: 500px; height: auto;"
+/>
     <Button
     text="Cliquer ici pour afficher sur Mappy"
     href="https://www.mappy.com/outils/calcul-rayon"
