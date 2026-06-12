@@ -1,3 +1,7 @@
+---
+import Button from "../components/Button.astro";
+---
+
 <div class="content">
     <h2 style="text-align: center;">Ou prendre rendez-vous ?</h2><br>
   </div>
@@ -6,14 +10,22 @@
     <p>Au Cabinet</p>
     <p> 8 rue du Bas Vernay 43240 Saint-Just-Malmont</p>
     <p> INTEGRER IMAGE</p>
-    <p> Cliquer sur ce lien pour accéder a Google-maps : https://www.google.com/maps/dir/45.4701888,4.3679017/8+Rue+du+Bas+Vernay,+42100+Saint-%C3%89tienne/@45.4387892,4.3192515,20840m/data=!3m2!1e3!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x47f5a983f2c0bcaf:0x238d0b6bd6a2975d!2m2!1d4.4406777!2d45.4336246?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D</p>
+  <Button
+    text="Cliquer ici pour afficher dans Google Maps"
+    href="https://www.google.com/maps/dir/45.4701888,4.3679017/8+Rue+du+Bas+Vernay,+42100+Saint-%C3%89tienne/@45.4387892,4.3192515,20840m/data=!3m2!1e3!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x47f5a983f2c0bcaf:0x238d0b6bd6a2975d!2m2!1d4.4406777!2d45.4336246?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
+/>
   </div>
+
+  
 
   <div class="right">
     <p>A Domicile</p>
     <p> Dans un rayon de ... Km autour de Saint-Just-Malmont</p>
     <p> INTEGRER IMAGE</p>
-    <p> Cliquer sur ce lien pour accéder a Google-maps : https://fr.mappy.com/outils/calcul-rayon</p><br><br>
+    <Button
+    text="Cliquer ici pour afficher sur Mappy"
+    href="https://www.mappy.com/outils/calcul-rayon"
+/>
   </div>
 </section>
 
@@ -82,9 +94,10 @@
    <p>
     Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir le créneau qui vous convient.  
     </p>
-    <p style="text-align: center;">
-    Bouton   
-    </p>
+    <Button
+    text="Cliquer ici pour accéder a la prise de rendez vous en ligne"
+    href="https://rouxcorentin.fr/pagerendezvous/" // A Modifier plus tard
+/>
   </div>
   <div class="right">
     <p style="text-align: center;">IMAGE</p>
@@ -93,10 +106,14 @@
 <section class="split">
   <div class="left">
    <p>
-    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous. Toutefois, si vous préférez échanger directement, vous pouvez me contacter par téléphone ou SMS au 06 XX XX XX XX en indiquant votre nom, votre prénom, le lieu de consultation souhaité ainsi que les créneaux horaires qui vous conviendraient.
+    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous. Toutefois, si vous préférez échanger directement, vous pouvez me contacter par téléphone ou SMS au <a href="tel:06XXXXXXXX">
+  06 XX XX XX XX
+</a> en indiquant votre nom, votre prénom, le lieu de consultation souhaité ainsi que les créneaux horaires qui vous conviendraient.
     </p>
     <p>
-   Je reste également joignable par e-mail à l'adresse corentin.roux.osteo@gmail.com pour toute question ou demande d'information complémentaire. 
+   Je reste également joignable par e-mail à l'adresse <a href="mailto:corentin.roux.osteo@gmail.com">
+  corentin.roux.osteo@gmail.com
+</a> pour toute question ou demande d'information complémentaire. 
     </p>
   </div>
   <div class="right">
@@ -110,21 +127,37 @@
 <div class="content">
     <h2 style="text-align: center;">Contact et Coordonnées</h2><br>
   </div>
-<section class="split">
-  <div class="left">
+<section class="content" style="text-align: center;">
     <p>Roux Corentin</p>
     <p>Cabinet d'Ostéopathie de Saint-Just-Malmont</p>
     <p> 8 rue du Bas Vernay 43240 Saint-Just-Malmont</p>
-    <p> 06........</p>
-    <p> corentin.roux.osteo@gmail.com</p>
-  </div>
-  <div class="right">
-    <p>Linkedin</p>
-    <p>Facebook</p>
-    <p>Instagram</p>
-    <p>Page Web</p>
-    <p>Fiche Google Business Profil<p/>
-  </div>
+    <a href="tel:06XXXXXXXX">
+  Appeler le cabinet : 06 XX XX XX XX
+</a><br><br>
+    <a href="mailto:corentin.roux.osteo@gmail.com">
+  Envoyer un email à corentin.roux.osteo@gmail.com
+</a><br><br><br><br>
+ <div class="social-links">
+  <a class="social-link linkedin" href="https://fr.linkedin.com/in/rouxcorentin?trk=public_post_feed-actor-name" target="_blank" rel="noopener noreferrer">
+    LinkedIn
+  </a>
+
+  <a class="social-link facebook" href="https://www.facebook.com/p/Corentin-Roux-61560735591765/" target="_blank" rel="noopener noreferrer">
+    Facebook
+  </a>
+
+  <a class="social-link instagram" href="https://www.instagram.com/corentin.roux.osteo" target="_blank" rel="noopener noreferrer">
+    Instagram
+  </a>
+
+  <a class="social-link website" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
+    Page Web
+  </a>
+
+  <a class="social-link google" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
+    Fiche Google
+  </a>
+</div>
 </section>
 
 
@@ -147,4 +180,62 @@
     flex-direction: column;
   }
 }
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* permet de passer à la ligne si écran petit */
+  gap: 10px;
+  justify-content: center;
+}
+
+.social-link {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* Hover global */
+.social-link:hover {
+  transform: translateX(4px);
+}
+
+/* Couleurs par réseau */
+.linkedin {
+  background: #0a66c2;
+  color: white;
+}
+
+.linkedin:hover {
+  background: #004182;
+}
+
+.facebook {
+  background: #1877f2;
+  color: white;
+}
+
+.facebook:hover {
+  background: #0f56b3;
+}
+
+.instagram {
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+  color: white;
+}
+
+.website {
+  background: #111;
+  color: white;
+}
+
+.google {
+  background: #66896f;
+  color: white;
+}
+
 </style>
