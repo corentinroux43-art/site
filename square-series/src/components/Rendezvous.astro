@@ -4,43 +4,46 @@ import maps from "../assets/maps.png";
 import mappy from "../assets/mappy.png";
 ---
 
-<div class="content">
-    <h2 style="text-align: center;">Ou prendre rendez-vous ?</h2><br>
-  </div>
+<div class="presentation">
+    <h2 style="text-align: center;">Où prendre rendez-vous ?</h2>
+  </div><br><br>
 <section class="split">
   <div class="left">
-    <p>Au Cabinet</p>
-    <p> 8 rue du Bas Vernay 43240 Saint-Just-Malmont</p>
-    <img
+    <p style="text-align: center;"><strong>Au Cabinet</strong></p>
+    <p style="text-align: center;"> 8 rue du Bas Vernay 43240 Saint-Just-Malmont</p><br><br>
+    <img 
   src={maps.src}
   alt="Carte du cabinet"
-  style="width: 500px; height: auto;"
+  style="width: 525px; height: auto; border-radius: 20px; filter: brightness(95%);"
 />
+<div style="display: flex; justify-content: center;">
   <Button
     text="Cliquer ici pour afficher dans Google Maps"
     href="https://www.google.com/maps/dir/45.4701888,4.3679017/8+Rue+du+Bas+Vernay,+42100+Saint-%C3%89tienne/@45.4387892,4.3192515,20840m/data=!3m2!1e3!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x47f5a983f2c0bcaf:0x238d0b6bd6a2975d!2m2!1d4.4406777!2d45.4336246?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
 />
-  </div>
+  </div></div>
 
   
 
   <div class="right">
-    <p>A Domicile</p>
-    <p> Dans un rayon de ... Km autour de Saint-Just-Malmont</p>
+    <p style="text-align: center;"><strong>A Domicile</strong></p>
+    <p style="text-align: center;"> Dans un rayon de ... Km autour de Saint-Just-Malmont</p><br><br>
     <img
   src={mappy.src}
   alt="Carte de la zone de déplacement"
-  style="width: 500px; height: auto;"
+  style="width: 520px; height: auto; border-radius: 20px; filter: brightness(95%);"
 />
+<div style="display: flex; justify-content: center;">
     <Button
     text="Cliquer ici pour afficher sur Mappy"
     href="https://www.mappy.com/outils/calcul-rayon"
 />
   </div>
-</section>
+  </div>
+</section><br><br><br><br>
 
-<div class="content">
-     <h2 style="text-align: center;">Tarif du Cabinet</h2>
+<div class="presentation">
+     <h2 style="text-align: center;">Tarif du Cabinet</h2><br>
     <p style="text-align: center;">
     Consultation d'ostéopathie au Cabinet : 60€   
     </p><br>
@@ -52,11 +55,11 @@ import mappy from "../assets/mappy.png";
     </p>
     <p style="text-align: center;">
     ( Soit 54€ pour une consultation au Cabinet)   
-    </p><br>
+    </p><br><br><br><br>
 
 
-<div class="content">
-    <h2 style="text-align: center;">Horaires du Cabinet ?</h2><br>
+<div class="presentation">
+    <h2 style="text-align: center;">Horaires du Cabinet ?</h2><br><br>
   </div>
 <section class="split">
   <div class="left">
@@ -83,44 +86,45 @@ import mappy from "../assets/mappy.png";
     </p>
   </div>
   <div class="right">
-    <p>Des horaires pensés pour s'adapter à votre quotidien.</p>
-    <p>Parce qu'il n'est pas toujours facile de prendre du temps pour soi entre le travail, les études, l'école des enfants et les obligations du quotidien, le cabinet propose des plages de consultation étendues.</p>
-    <p> Vous pouvez ainsi prendre rendez-vous avant votre journée de travail, pendant votre pause déjeuner ou en fin de journée, sans avoir à poser une demi-journée de congé. L'objectif est de vous permettre d'accéder plus facilement aux soins tout en limitant l'impact sur votre organisation personnelle et professionnelle.</p>
-    <p> Que vous soyez salarié, étudiant, parent ou retraité, ces horaires ont été pensés pour s'adapter au mieux à votre rythme de vie.</p>
+    <p style="text-align: center;">Parce qu'il n'est pas toujours facile de prendre du temps pour soi entre le travail, les études, l'école des enfants et les obligations du quotidien, le cabinet propose des plages de consultation étendues.</p>
+    <p style="text-align: center;"> Vous pouvez ainsi prendre rendez-vous avant votre journée de travail, pendant votre pause déjeuner ou en fin de journée, sans avoir à poser une demi-journée de congé. L'objectif est de vous permettre d'accéder plus facilement aux soins tout en limitant l'impact sur votre organisation personnelle et professionnelle.</p>
+    <p style="text-align: center;"> Que vous soyez salarié, étudiant, parent ou retraité, ces horaires ont été pensés pour s'adapter au mieux à votre rythme de vie.</p>
   </div>
-</section>
+</section><br><br><br><br>
 
 
 
 
-<div class="content">
-    <h2 style="text-align: center;">Comment prendre Rendez-vous ?</h2><br>
+<div class="presentation">
+    <h2 style="text-align: center;">Comment prendre Rendez-vous ?</h2><br><br>
   </div>
 <section class="split">
   <div class="left">
-    <p>
+    <p style="text-align: center;">
     Le plus rapide et le plus sûr : 
     </p>
-   <p>
+   <p style="text-align: center;">
     Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir le créneau qui vous convient.  
     </p>
-    <Button
-    text="Cliquer ici pour accéder a la prise de rendez vous en ligne"
-    href="https://rouxcorentin.fr/pagerendezvous/" // A Modifier plus tard
-/>
+    <div style="display: flex; justify-content: center;">
+      <Button
+        text="Cliquer ici pour accéder a la prise de rendez vous en ligne"
+        href="https://rouxcorentin.fr/pagerendezvous/" // A Modifier plus tard
+      />
+    </div>
   </div>
   <div class="right">
     <p style="text-align: center;">IMAGE</p>
   </div>
-</section>
+</section><br><br>
 <section class="split">
   <div class="left">
-   <p>
+   <p style="text-align: center;">
     L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous. Toutefois, si vous préférez échanger directement, vous pouvez me contacter par téléphone ou SMS au <a href="tel:06XXXXXXXX">
   06 XX XX XX XX
 </a> en indiquant votre nom, votre prénom, le lieu de consultation souhaité ainsi que les créneaux horaires qui vous conviendraient.
     </p>
-    <p>
+    <p style="text-align: center;">
    Je reste également joignable par e-mail à l'adresse <a href="mailto:corentin.roux.osteo@gmail.com">
   corentin.roux.osteo@gmail.com
 </a> pour toute question ou demande d'information complémentaire. 
@@ -129,12 +133,12 @@ import mappy from "../assets/mappy.png";
   <div class="right">
     <p style="text-align: center;">IMAGE</p>
   </div>
-</section>
+</section><br><br><br><br>
 
 
 
 
-<div class="content">
+<div class="presentation">
     <h2 style="text-align: center;">Contact et Coordonnées</h2><br>
   </div>
 <section class="content" style="text-align: center;">
@@ -146,7 +150,8 @@ import mappy from "../assets/mappy.png";
 </a><br><br>
     <a href="mailto:corentin.roux.osteo@gmail.com">
   Envoyer un email à corentin.roux.osteo@gmail.com
-</a><br><br><br><br>
+</a><br><br><br><br><br>
+
  <div class="social-links">
   <a class="social-link linkedin" href="https://fr.linkedin.com/in/rouxcorentin?trk=public_post_feed-actor-name" target="_blank" rel="noopener noreferrer">
     LinkedIn
@@ -168,7 +173,7 @@ import mappy from "../assets/mappy.png";
     Fiche Google
   </a>
 </div>
-</section>
+</section><br>
 
 
 
@@ -189,6 +194,14 @@ import mappy from "../assets/mappy.png";
   .split {
     flex-direction: column;
   }
+}
+
+.presentation h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #2f2f2f;
+    text-align: center;
 }
 
 .social-links {
