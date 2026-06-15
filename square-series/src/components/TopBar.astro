@@ -18,5 +18,27 @@ const {
     width: 100%;
     height: 750px;
     object-fit: contain;
-}
+    }
+
+    @media (max-width: 768px) {
+
+        .hero {
+
+            width: calc(100% - 1rem);
+
+            margin: -4rem auto;
+
+        }
+
+        .hero img {
+
+            height: auto;
+
+            max-height: 300px;
+
+            object-fit: contain;
+
+        }
+
+    }
 </style>
