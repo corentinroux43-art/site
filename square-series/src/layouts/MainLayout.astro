@@ -1,7 +1,6 @@
 ---
 import TopBar from "../components/TopBar.astro";
 import NavigationButtons from "../components/NavigationButtons.astro";
-import background from "../assets/Background.png";
 
 const { title = "Corentin Roux - Ostéopathe D.O." } = Astro.props;
 ---
@@ -10,32 +9,43 @@ const { title = "Corentin Roux - Ostéopathe D.O." } = Astro.props;
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>{title}</title>
 </head>
 
-<body style={`background-image: url(${background.src});`}>
-    <TopBar />
-    <NavigationButtons />
+<body>
+<TopBar />
+<NavigationButtons />
 
-    <main>
-        <slot />
-    </main>
+<main>
+    <slot />
+</main>
 </body>
 </html>
 
 <style is:global>
     body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+        background-image: url("/Background.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
 
-    min-height: 100vh;
-}
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            background-image: url("/Backgroundphone.png");
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f7f3ec;
+        }
+    }
 </style>
 
 <style>
