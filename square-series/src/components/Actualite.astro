@@ -12,10 +12,10 @@
     </div>
 
     <div class="content">
-        <p>    
+        <p>
             Bienvenue à vous !
         </p>
-        <p>    
+        <p>
             Cet espace est dédié à la vie du cabinet et au partage d'informations utiles pour votre santé. Vous pourrez y découvrir les actualités, les projets en cours, ainsi que des documents, articles et supports pédagogiques sélectionnés afin de vous accompagner dans une meilleure compréhension de votre corps et de votre bien-être.
         </p><br><br>
 
@@ -60,7 +60,7 @@
         </p>
         <p>
             Parce qu'une prise en charge de qualité commence par une information claire et une relation de confiance, le consentement est au cœur de ma pratique quotidienne.
-        </p><br>       
+        </p><br>
 
     </div>
 </section>
@@ -76,12 +76,30 @@
     padding: 80px 30px;
 }
 
+@media (max-width: 768px) {
+    .presentation {
+        padding: 40px 20px;
+    }
+}
+
 .presentation h2 {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 40px;
     color: #2f2f2f;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+
+    .presentation h2 {
+
+        font-size: 2.2rem;
+
+        margin-bottom: 25px;
+
+    }
+
 }
 
 .content {
@@ -94,6 +112,30 @@
     line-height: 1.8;
     margin-bottom: 20px;
     color: #555;
+}
+
+@media (max-width: 768px) {
+    .content p {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: justify;
+    }
+}
+
+.content h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+    color: #2f2f2f;
+}
+
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+* {
+    box-sizing: border-box;
 }
 
 ul {
@@ -134,11 +176,27 @@ ul {
 }
 
 #countdown span {
-    background: ;
+    background: transparent;
     padding: 15px 20px;
     border-radius: 12px;
     min-width: 80px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+
+@media (max-width: 480px) {
+    #countdown span {
+
+        min-width: 45px; /* au lieu de 80px */
+
+        padding: 6px 8px;
+
+    }
+
+    #countdown {
+        font-size: 0.75rem;
+        gap: 2px;
+    }
 }
 
 </style>
