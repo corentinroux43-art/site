@@ -1,18 +1,23 @@
+---
+import face from "../assets/face.png";
+---
+
 <section class="presentation">
     <h2>Présentation</h2>
 
+    <img src={face.src} alt="Photo de Corentin Roux" style="width: 300px; height: auto; border-radius: 50%; margin: 0 auto; display: block;" />
     <div class="content">
         <p>
             Bienvenue au cabinet.
         </p>
         <p>
-            Je suis Corentin Roux, ostéopathe diplômé du Centre International d'Ostéopathie (CIDO) de Saint-Étienne, une formation en cinq années exclusivement consacrée à l'étude du corps humain, du raisonnement clinique et de la prise en charge des patients.
+            Je suis <span class="highlight">Corentin Roux</span>, ostéopathe <span class="highlight">diplômé du Centre International d'Ostéopathie (CIDO)</span> de Saint-Étienne.
         </p>
         <p>
-            Mon objectif est simple : vous proposer une prise en charge sérieuse, personnalisée et adaptée à votre situation, dans un cadre bienveillant où l'écoute et l'échange occupent une place essentielle.
+            Mon objectif est simple : vous proposer une prise en charge <span class="highlight">sérieuse, personnalisée et adaptée à votre situation</span>, dans un <span class="highlight">cadre bienveillant</span> où l'écoute et l'échange occupent une place essentielle.
         </p>
         <p>
-            Au cours de ma formation, j'ai réalisé plus de 250 consultations et participé à plusieurs centaines d'heures de pratique clinique supervisée. J'ai également eu l'occasion d'observer et d'accompagner des patients dans de nombreux contextes différents, me permettant de développer une vision globale de la santé et de l'accompagnement thérapeutique.
+            Grâce à plus de <span class="highlight">250 consultations</span> réalisées durant ma formation, j'ai acquis une expérience clinique variée me permettant d'adapter ma prise en charge aux besoins de chaque patient.
         </p> <br><br>
 
 
@@ -23,16 +28,16 @@
             J'accueille au cabinet :
         </p>
         <ul>
-    <li>Les nourrissons et les enfants</li><br>
-    <li>Les adolescents</li><br>
-    <li>Les adultes</li><br>
-    <li>Les sportifs</li><br>
-    <li>Les femmes enceintes</li><br>
-    <li>Les seniors</li>
+    <li><span class="highlight">Les nourrissons et les enfants</span></li><br>
+    <li><span class="highlight">Les adolescents</span></li><br>
+    <li><span class="highlight">Les adultes</span></li><br>
+    <li><span class="highlight">Les sportifs</span></li><br>
+    <li><span class="highlight">Les femmes enceintes</span></li><br>
+    <li><span class="highlight">Les seniors</span></li>
         </ul>
 
         <p>
-            Chaque consultation est unique. Derrière un symptôme se cache souvent une histoire, un contexte de vie, des habitudes ou des contraintes particulières. C'est pourquoi j'accorde une grande importance au temps d'échange, afin de comprendre votre situation dans sa globalité avant d'établir une prise en charge adaptée.
+            Chaque consultation est <span class="highlight">unique</span>. Derrière un symptôme se cache souvent une histoire, un contexte de vie, des habitudes ou des contraintes particulières. C'est pourquoi j'accorde une grande importance au temps d'échange, afin de <span class="highlight">comprendre votre situation</span> dans sa globalité avant d'établir une prise en charge adaptée.
         </p><br>
 
  <h1>Une expérience variée au contact de nombreux publics</h1>
@@ -191,4 +196,8 @@ ul {
         padding-left: 1.2rem;
     }
 }
+.highlight {
+    color: #39371d; /* ton vert olive */
+}
+
 </style>
