@@ -15,30 +15,37 @@ const {
     }
 
     .hero img {
-    width: 100%;
-    height: 750px;
-    object-fit: contain;
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 600px;
+        object-fit: contain;
+        margin: 0 auto;
     }
 
-    @media (max-width: 768px) {
-
+    /* Tablette */
+    @media (max-width: 1024px) {
         .hero {
-
-            width: calc(100% - 1rem);
-
-            margin: -4rem auto;
-
+            margin: -8rem auto;
         }
 
         .hero img {
+            max-height: 700px;
+        }
+    }
 
-            height: auto;
-
-            max-height: 300px;
-
-            object-fit: contain;
-
+    /* Téléphone */
+    @media (max-width: 768px) {
+        .hero {
+            width: calc(100% - 1rem);
+            margin: -2rem auto 1rem;
         }
 
+        .hero img {
+            width: 100%;
+            max-width: 500px;
+            max-height: none;
+            height: auto;
+        }
     }
 </style>
