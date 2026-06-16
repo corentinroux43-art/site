@@ -12,7 +12,7 @@ import tel from "../assets/tel.png";
   <div class="left">
     <h2 style="text-align: center;"><strong>Au Cabinet</strong></h2>
     <p style="text-align: center;"> 8 rue du Bas Vernay 43240 Saint-Just-Malmont</p><br><br>
-    <img 
+    <img
   src={maps.src}
   alt="Carte du cabinet"
   style="width: 525px; height: auto; border-radius: 20px; filter: brightness(95%);"
@@ -24,7 +24,7 @@ import tel from "../assets/tel.png";
 />
   </div></div>
 
-  
+
 
   <div class="right">
     <h2 style="text-align: center;"><strong>A Domicile</strong></h2>
@@ -54,7 +54,7 @@ import tel from "../assets/tel.png";
     Consultation d'ostéopathie <strong>a Domicile : 70€ </strong>
     </p><br>
     <p style="text-align: center;"> Réduction de <strong>10% pour les étudiants et les moins de 18 ans </strong></p>
-    <p style="text-align: center;">( Hors Domicile, soit 54€ pour une consultation au Cabinet)   
+    <p style="text-align: center;">( Hors Domicile, soit 54€ pour une consultation au Cabinet)
     </p><br><br><br><br>
   </div>
   <div class="right"><br>
@@ -71,25 +71,25 @@ import tel from "../assets/tel.png";
 <section class="split">
   <div class="left">
     <p style="text-align: center;">
-    Lundi : <strong>6h - 20h</strong>  
+    Lundi : <strong>6h - 20h</strong>
     </p>
    <p style="text-align: center;">
-    Mardi : <strong>6h - 20h</strong>  
+    Mardi : <strong>6h - 20h</strong>
     </p>
     <p style="text-align: center;">
-    Mercredi : <strong>6h - 20h</strong>  
+    Mercredi : <strong>6h - 20h</strong>
     </p>
     <p style="text-align: center;">
-    Jeudi : <strong>6h - 20h</strong>  
+    Jeudi : <strong>6h - 20h</strong>
     </p>
     <p style="text-align: center;">
-    Vendredi : <strong>6h - 20h</strong>  
+    Vendredi : <strong>6h - 20h</strong>
     </p>
     <p style="text-align: center;">
-    Samedi : <strong>6h - 20h</strong>  
+    Samedi : <strong>6h - 20h</strong>
     </p>
     <p style="text-align: center;">
-    Dimanche : <strong>6h - 20h</strong>  
+    Dimanche : <strong>6h - 20h</strong>
     </p>
   </div>
   <div class="right">
@@ -111,7 +111,7 @@ import tel from "../assets/tel.png";
     <strong>Le plus rapide et le plus sûr : </strong>
     </p>
    <p style="text-align: center;">
-    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir votre créneau.  
+    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir votre créneau.
     </p><br><br>
     <div style="display: flex; justify-content: center;">
       <Button
@@ -130,11 +130,11 @@ import tel from "../assets/tel.png";
     <p style="text-align: center;">
    Je reste également joignable par e-mail à l'adresse <a href="mailto:corentin.roux.osteo@gmail.com">
   corentin.roux.osteo@gmail.com
-</a> pour toute question ou demande d'information complémentaire. 
+</a> pour toute question ou demande d'information complémentaire.
     </p>
   </div>
  <div style="text-align: center;">
-  <img 
+  <img
     src={tel.src}
     alt="Exemple de prise de rendez-vous par téléphone"
     style="width: 300px; height: auto; filter: brightness(95%);"
@@ -195,12 +195,6 @@ import tel from "../assets/tel.png";
 .left,
 .right {
   flex: 1;
-}
-
-@media (max-width: 768px) {
-  .split {
-    flex-direction: column;
-  }
 }
 
 .presentation h2 {
@@ -268,4 +262,50 @@ import tel from "../assets/tel.png";
   color: white;
 }
 
+/* Images responsives */
+.split img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .split {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .presentation h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    .left p,
+    .right p,
+    .content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .split img {
+        width: 100% !important;
+        max-width: 360px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-link {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+}
 </style>
