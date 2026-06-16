@@ -47,6 +47,7 @@ import tel from "../assets/tel.png";
      <h2 style="text-align: center;">Tarif du Cabinet</h2><br><br>
   <section class="split">
   <div class="left">
+    <div class="cadre">
      <p style="text-align: center;">
     Consultation d'ostéopathie <strong>au Cabinet : 60€ </strong>
     </p><br>
@@ -55,7 +56,7 @@ import tel from "../assets/tel.png";
     </p><br>
     <p style="text-align: center;"> Réduction de <strong>10% pour les étudiants et les moins de 18 ans </strong></p>
     <p style="text-align: center;">( Hors Domicile, soit 54€ pour une consultation au Cabinet)
-    </p><br><br><br><br>
+    </p></div><br><br><br><br>
   </div>
   <div class="right"><br>
     <p style="text-align: center;"><strong>Informations pratiques :</strong></p>
@@ -71,25 +72,25 @@ import tel from "../assets/tel.png";
 <section class="split">
   <div class="left">
     <p style="text-align: center;">
-    Lundi : <strong>6h - 20h</strong>
+    Lundi : <strong><span class="vert">6h - 20h</span></strong>
     </p>
    <p style="text-align: center;">
-    Mardi : <strong>6h - 20h</strong>
+    Mardi : <strong><span class="vert">6h - 20h</span></strong>
     </p>
     <p style="text-align: center;">
-    Mercredi : <strong>6h - 20h</strong>
+    Mercredi : <strong><span class="vert">6h - 20h</span></strong>
     </p>
     <p style="text-align: center;">
-    Jeudi : <strong>6h - 20h</strong>
+    Jeudi : <strong><span class="vert">6h - 20h</span></strong>
     </p>
     <p style="text-align: center;">
-    Vendredi : <strong>6h - 20h</strong>
+    Vendredi : <strong><span class="vert">6h - 20h</span></strong>
     </p>
     <p style="text-align: center;">
-    Samedi : <strong>6h - 20h</strong>
+    Samedi : <strong><span class="vert">6h - 20h</span></strong>
     </p>
     <p style="text-align: center;">
-    Dimanche : <strong>6h - 20h</strong>
+    Dimanche : <strong><span class="vert">6h - 20h</span></strong>
     </p>
   </div>
   <div class="right">
@@ -195,6 +196,18 @@ import tel from "../assets/tel.png";
 .left,
 .right {
   flex: 1;
+}
+
+.vert {
+    color: #403c16;
+    font-weight: 600;
+}
+
+.cadre {
+    border: 5px solid #725e2b;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .presentation h2 {
