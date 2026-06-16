@@ -2,6 +2,7 @@
 import Button from "../components/Button.astro";
 import maps from "../assets/maps.png";
 import mappy from "../assets/mappy.png";
+import tel from "../assets/tel.png";
 ---
 
 <div class="presentation">
@@ -9,7 +10,7 @@ import mappy from "../assets/mappy.png";
   </div><br><br>
 <section class="split">
   <div class="left">
-    <p style="text-align: center;"><strong>Au Cabinet</strong></p>
+    <h2 style="text-align: center;"><strong>Au Cabinet</strong></h2>
     <p style="text-align: center;"> 8 rue du Bas Vernay 43240 Saint-Just-Malmont</p><br><br>
     <img 
   src={maps.src}
@@ -26,7 +27,7 @@ import mappy from "../assets/mappy.png";
   
 
   <div class="right">
-    <p style="text-align: center;"><strong>A Domicile</strong></p>
+    <h2 style="text-align: center;"><strong>A Domicile</strong></h2>
     <p style="text-align: center;"> Dans un rayon de ... Km autour de Saint-Just-Malmont</p><br><br>
     <img
   src={mappy.src}
@@ -43,46 +44,52 @@ import mappy from "../assets/mappy.png";
 </section><br><br><br><br>
 
 <div class="presentation">
-     <h2 style="text-align: center;">Tarif du Cabinet</h2><br>
-    <p style="text-align: center;">
-    Consultation d'ostéopathie au Cabinet : 60€   
+     <h2 style="text-align: center;">Tarif du Cabinet</h2><br><br>
+  <section class="split">
+  <div class="left">
+     <p style="text-align: center;">
+    Consultation d'ostéopathie <strong>au Cabinet : 60€ </strong>
     </p><br>
     <p style="text-align: center;">
-    Consultation d'ostéopathie a Domicile : 70€   
+    Consultation d'ostéopathie <strong>a Domicile : 70€ </strong>
     </p><br>
-    <p style="text-align: center;">
-    Réduction de 10% pour les étudiants et les moins de 18 ans (hors Domicile) 
-    </p>
-    <p style="text-align: center;">
-    ( Soit 54€ pour une consultation au Cabinet)   
+    <p style="text-align: center;"> Réduction de <strong>10% pour les étudiants et les moins de 18 ans </strong></p>
+    <p style="text-align: center;">( Hors Domicile, soit 54€ pour une consultation au Cabinet)   
     </p><br><br><br><br>
+  </div>
+  <div class="right"><br>
+    <p style="text-align: center;"><strong>Informations pratiques :</strong></p>
+    <p style="text-align: center;">Les honoraires pratiqués sont en cohérence avec les tarifs habituellement observés en ostéopathie.</p>
+    <p style="text-align: center;">Les règlements sont acceptés par carte bancaire, chèque ou espèces.</p>
+    <p style="text-align: center;">Pensez à apporter vos examens médicaux récents (IRM, radiographies, scanner, comptes-rendus, etc.) si vous en disposez.</p>
+  </div>
 
-
+</section>
 <div class="presentation">
     <h2 style="text-align: center;">Horaires du Cabinet ?</h2><br><br>
   </div>
 <section class="split">
   <div class="left">
     <p style="text-align: center;">
-    Lundi : 6h - 20h  
+    Lundi : <strong>6h - 20h</strong>  
     </p>
    <p style="text-align: center;">
-    Mardi : 6h - 20h  
+    Mardi : <strong>6h - 20h</strong>  
     </p>
     <p style="text-align: center;">
-    Mercredi : 6h - 20h  
+    Mercredi : <strong>6h - 20h</strong>  
     </p>
     <p style="text-align: center;">
-    Jeudi : 6h - 20h  
+    Jeudi : <strong>6h - 20h</strong>  
     </p>
     <p style="text-align: center;">
-    Vendredi : 6h - 20h  
+    Vendredi : <strong>6h - 20h</strong>  
     </p>
     <p style="text-align: center;">
-    Samedi : 6h - 20h  
+    Samedi : <strong>6h - 20h</strong>  
     </p>
     <p style="text-align: center;">
-    Dimanche : 6h - 20h  
+    Dimanche : <strong>6h - 20h</strong>  
     </p>
   </div>
   <div class="right">
@@ -101,26 +108,22 @@ import mappy from "../assets/mappy.png";
 <section class="split">
   <div class="left">
     <p style="text-align: center;">
-    Le plus rapide et le plus sûr : 
+    <strong>Le plus rapide et le plus sûr : </strong>
     </p>
    <p style="text-align: center;">
-    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir le créneau qui vous convient.  
-    </p>
+    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir votre créneau.  
+    </p><br><br>
     <div style="display: flex; justify-content: center;">
       <Button
         text="Cliquer ici pour accéder a la prise de rendez vous en ligne"
         href="https://rouxcorentin.fr/pagerendezvous/" // A Modifier plus tard
       />
-    </div>
-  </div>
-  <div class="right">
-    <p style="text-align: center;">IMAGE</p>
-  </div>
-</section><br><br>
-<section class="split">
-  <div class="left">
+    </div><br><br>
    <p style="text-align: center;">
-    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous. Toutefois, si vous préférez échanger directement, vous pouvez me contacter par téléphone ou SMS au <a href="tel:06XXXXXXXX">
+    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous.
+   </p>
+   <p style="text-align: center;">
+    Toutefois, si vous préférez échanger directement plutôt que de réserver en ligne, vous pouvez me contacter par téléphone ou par SMS au <a href="tel:06XXXXXXXX">
   06 XX XX XX XX
 </a> en indiquant votre nom, votre prénom, le lieu de consultation souhaité ainsi que les créneaux horaires qui vous conviendraient.
     </p>
@@ -130,9 +133,13 @@ import mappy from "../assets/mappy.png";
 </a> pour toute question ou demande d'information complémentaire. 
     </p>
   </div>
-  <div class="right">
-    <p style="text-align: center;">IMAGE</p>
-  </div>
+ <div style="text-align: center;">
+  <img 
+    src={tel.src}
+    alt="Exemple de prise de rendez-vous par téléphone"
+    style="width: 300px; height: auto; filter: brightness(95%);"
+  />
+</div>
 </section><br><br><br><br>
 
 
@@ -166,7 +173,7 @@ import mappy from "../assets/mappy.png";
   </a>
 
   <a class="social-link website" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
-    Page Web
+    Doctolib
   </a>
 
   <a class="social-link google" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
@@ -252,7 +259,7 @@ import mappy from "../assets/mappy.png";
 }
 
 .website {
-  background: #111;
+  background: #100d57;
   color: white;
 }
 
