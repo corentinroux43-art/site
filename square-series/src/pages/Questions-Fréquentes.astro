@@ -1,0 +1,28 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Questions from '../components/Questions.astro';
+import signature from '../assets/signature.png';
+---
+{/* Booster de métadonnées - renvoie sur la page index.astro */}
+
+<MainLayout>
+    <Questions>
+    </Questions>
+    <img src={signature.src} alt="Signature" class="signature" />
+</MainLayout>
+
+<style>
+
+    .signature {
+
+        display: block;
+
+        margin: 3rem auto 0;
+
+        width: min(500px, 80%);
+
+        height: auto;
+
+    }
+
+</style>
