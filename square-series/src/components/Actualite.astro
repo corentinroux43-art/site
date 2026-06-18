@@ -3,12 +3,12 @@ import Posterfrancais from "../assets/Posterfrancais.png";
 import consentement from "../assets/consentement.png";
 ---
 
-<br><br>
 <section class="presentation">
     <h2>Actualité</h2>
 
     <div class="countdown-container">
-        <p class="countdown-title">Ouverture du cabinet dans :</p><br>
+        <p class="countdown-title">Ouverture du cabinet dans :</p>
+
         <div id="countdown">
             <span id="days">00</span>j
             <span id="hours">00</span>h
@@ -17,247 +17,301 @@ import consentement from "../assets/consentement.png";
         </div>
     </div>
 
-    <div class="content">
+    <div class="content intro">
+        <p>Bienvenue à vous !</p>
         <p>
-            Bienvenue à vous !
+            Cet espace est dédié à la vie du cabinet et au partage d'informations utiles pour votre santé.
+            Vous pourrez y découvrir les actualités, les projets en cours, ainsi que des documents, articles
+            et supports sélectionnés afin de vous accompagner dans une meilleure compréhension de votre corps
+            et de votre bien-être.
         </p>
-        <p>
-            Cet espace est dédié à la vie du cabinet et au partage d'informations utiles pour votre santé. Vous pourrez y découvrir les actualités, les projets en cours, ainsi que des documents, articles et supports sélectionnés afin de vous accompagner dans une meilleure compréhension de votre corps et de votre bien-être.
-        </p><br><br>
-
-     <h1>Anxiété, stress et ostéopathie : une approche globale</h1>
-
-    <section class="split">
-    <div class="left">
-        <p>Au cours de ma formation au Centre International d'Ostéopathie (CIDO), j'ai consacré mon mémoire de fin d'études à l'accompagnement des personnes souffrant d'anxiété. Cette étude a évalué l'impact d'une prise en charge ostéopathique sur les symptômes anxieux à l'aide de questionnaires validés et de mesures physiologiques objectives.</p>
-        <p>Les résultats ont montré une amélioration significative de plusieurs marqueurs de l'anxiété après la prise en charge, suggérant que l'ostéopathie peut constituer un accompagnement complémentaire pertinent dans une approche globale du patient.</p>
     </div>
-    <div class="right">
-        <img
-  src={Posterfrancais.src}
-  alt="Affiche sur le trouble anxieux généralisé et l'ostéopathie"
-  style="width: 370px; height: auto; border-radius: 10px; filter: brightness(90%); display: block;
-margin-left: auto;
-margin-right: auto;"
-/>
+
+    <div class="articles">
+        <article class="article-card">
+            <h1>Anxiété, stress et ostéopathie : une approche globale</h1>
+
+            <section class="split">
+                <div class="left">
+                    <p>
+                        Au cours de ma formation au Centre International d'Ostéopathie (CIDO), j'ai consacré mon
+                        mémoire de fin d'études à l'accompagnement des personnes souffrant d'anxiété.
+                    </p>
+                    <p>
+                        Cette étude a évalué l'impact d'une prise en charge ostéopathique sur les symptômes anxieux
+                        à l'aide de questionnaires validés et de mesures physiologiques objectives.
+                    </p>
+                    <p>
+                        Les résultats ont montré une amélioration significative de plusieurs marqueurs de l'anxiété
+                        après la prise en charge, suggérant que l'ostéopathie peut constituer un accompagnement
+                        complémentaire pertinent dans une approche globale du patient.
+                    </p>
+                </div>
+
+                <div class="right">
+                    <img
+                            src={Posterfrancais.src}
+                            alt="Affiche sur le trouble anxieux généralisé et l'ostéopathie"
+                            class="article-image"
+                    />
+                </div>
+            </section>
+
+            <p>
+                Au-delà des résultats scientifiques, ce travail a renforcé ma conviction qu'une consultation doit
+                prendre en compte la personne dans sa globalité, en s'intéressant autant aux symptômes physiques
+                qu'au contexte de vie, au stress et aux émotions.
+            </p>
+            <p>
+                Cette démarche reflète ma volonté de proposer une pratique à la fois humaine, rigoureuse et fondée
+                sur les connaissances scientifiques actuelles. L'ostéopathie peut ainsi constituer un accompagnement
+                complémentaire pour les personnes traversant une période de stress, d'anxiété ou de fatigue, dans le
+                cadre d'une prise en charge adaptée à chaque situation.
+            </p>
+        </article>
+
+        <article class="article-card">
+            <h1>Le consentement au cœur de votre prise en charge</h1>
+
+            <section class="split">
+                <div class="left">
+                    <p>
+                        La relation entre un patient et son ostéopathe repose sur la confiance, le respect et la
+                        communication. Le consentement est donc un élément essentiel de chaque consultation.
+                    </p>
+                    <p>
+                        Il permet à chacun de comprendre ce qui va être réalisé, de poser des questions et d'accepter
+                        ou de refuser une proposition de prise en charge en toute liberté.
+                    </p>
+                    <p>
+                        Cette affiche, réalisée dans le cadre d'un travail de réflexion sur le consentement en
+                        ostéopathie, rappelle l'importance pour chaque patient, et particulièrement les plus jeunes,
+                        de se sentir écouté, respecté et libre d'exprimer son ressenti tout au long de la consultation.
+                    </p>
+                </div>
+
+                <div class="right">
+                    <img
+                            src={consentement.src}
+                            alt="Affiche sur le consentement en ostéopathie"
+                            class="article-image"
+                    />
+                </div>
+            </section>
+
+            <p>
+                Au cabinet, je prends le temps de vous informer sur les examens réalisés, les techniques proposées
+                et les objectifs de la prise en charge. Vous pouvez poser toutes vos questions afin de prendre vos
+                décisions en toute confiance.
+            </p>
+            <p>
+                Parce qu'une relation de confiance repose sur une information claire et un consentement éclairé,
+                le respect de votre choix est au cœur de ma pratique.
+            </p>
+        </article>
     </div>
-    </section>
 
-         <div class="content">
-        <p>
-            Au-delà des résultats scientifiques, ce travail a renforcé ma conviction qu'une consultation doit prendre en compte la personne dans sa globalité, en s'intéressant autant aux symptômes physiques qu'au contexte de vie, au stress et aux émotions.
-        </p>
-        <p>
-            Cette démarche reflète ma volonté de proposer une pratique à la fois humaine, rigoureuse et fondée sur les connaissances scientifiques actuelles. L'ostéopathie peut ainsi constituer un accompagnement complémentaire pour les personnes traversant une période de stress, d'anxiété ou de fatigue, dans le cadre d'une prise en charge adaptée à chaque situation.
-        </p><br><br><br>
-
- <h1>Le consentement au cœur de votre prise en charge</h1><br>
-
- <section class="split">
-    <div class="left">
-        <p>La relation entre un patient et son ostéopathe repose sur la confiance, le respect et la communication. Le consentement est donc un élément essentiel de chaque consultation : il permet à chacun de comprendre ce qui va être réalisé, de poser des questions et d'accepter ou de refuser une proposition de prise en charge en toute liberté.</p>
-        <p>Cette affiche, réalisée dans le cadre d'un travail de réflexion sur le consentement en ostéopathie, rappelle l'importance pour chaque patient, et particulièrement les plus jeunes, de se sentir écouté, respecté et libre d'exprimer son ressenti tout au long de la consultation.</p>
-    </div>
-    <div class="right">
-        <img
-  src={consentement.src}
-  alt="Affiche sur le consentement en ostéopathie"
-  style="width: 370px; height: auto; border-radius: 10px; filter: brightness(90%); display: block;
-margin-left: auto;
-margin-right: auto;"
-/>
-    </div>
-    </section>
-
-
-         <div class="content">
-        <p>
-            Au cabinet, je prends le temps de vous informer sur les examens réalisés, les techniques proposées et les objectifs de la prise en charge. Vous pouvez poser toutes vos questions afin de prendre vos décisions en toute confiance. Parce qu'une relation de confiance repose sur une information claire et un consentement éclairé, le respect de votre choix est au cœur de ma pratique.
-        </p><br><br>
-
-    </div>
     <p class="footnote">
-    * Les consultations à domicile sont proposées à Saint-Just-Malmont ainsi que dans les communes voisines telles que Firminy, Unieux, Le Chambon-Feugerolles, Aurec-sur-Loire, Saint-Didier-en-Velay, Saint-Genest-Malifaux, Pont-Salomon et La Chapelle-d'Aurec.
-</p>
+        * Les consultations à domicile sont proposées à Saint-Just-Malmont ainsi que dans les communes voisines
+        telles que Firminy, Unieux, Le Chambon-Feugerolles, Aurec-sur-Loire, Saint-Didier-en-Velay,
+        Saint-Genest-Malifaux, Pont-Salomon et La Chapelle-d'Aurec.
+    </p>
 </section>
 
-
-
-
-
 <style>
-.content .footnote {
-    font-size: 1rem !important;
-    color: #5d5a31;
-    text-align: center;
-    font-style: italic;
-}
-
-.presentation {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 30px;
-}
-
-@media (max-width: 768px) {
-    .presentation {
-        padding: 40px 20px;
+    * {
+        box-sizing: border-box;
     }
-}
 
-.presentation h2 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #2f2f2f;
-    text-align: center;
-}
-
-@media (max-width: 768px) {
+    .presentation {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 30px;
+    }
 
     .presentation h2 {
-
-        font-size: 2.2rem;
-
-        margin-bottom: 25px;
-
-    }
-
-}
-
-.content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.content p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    color: #555;
-}
-
-.split {
-    display: flex;
-    gap: 2rem;
-}
-
-.left,
-.right {
-    flex: 1;
-}
-
-@media (max-width: 768px) {
-    .content p {
-        font-size: 1rem;
-        line-height: 1.7;
-        text-align: justify;
-    }
-}
-
-.content h1 {
-    font-size: 2rem;
-    line-height: 1.3;
-    color: #2f2f2f;
-}
-
-@media (max-width: 768px) {
-    .content h1 {
-        font-size: 1.5rem;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #2f2f2f;
         text-align: center;
     }
-}
-* {
-    box-sizing: border-box;
-}
 
-ul {
-    color: #555;
-    font-size: 1.2rem;
-    line-height: 20px;
-}
-
-@media (max-width: 768px) {
-    .presentation h2 {
-        font-size: 2.5rem;
+    .content {
+        max-width: 900px;
+        margin: 0 auto;
     }
 
-    .content p {
+    .content p,
+    .article-card p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    .intro {
+        margin-bottom: 4rem;
+    }
+
+    .articles {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .article-card {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2.5rem;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .article-card h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+        color: #2f2f2f;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .split {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .left,
+    .right {
+        flex: 1;
+    }
+
+    .article-image {
+        width: 370px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        filter: brightness(90%);
+        display: block;
+        margin: 0 auto;
+    }
+
+    .footnote {
+        max-width: 900px;
+        margin: 4rem auto 0;
         font-size: 1rem;
+        line-height: 1.6;
+        color: #5d5a31;
+        text-align: center;
+        font-style: italic;
     }
-}
 
-.countdown-container {
-    text-align: center;
-    margin-bottom: 60px;
-}
+    .countdown-container {
+        text-align: center;
+        margin-bottom: 60px;
+    }
 
-.countdown-title {
-    font-size: 1.3rem;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-#countdown {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #656134;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-#countdown span {
-    background: transparent;
-    padding: 15px 20px;
-    border-radius: 12px;
-    min-width: 80px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-
-@media (max-width: 480px) {
-    #countdown span {
-
-        min-width: 45px; /* au lieu de 80px */
-
-        padding: 6px 8px;
-
+    .countdown-title {
+        font-size: 1.3rem;
+        color: #555;
+        margin-bottom: 15px;
     }
 
     #countdown {
-        font-size: 0.75rem;
-        gap: 2px;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #656134;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
     }
-}
 
+    #countdown span {
+        background: transparent;
+        padding: 15px 20px;
+        border-radius: 12px;
+        min-width: 80px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (max-width: 768px) {
+        .presentation {
+            padding: 40px 20px;
+        }
+
+        .presentation h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .content p,
+        .article-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .article-card {
+            padding: 1.5rem;
+            border-radius: 18px;
+        }
+
+        .article-card h1 {
+            font-size: 1.5rem;
+        }
+
+        .split {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .article-image {
+            width: 280px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #countdown {
+            font-size: 0.75rem;
+            gap: 2px;
+            flex-wrap: nowrap;
+        }
+
+        #countdown span {
+            min-width: 45px;
+            padding: 6px 8px;
+        }
+    }
 </style>
 
 <script>
-const targetDate = new Date("2026-08-01T06:00:00"); // Modifie la date ici AAAA-MM-JJTHH:MM:SS
+    const targetDate = new Date("2026-08-01T06:00:00");
 
-function updateCountdown() {
-    const now = new Date();
-    const diff = targetDate - now;
+    function updateCountdown() {
+        const now = new Date();
+        const diff = targetDate - now;
 
-    if (diff <= 0) {
-        document.getElementById("countdown").innerHTML =
-            "Votre cabinet à ouvert ses portes !";
-        return;
+        if (diff <= 0) {
+            document.getElementById("countdown").innerHTML =
+                "Votre cabinet a ouvert ses portes !";
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+        document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+        document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("days").textContent = days;
-    document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
-    document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
-    document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 </script>
