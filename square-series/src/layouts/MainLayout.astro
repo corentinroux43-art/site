@@ -10,6 +10,23 @@ const { title = "Corentin Roux - Ostéopathe D.O." } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Corentin Roux Ostéopathe",
+      "url": "https://rouxcorentin.fr",
+      "telephone": "+33XXXXXXXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "11 rue Bayon",
+        "postalCode": "43240",
+        "addressLocality": "Saint-Just-Malmont",
+        "addressCountry": "FR"
+      }
+    }
+  </script>
 </head>
 
 <body>
