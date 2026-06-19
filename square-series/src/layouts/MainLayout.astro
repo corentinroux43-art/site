@@ -11,6 +11,13 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url.href} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content="https://rouxcorentin.fr/logo.png" />
 
 <script type="application/ld+json">
     { 
