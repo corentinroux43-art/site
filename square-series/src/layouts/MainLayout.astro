@@ -2,7 +2,7 @@
 import TopBar from "../components/TopBar.astro";
 import NavigationButtons from "../components/NavigationButtons.astro";
 
-const { title = "Corentin Roux - Ostéopathe D.O.", description } = Astro.props;
+const { title = "Corentin Roux - Ostéopathe D.O.", description, schema } = Astro.props;
 ---
 
 <html lang="fr">
@@ -18,6 +18,13 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:image" content="https://rouxcorentin.fr/logo.png" />
+
+    {schema && (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+  />
+)}
 
 <script type="application/ld+json">
     { 

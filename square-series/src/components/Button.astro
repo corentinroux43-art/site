@@ -10,7 +10,7 @@ const {
 } = Astro.props;
 ---
 
-<a href={href} class="button">
+<a href={href} class="button" aria-label={text}>
     {text}
 </a>
 
@@ -48,7 +48,7 @@ const {
                 box-shadow 0.25s ease;
 
         box-shadow:
-                0 4px 12px rgba(200, 90, 90, 0.18);
+                0 4px 12px rgba(155, 123, 72, 0.18);
     }
 
     @media (max-width: 768px) {
