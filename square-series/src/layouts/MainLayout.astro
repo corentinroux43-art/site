@@ -2,7 +2,7 @@
 import TopBar from "../components/TopBar.astro";
 import NavigationButtons from "../components/NavigationButtons.astro";
 
-const { title = "Corentin Roux - Ostéopathe D.O.", description, schema } = Astro.props;
+const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux, ostéopathe à Saint-Just-Malmont. Consultations au cabinet et à domicile.", schema } = Astro.props;
 ---
 
 <html lang="fr">
@@ -26,22 +26,21 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description, schema } = Astr
   />
 )}
 
-<script type="application/ld+json">
-    { 
-      "@context": "https://schema.org",
-      "@type": "MedicalBusiness",
-      "name": "Corentin Roux Ostéopathe",
-      "url": "https://rouxcorentin.fr",
-      "telephone": "+33XXXXXXXXX",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "11 rue Bayon",
-        "postalCode": "43240",
-        "addressLocality": "Saint-Just-Malmont",
-        "addressCountry": "FR"
-      }
-    }
-  </script>
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Corentin Roux Ostéopathe",
+  "url": "https://rouxcorentin.fr",
+  "telephone": "+33XXXXXXXXX",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "11 rue Bayon",
+    "postalCode": "43240",
+    "addressLocality": "Saint-Just-Malmont",
+    "addressCountry": "FR"
+  }
+})} />
+
 </head>
 
 <body>
