@@ -2,7 +2,7 @@
 import TopBar from "../components/TopBar.astro";
 import NavigationButtons from "../components/NavigationButtons.astro";
 
-const { title = "Corentin Roux - Ostéopathe D.O." } = Astro.props;
+const { title = "Corentin Roux - Ostéopathe D.O.", description } = Astro.props;
 ---
 
 <html lang="fr">
@@ -10,9 +10,10 @@ const { title = "Corentin Roux - Ostéopathe D.O." } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
 
 <script type="application/ld+json">
-    {
+    { 
       "@context": "https://schema.org",
       "@type": "MedicalBusiness",
       "name": "Corentin Roux Ostéopathe",
