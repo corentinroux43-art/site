@@ -1,0 +1,600 @@
+<section class="osteo-game">
+  <div class="game-header">
+    <p class="eyebrow">Mini-jeu détente</p>
+    <h2>Crâne en équilibre</h2>
+    <p>
+      Cliquez ou appuyez sur espace pour faire monter le crâne et éviter les obstacles.
+    </p>
+  </div>
+
+  <div class="game-wrapper">
+    <canvas id="osteoGame" width="420" height="560"></canvas>
+
+    <div id="gameOverlay" class="game-overlay">
+      <h3>Prêt ?</h3>
+      <p>Gardez un mouvement fluide.</p>
+      <button id="startGame">Commencer</button>
+    </div>
+  </div>
+
+  <p class="game-note">Score : <span id="score">0</span></p>
+
+  <div class="score-history">
+    <h3>Historique des scores</h3>
+    <ul id="scoreHistory"></ul>
+  </div>
+</section>
+
+<style>
+.osteo-game {
+  max-width: 720px;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(181, 105, 72, 0.13), transparent 30%),
+    radial-gradient(circle at 85% 18%, rgba(120, 145, 110, 0.22), transparent 34%),
+    linear-gradient(145deg, #fffdf8, #f3efe6);
+  box-shadow: 0 28px 80px rgba(60, 70, 55, 0.16);
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: #7d8f6f;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.game-header h2 {
+  margin: 0;
+  color: #405039;
+  font-size: clamp(2rem, 5vw, 2.7rem);
+}
+
+.game-header p {
+  max-width: 480px;
+  margin: 1rem auto 2rem;
+  color: #697263;
+  line-height: 1.6;
+}
+
+.game-wrapper {
+  position: relative;
+  width: min(100%, 420px);
+  margin: auto;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(60, 70, 55, 0.18);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #f8f5ec;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 2rem;
+  background: rgba(255, 253, 248, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.game-overlay.hidden {
+  display: none;
+}
+
+.game-overlay h3 {
+  margin: 0 0 0.6rem;
+  color: #405039;
+  font-size: 2rem;
+}
+
+.game-overlay p {
+  color: #697263;
+  margin-bottom: 1.2rem;
+}
+
+.game-overlay button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  background: #6f835f;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.game-note {
+  margin-top: 1.5rem;
+  color: #405039;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.score-history {
+  max-width: 420px;
+  margin: 1.5rem auto 0;
+  padding: 1.2rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.score-history h3 {
+  margin: 0 0 0.8rem;
+  color: #405039;
+  font-size: 1.1rem;
+}
+
+#scoreHistory {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#scoreHistory li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(64, 80, 57, 0.12);
+  color: #5f6758;
+  font-weight: 600;
+}
+
+#scoreHistory li:last-child {
+  border-bottom: none;
+}
+</style>
+
+<script>
+const canvas = document.getElementById("osteoGame");
+const ctx = canvas.getContext("2d");
+
+const startButton = document.getElementById("startGame");
+const overlay = document.getElementById("gameOverlay");
+const scoreElement = document.getElementById("score");
+const scoreHistoryElement = document.getElementById("scoreHistory");
+
+const width = canvas.width;
+const height = canvas.height;
+const SKULL_SCALE = 0.65;
+
+let skull;
+let obstacles;
+let score;
+let gameRunning;
+let frame;
+let scoreHistory = [];
+
+function resetGame() {
+  skull = {
+    x: 95,
+    y: height / 2,
+    radius: 24,
+    velocity: 0,
+    gravity: 0.34,
+    lift: -6.8,
+    rotation: 0
+  };
+
+  obstacles = [];
+  score = 0;
+  frame = 0;
+  gameRunning = false;
+  scoreElement.textContent = score;
+}
+
+function startGameLoop() {
+  resetGame();
+  gameRunning = true;
+  overlay.classList.add("hidden");
+  requestAnimationFrame(loop);
+}
+
+function flap() {
+  if (!gameRunning) {
+    startGameLoop();
+    return;
+  }
+
+  skull.velocity = skull.lift;
+}
+
+function createObstacle() {
+  const gap = 180;
+  const minHeight = 80;
+  const maxTop = height - gap - minHeight - 60;
+  const topHeight = Math.random() * (maxTop - minHeight) + minHeight;
+
+  obstacles.push({
+    x: width + 30,
+    width: 90,
+    top: topHeight,
+    bottom: topHeight + gap,
+    passed: false
+  });
+}
+
+function drawBackground() {
+
+  // Fond principal
+  const bg = ctx.createLinearGradient(
+    0,
+    0,
+    width,
+    height
+  );
+
+  bg.addColorStop(0, "#faf6ef");
+  bg.addColorStop(0.35, "#f5efe4");
+  bg.addColorStop(0.7, "#efe6d8");
+  bg.addColorStop(1, "#e9dfcf");
+
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, width, height);
+
+  // Grande forme verte
+  drawBlob(
+    width * 0.15,
+    height * 0.2,
+    170,
+    "rgba(133,156,115,0.35)",
+    frame * 0.0004
+  );
+
+  // Grande forme terracotta
+  drawBlob(
+    width * 0.88,
+    height * 0.25,
+    150,
+    "rgba(196,122,87,0.30)",
+    -frame * 0.0003
+  );
+
+  // Forme sauge
+  drawBlob(
+    width * 0.75,
+    height * 0.82,
+    190,
+    "rgba(165,185,155,0.22)",
+    frame * 0.0002
+  );
+
+  // Forme bleu-gris
+  drawBlob(
+    width * 0.22,
+    height * 0.78,
+    140,
+    "rgba(140,160,170,0.18)",
+    -frame * 0.0005
+  );
+
+  // Dégradé lumineux central
+  const light = ctx.createRadialGradient(
+    width / 2,
+    height / 2,
+    10,
+    width / 2,
+    height / 2,
+    250
+  );
+
+  light.addColorStop(0, "rgba(255,255,255,0.35)");
+  light.addColorStop(1, "rgba(255,255,255,0)");
+
+  ctx.fillStyle = light;
+  ctx.fillRect(0, 0, width, height);
+
+  // Légère texture
+  ctx.strokeStyle = "rgba(255,255,255,0.08)";
+  ctx.lineWidth = 1;
+
+  for(let y = 0; y < height; y += 40) {
+
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+
+    for(let x = 0; x <= width; x += 20) {
+
+      ctx.lineTo(
+        x,
+        y + Math.sin((x * 0.02) + frame * 0.01) * 3
+      );
+    }
+
+    ctx.stroke();
+  }
+}
+
+function drawBlob(x, y, size, color, rotation) {
+
+  ctx.save();
+
+  ctx.translate(x, y);
+  ctx.rotate(rotation);
+
+  ctx.fillStyle = color;
+
+  ctx.beginPath();
+
+  ctx.moveTo(-size * 0.8, 0);
+
+  ctx.bezierCurveTo(
+    -size,
+    -size * 0.8,
+    size * 0.4,
+    -size,
+    size,
+    -size * 0.1
+  );
+
+  ctx.bezierCurveTo(
+    size * 1.1,
+    size * 0.8,
+    size * 0.2,
+    size,
+    -size * 0.8,
+    size * 0.5
+  );
+
+  ctx.bezierCurveTo(
+    -size,
+    size * 0.2,
+    -size,
+    -size * 0.3,
+    -size * 0.8,
+    0
+  );
+
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function drawSkull() {
+  ctx.save();
+  ctx.translate(skull.x, skull.y);
+  ctx.rotate(skull.rotation);
+  ctx.scale(SKULL_SCALE, SKULL_SCALE);
+
+  ctx.shadowColor = "rgba(80, 70, 50, 0.25)";
+  ctx.shadowBlur = 18;
+
+  const boneGradient = ctx.createRadialGradient(-12, -18, 4, 0, 0, 48);
+  boneGradient.addColorStop(0, "#fffaf0");
+  boneGradient.addColorStop(0.45, "#e7d9bd");
+  boneGradient.addColorStop(1, "#a89268");
+
+  ctx.fillStyle = boneGradient;
+  ctx.strokeStyle = "rgba(95, 78, 50, 0.6)";
+  ctx.lineWidth = 3;
+
+  ctx.beginPath();
+  ctx.moveTo(0, -42);
+  ctx.bezierCurveTo(-32, -42, -45, -20, -42, 6);
+  ctx.bezierCurveTo(-39, 32, -20, 43, 0, 43);
+  ctx.bezierCurveTo(20, 43, 39, 32, 42, 6);
+  ctx.bezierCurveTo(45, -20, 32, -42, 0, -42);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(-24, 28);
+  ctx.bezierCurveTo(-20, 52, 20, 52, 24, 28);
+  ctx.bezierCurveTo(15, 39, -15, 39, -24, 28);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = "rgba(76, 64, 45, 0.72)";
+
+  ctx.beginPath();
+  ctx.ellipse(-14, -6, 9, 12, -0.15, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.ellipse(14, -6, 9, 12, 0.15, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(0, 4);
+  ctx.bezierCurveTo(-7, 18, 7, 18, 0, 4);
+  ctx.fillStyle = "rgba(76, 64, 45, 0.58)";
+  ctx.fill();
+
+  ctx.strokeStyle = "rgba(95, 78, 50, 0.45)";
+  ctx.lineWidth = 1.4;
+
+  for (let i = -3; i <= 3; i++) {
+    ctx.beginPath();
+    ctx.moveTo(i * 6, 32);
+    ctx.lineTo(i * 6, 43);
+    ctx.stroke();
+  }
+
+  ctx.beginPath();
+  ctx.moveTo(-22, 32);
+  ctx.quadraticCurveTo(0, 38, 22, 32);
+  ctx.stroke();
+
+  ctx.globalAlpha = 0.45;
+  ctx.fillStyle = "rgba(255,255,255,0.75)";
+  ctx.beginPath();
+  ctx.ellipse(-14, -24, 12, 6, -0.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.globalAlpha = 1;
+  ctx.restore();
+}
+
+function drawObstacle(obstacle) {
+  drawBoneBlock(obstacle.x, 0, obstacle.width, obstacle.top);
+  drawBoneBlock(obstacle.x, obstacle.bottom, obstacle.width, height - obstacle.bottom);
+}
+
+function drawBoneBlock(x, y, w, h) {
+  const gradient = ctx.createLinearGradient(x, y, x + w, y);
+
+  gradient.addColorStop(0, "#f4eedf");
+  gradient.addColorStop(0.5, "#fffdf8");
+  gradient.addColorStop(1, "#ddd0b3");
+
+  ctx.save();
+
+  ctx.fillStyle = gradient;
+  ctx.strokeStyle = "rgba(110,90,55,0.35)";
+  ctx.lineWidth = 3;
+
+  ctx.beginPath();
+  ctx.roundRect(x, y, w, h, 16);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = "rgba(255,255,255,0.45)";
+  ctx.beginPath();
+  ctx.roundRect(x + 6, y + 6, 8, Math.max(0, h - 12), 4);
+  ctx.fill();
+
+  ctx.strokeStyle = "rgba(170,150,120,0.18)";
+  ctx.lineWidth = 2;
+
+  for (let i = 1; i < 4; i++) {
+    const yy = y + (h / 4) * i;
+
+    ctx.beginPath();
+    ctx.moveTo(x + 12, yy);
+    ctx.lineTo(x + w - 12, yy);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+function update() {
+  frame++;
+
+  skull.velocity += skull.gravity;
+  skull.y += skull.velocity;
+  skull.rotation = Math.max(-0.45, Math.min(0.45, skull.velocity * 0.07));
+
+  if (frame % 105 === 0) {
+    createObstacle();
+  }
+
+  obstacles.forEach((obstacle) => {
+    obstacle.x -= 2.4;
+
+    if (!obstacle.passed && obstacle.x + obstacle.width < skull.x) {
+      obstacle.passed = true;
+      score++;
+      scoreElement.textContent = score;
+    }
+  });
+
+  obstacles = obstacles.filter((obstacle) => obstacle.x + obstacle.width > -80);
+
+  checkCollision();
+}
+
+function checkCollision() {
+  if (skull.y - skull.radius < 0 || skull.y + skull.radius > height) {
+    endGame();
+  }
+
+  obstacles.forEach((obstacle) => {
+    const inObstacleX =
+      skull.x + skull.radius > obstacle.x &&
+      skull.x - skull.radius < obstacle.x + obstacle.width;
+
+    const hitsTop = skull.y - skull.radius < obstacle.top;
+    const hitsBottom = skull.y + skull.radius > obstacle.bottom;
+
+    if (inObstacleX && (hitsTop || hitsBottom)) {
+      endGame();
+    }
+  });
+}
+
+function endGame() {
+  gameRunning = false;
+  addScoreToHistory(score);
+
+  overlay.classList.remove("hidden");
+  overlay.querySelector("h3").textContent = "Fin de la partie";
+  overlay.querySelector("p").textContent =
+    `Score : ${score} — essayez de garder un mouvement plus fluide.`;
+  startButton.textContent = "Recommencer";
+}
+
+function addScoreToHistory(newScore) {
+  if (newScore <= 0) return;
+
+  scoreHistory.unshift({
+    score: newScore,
+    date: new Date().toLocaleTimeString("fr-FR", {
+      hour: "2-digit",
+      minute: "2-digit"
+    })
+  });
+
+  scoreHistory = scoreHistory.slice(0, 5);
+  renderScoreHistory();
+}
+
+function renderScoreHistory() {
+  scoreHistoryElement.innerHTML = "";
+
+  scoreHistory.forEach((item, index) => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <span>Partie ${scoreHistory.length - index}</span>
+      <strong>${item.score} pts</strong>
+      <small>${item.date}</small>
+    `;
+
+    scoreHistoryElement.appendChild(li);
+  });
+}
+
+function draw() {
+  drawBackground();
+  obstacles.forEach(drawObstacle);
+  drawSkull();
+
+  ctx.fillStyle = "#405039";
+  ctx.font = "800 26px Arial";
+  ctx.textAlign = "left";
+  ctx.fillText(score, 24, 42);
+}
+
+function loop() {
+  if (!gameRunning) return;
+
+  update();
+  draw();
+
+  requestAnimationFrame(loop);
+}
+
+startButton.addEventListener("click", startGameLoop);
+canvas.addEventListener("click", flap);
+
+window.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
+    event.preventDefault();
+    flap();
+  }
+});
+
+resetGame();
+draw();
+</script>
