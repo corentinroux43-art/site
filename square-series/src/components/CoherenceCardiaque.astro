@@ -1,0 +1,112 @@
+<section class="breathing-card">
+    <h2>Respiration guidée</h2>
+    <p id="instruction">Cliquez pour commencer</p>
+
+    <button id="startBreathing" class="breathing-button">
+        <span id="bubble"></span>
+    </button>
+
+    <p class="breathing-note">
+        Inspirez lorsque la bulle grandit, expirez lorsqu'elle diminue...
+    </p>
+</section>
+
+<style>
+    .breathing-card {
+        max-width: 500px;
+        margin: 4rem auto;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .breathing-card h2 {
+        color: #2f2f2f;
+        font-size: 2rem;
+    }
+
+    #instruction {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+    }
+
+    .breathing-button {
+        width: 220px;
+        height: 220px;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    #bubble {
+        display: block;
+        width: 140px;
+        height: 140px;
+        margin: auto;
+        border-radius: 50%;
+        background: rgba(108, 139, 111, 0.55);
+        box-shadow: 0 0 35px rgba(108, 139, 111, 0.35);
+        transform: scale(0.75);
+    }
+
+    #bubble.active {
+        animation: breathing 10s infinite ease-in-out;
+    }
+
+    @keyframes breathing {
+        0% {
+            transform: scale(0.75);
+        }
+
+        50% {
+            transform: scale(1.25);
+        }
+
+        100% {
+            transform: scale(0.75);
+        }
+    }
+
+    .breathing-note {
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: #777;
+        font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+        .breathing-button {
+            width: 180px;
+            height: 180px;
+        }
+
+        #bubble {
+            width: 120px;
+            height: 120px;
+        }
+    }
+</style>
+
+<script>
+    const button = document.getElementById("startBreathing");
+    const bubble = document.getElementById("bubble");
+    const instruction = document.getElementById("instruction");
+
+    let isActive = false;
+
+    button.addEventListener("click", () => {
+        isActive = !isActive;
+
+        if (isActive) {
+            bubble.classList.add("active");
+            instruction.textContent = "Inspirez... puis expirez...";
+        } else {
+            bubble.classList.remove("active");
+            instruction.textContent = "Cliquez pour recommencer";
+        }
+    });
+</script>
