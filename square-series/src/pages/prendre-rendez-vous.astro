@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import Rendezvous from '../components/Rendezvous.astro';
+import Buttonvcfcard from '../components/ButtonVCFcard.astro'
 import signature from '../assets/signature.png';
 ---
 
@@ -10,6 +11,9 @@ import signature from '../assets/signature.png';
     >
     <Rendezvous>
     </Rendezvous>
+    <div class="vcf-container">
+    <Buttonvcfcard />
+</div>
     <img src={signature.src} alt="Signature de Corentin Roux, ostéopathe à Saint-Just-Malmont" class="signature" />
     <a href="#top" class="back-to-top">
     ↑
@@ -64,4 +68,11 @@ import signature from '../assets/signature.png';
 html {
     scroll-behavior: smooth;
 }
+
+.vcf-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
 </style>
