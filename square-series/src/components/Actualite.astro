@@ -6,7 +6,19 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
 <section class="presentation">
     <h1>Actualités du cabinet</h1>
 
+    <div id="debug"></div>
 
+    <script>
+        const debug = document.getElementById("debug");
+
+        function updateDebug() {
+            debug.textContent =
+                `${window.innerWidth} × ${window.innerHeight}`;
+        }
+
+        updateDebug();
+        window.addEventListener("resize", updateDebug);
+    </script>
 
     <div class="countdown-container">
         <p class="countdown-title">Ouverture du cabinet dans :</p>
