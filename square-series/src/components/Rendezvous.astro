@@ -1,470 +1,500 @@
 ---
 import Button from "../components/Button.astro";
-import cabinetsaintjustmalmontgooglemaps from "../assets/cabinet-saint-just-malmont-google-maps.png";
 import perimetredomicileosteopathie from "../assets/perimetre-domicile-osteopathie.png";
 import exemplesmsrendezvous from "../assets/exemple-SMS-rendez-vous.png";
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="presentation">
-    <h1 style="text-align: center;">Prendre rendez-vous</h1>
-  </div><br><br>
+<section class="presentation">
+    <h1>Prendre rendez-vous</h1>
 
-<div class="presentation">
-    <h2 style="text-align: center;">Comment prendre Rendez-vous ?</h2><br><br>
-  </div>
-<section class="split">
-  <div class="left">
-    <p style="text-align: center;">
-    <strong>Le plus rapide et le plus sûr : </strong>
-    </p>
-   <p style="text-align: center;">
-    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir votre créneau.
-    </p><br><br>
-    <div style="display: flex; justify-content: center;">
-      <Button
-        text="Cliquer ici pour accéder a la prise de rendez vous en ligne"
-        href="https://rouxcorentin.fr/prendre-rendez-vous/" // A Modifier plus tard
-      />
-    </div><br><br>
-   <p style="text-align: center;">
-    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous.
-   </p>
-   <p style="text-align: center;">
-    Toutefois, si vous préférez échanger directement plutôt que de réserver en ligne, vous pouvez me contacter par téléphone ou par SMS au <a href="tel:06XXXXXXXX">
-  06 XX XX XX XX
-</a> en indiquant votre nom, votre prénom, le lieu de consultation souhaité ainsi que les créneaux horaires qui vous conviendraient.
-    </p>
-    <p style="text-align: center;">
-   Je reste également joignable par e-mail à l'adresse <a href="mailto:corentin.roux.osteo@gmail.com">
-  corentin.roux.osteo@gmail.com
-</a> pour toute question ou demande d'information complémentaire.
-    </p>
-  </div>
- <div style="text-align: center;">
-  <img
-    src={exemplesmsrendezvous.src}
-    alt="Exemple de demande de rendez-vous pour une consultation d'ostéopathie"
-    style="width: 250px; height: auto; filter: brightness(90%);"
-  />
-</div>
-</section><br><br><br><br>
+    <div class="articles">
+        <article class="article-card">
+            <h2>Comment prendre rendez-vous ?</h2>
 
+            <div class="booking-online">
+                <p><strong>Le plus rapide et le plus sûr :</strong></p>
 
+                <p>
+                    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne.
+                    Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS
+                    de Corentin Roux et choisir votre créneau.
+                </p>
 
+                <div class="button-wrapper">
+                    <Button
+                            text="Accéder à la prise de rendez-vous en ligne"
+                            href="https://rouxcorentin.fr/prendre-rendez-vous/"
+                    />
+                </div>
 
+                <p>
+                    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous.
+                </p>
+            </div>
 
+            <section class="split booking-contact">
+                <div class="left">
+                    <p>
+                        Toutefois, si vous préférez échanger directement, vous pouvez me contacter par téléphone
+                        ou par SMS au <a href="tel:06XXXXXXXX">06 XX XX XX XX</a>, en indiquant votre nom,
+                        votre prénom, le lieu de consultation souhaité ainsi que vos disponibilités.
+                    </p>
 
+                    <p>
+                        Je reste également joignable par e-mail à l'adresse
+                        <a href="mailto:corentin.roux.osteo@gmail.com">corentin.roux.osteo@gmail.com</a>.
+                    </p>
+                </div>
 
+                <div class="right">
+                    <img
+                            src={exemplesmsrendezvous.src}
+                            alt="Exemple de demande de rendez-vous par SMS"
+                            class="phone-image"
+                    />
+                </div>
+            </section>
+        </article>
 
+        <article class="article-card">
+            <h2>Où prendre rendez-vous ?</h2>
 
+            <section class="split">
+                <div class="left">
+                    <h3>Au cabinet</h3>
 
+                    <p class="location-text">
+                        11 rue Bayon, 43240 Saint-Just-Malmont
+                    </p>
 
+                    <div class="visual-wrapper">
+                        <iframe
+                                src="https://www.google.com/maps?q=11+Rue+Bayon+43240+Saint-Just-Malmont&output=embed"
+                                class="map"
+                                allowfullscreen=""
+                                loading="lazy"
+                        ></iframe>
+                    </div>
 
+                    <div class="link-buttons map-buttons">
+                        <a
+                                href="https://www.google.com/maps/search/?api=1&query=11+Rue+Bayon+43240+Saint-Just-Malmont"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="nav-button"
+                        >
+                            <Icon name="simple-icons:googlemaps" />
+                            <span>Google Maps</span>
+                        </a>
 
+                        <a
+                                href="https://waze.com/ul?q=11%20Rue%20Bayon%2043240%20Saint-Just-Malmont&navigate=yes"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="nav-button"
+                        >
+                            <Icon name="simple-icons:waze" />
+                            <span>Waze</span>
+                        </a>
+                    </div>
+                </div>
 
+                <div class="right">
+                    <h3>À domicile</h3>
 
+                    <p class="location-text">
+                        Dans un périmètre de 10 km autour de Saint-Just-Malmont.
+                    </p>
 
+                    <div class="visual-wrapper">
+                        <img
+                                src={perimetredomicileosteopathie.src}
+                                alt="Secteur des consultations d'ostéopathie à domicile autour de Saint-Just-Malmont"
+                                class="home-map-image"
+                        />
+                    </div>
 
+                    <div class="link-buttons">
+                        <a
+                                class="nav-button"
+                                href="https://www.mappy.com/outils/calcul-rayon"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                        >
+                            <Icon name="lucide:map-pinned" />
+                            <span>Mappy</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </article>
 
+        <article class="article-card">
+            <h2>Tarifs du cabinet</h2>
 
+            <section class="split">
+                <div class="left">
+                    <div class="price-box">
+                        <p>Consultation d'ostéopathie <strong>au cabinet : 60 €</strong></p>
+                        <p>Consultation d'ostéopathie <strong>à domicile : 70 €</strong></p>
+                        <p>Réduction de <strong>10 % pour les étudiants et les moins de 18 ans</strong></p>
+                        <p class="small-text">Hors domicile, soit 54 € pour une consultation au cabinet.</p>
+                    </div>
+                </div>
 
+                <div class="right">
+                    <p><strong>Informations pratiques :</strong></p>
+                    <p>Les règlements sont acceptés par carte bancaire, chèque ou espèces.</p>
+                    <p>
+                        Pensez à apporter vos examens médicaux récents : IRM, radiographies, scanner,
+                        comptes-rendus, etc.
+                    </p>
+                </div>
+            </section>
+        </article>
 
-<h2 style="text-align: center;">Où prendre Rendez-vous ?</h2><br><br>
-<section class="split">
-  <div class="left">
-    <h2 style="text-align: center;">Au Cabinet</h2>
-    <p style="text-align: center;"> 11 rue Bayon 43240 Saint-Just-Malmont</p><br><br>
-    <iframe
-  src="https://www.google.com/maps?q=11+Rue+Bayon+43240+Saint-Just-Malmont&output=embed"
-  width="100%"
-  height="400"
-  style="border:0; border-radius:12px;"
-  allowfullscreen=""
-  loading="lazy">
-</iframe>
+        <article class="article-card">
+            <h2>Horaires du cabinet</h2>
 
-<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+            <section class="split">
+                <div class="left schedule">
+                    <p>Lundi : <strong>6h - 20h</strong></p>
+                    <p>Mardi : <strong>6h - 20h</strong></p>
+                    <p>Mercredi : <strong>6h - 20h</strong></p>
+                    <p>Jeudi : <strong>6h - 20h</strong></p>
+                    <p>Vendredi : <strong>6h - 20h</strong></p>
+                    <p>Samedi : <strong>6h - 20h</strong></p>
+                    <p>Dimanche : <strong>6h - 20h</strong></p>
+                </div>
 
-    <a
-            href="https://www.google.com/maps/search/?api=1&query=11+Rue+Bayon+43240+Saint-Just-Malmont"
-            target="_blank"
-            class="nav-button googlemaps"
-    >
-        <Icon name="simple-icons:googlemaps" />
-        <span>Google Maps</span>
-    </a>
+                <div class="right">
+                    <p>
+                        Parce qu'il n'est pas toujours facile de prendre du temps pour soi, le cabinet propose
+                        des plages de consultation étendues.
+                    </p>
 
-    <a
-            href="https://waze.com/ul?q=11%20Rue%20Bayon%2043240%20Saint-Just-Malmont&navigate=yes"
-            target="_blank"
-            class="nav-button waze"
-    >
-        <Icon name="simple-icons:waze" />
-        <span>Waze</span>
-    </a>
-</div>
-</div>
+                    <p>
+                        Vous pouvez ainsi prendre rendez-vous avant votre journée de travail, pendant votre pause
+                        déjeuner ou en fin de journée.
+                    </p>
 
+                    <p>
+                        Ces horaires ont été pensés pour s'adapter au mieux à votre rythme de vie.
+                    </p>
+                </div>
+            </section>
+        </article>
 
+        <article class="article-card">
+            <h2>Contact et coordonnées</h2>
 
-  <div class="right">
-    <h2 style="text-align: center;">A Domicile</h2>
-    <p style="text-align: center;"> Dans un périmètre de 10 km autour de Saint-Just-Malmont</p>
-    <br><br>
-    <img
-  src={perimetredomicileosteopathie.src}
-  alt="Secteur des consultations d'ostéopathie à domicile autour de Saint-Just-Malmont"
-  style="width: 470px; height: auto; border-radius: 20px; display: block;
-margin-left: auto;
-margin-right: auto;"
-/>
-<div style="display: flex; justify-content: center;">
-    <a class="nav-button mappy"
-       href="https://www.mappy.com/outils/calcul-rayon"
-       target="_blank">
-        <Icon name="lucide:map-pinned" />
-        <span>Mappy</span>
-    </a>
-  </div>
-  </div>
-</section><br><br>
+            <div class="contact">
+                <p><strong>Corentin Roux</strong></p>
+                <p>Cabinet d'ostéopathie à Saint-Just-Malmont</p>
+                <p>11 rue Bayon, 43240 Saint-Just-Malmont</p>
 
-<section>
-<p class="footnote">
-    * Les consultations à domicile sont proposées à Saint-Just-Malmont ainsi que dans les communes voisines telles que Firminy, Unieux, Le Chambon-Feugerolles, Aurec-sur-Loire, Saint-Didier-en-Velay, Saint-Genest-Malifaux, Pont-Salomon et La Chapelle-d'Aurec.
-</p>
+                <p>
+                    <a href="tel:06XXXXXXXX">Appeler le cabinet : 06 XX XX XX XX</a>
+                </p>
+
+                <p>
+                    <a href="mailto:corentin.roux.osteo@gmail.com">
+                        Envoyer un e-mail à corentin.roux.osteo@gmail.com
+                    </a>
+                </p>
+
+                <div class="social-links">
+                    <a class="social-link" href="https://fr.linkedin.com/in/rouxcorentin?trk=public_post_feed-actor-name" target="_blank" rel="noopener noreferrer">
+                        <Icon name="simple-icons:linkedin" />
+                        <span>LinkedIn</span>
+                    </a>
+
+                    <a class="social-link" href="https://www.facebook.com/p/Corentin-Roux-61560735591765/" target="_blank" rel="noopener noreferrer">
+                        <Icon name="simple-icons:facebook" />
+                        <span>Facebook</span>
+                    </a>
+
+                    <a class="social-link" href="https://www.instagram.com/corentin.roux.osteo" target="_blank" rel="noopener noreferrer">
+                        <Icon name="simple-icons:instagram" />
+                        <span>Instagram</span>
+                    </a>
+
+                    <a class="social-link" href="https://www.doctolib.fr/osteopathe/..." target="_blank" rel="noopener noreferrer">
+                        <Icon name="lucide:stethoscope" />
+                        <span>Doctolib</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
 </section>
-<br><br><br><br>
-
-<div class="presentation">
-     <h2 style="text-align: center;">Tarif du Cabinet</h2><br><br>
-  <section class="split">
-  <div class="left">
-    <div class="cadre">
-     <p style="text-align: center;">
-    Consultation d'ostéopathie <strong>au Cabinet : 60€ </strong>
-    </p><br>
-    <p style="text-align: center;">
-    Consultation d'ostéopathie <strong>a Domicile : 70€ </strong>
-    </p><br>
-    <p style="text-align: center;"> Réduction de <strong>10% pour les étudiants et les moins de 18 ans </strong></p>
-    <p style="text-align: center;">( Hors Domicile, soit 54€ pour une consultation au Cabinet)
-    </p></div><br><br><br><br>
-  </div>
-  <div class="right"><br>
-    <p style="text-align: center;"><strong>Informations pratiques :</strong></p>
-    <p style="text-align: center;">Les honoraires pratiqués sont en cohérence avec les tarifs habituellement observés en ostéopathie.</p>
-    <p style="text-align: center;">Les règlements sont acceptés par carte bancaire, chèque ou espèces.</p>
-    <p style="text-align: center;">Pensez à apporter vos examens médicaux récents (IRM, radiographies, scanner, comptes-rendus, etc.) si vous en disposez.</p>
-  </div>
-
-</section>
-<div class="presentation">
-    <h2 style="text-align: center;">Horaires du Cabinet ?</h2><br><br>
-  </div>
-<section class="split">
-  <div class="left">
-    <p style="text-align: center;">
-    Lundi : <strong><span class="vert">6h - 20h</span></strong>
-    </p>
-   <p style="text-align: center;">
-    Mardi : <strong><span class="vert">6h - 20h</span></strong>
-    </p>
-    <p style="text-align: center;">
-    Mercredi : <strong><span class="vert">6h - 20h</span></strong>
-    </p>
-    <p style="text-align: center;">
-    Jeudi : <strong><span class="vert">6h - 20h</span></strong>
-    </p>
-    <p style="text-align: center;">
-    Vendredi : <strong><span class="vert">6h - 20h</span></strong>
-    </p>
-    <p style="text-align: center;">
-    Samedi : <strong><span class="vert">6h - 20h</span></strong>
-    </p>
-    <p style="text-align: center;">
-    Dimanche : <strong><span class="vert">6h - 20h</span></strong>
-    </p>
-  </div>
-  <div class="right">
-    <p style="text-align: center;">Parce qu'il n'est pas toujours facile de prendre du temps pour soi entre le travail, les études, l'école des enfants et les obligations du quotidien, le cabinet propose des plages de consultation étendues.</p>
-    <p style="text-align: center;"> Vous pouvez ainsi prendre rendez-vous avant votre journée de travail, pendant votre pause déjeuner ou en fin de journée, sans avoir à poser une demi-journée de congé. L'objectif est de vous permettre d'accéder plus facilement aux soins tout en limitant l'impact sur votre organisation personnelle et professionnelle.</p>
-    <p style="text-align: center;"> Que vous soyez salarié, étudiant, parent ou retraité, ces horaires ont été pensés pour s'adapter au mieux à votre rythme de vie.</p>
-  </div>
-</section><br><br><br><br>
-
-
-
-
-
-
-
-
-
-<div class="presentation">
-    <h2 style="text-align: center;">Contact et Coordonnées</h2><br>
-  </div>
-<section class="content" style="text-align: center;">
-    <p><strong>Roux Corentin</strong></p>
-    <p>Cabinet d'Ostéopathie à Saint-Just-Malmont</p>
-    <p> 11 rue Bayon 43240 Saint-Just-Malmont</p>
-    <a href="tel:06XXXXXXXX">
-  Appeler le cabinet : 06 XX XX XX XX
-</a><br><br>
-    <a href="mailto:corentin.roux.osteo@gmail.com">
-  Envoyer un email à corentin.roux.osteo@gmail.com
-</a><br><br><br><br><br>
-
- <div class="social-links">
-    <a class="social-link linkedin" href="https://fr.linkedin.com/in/rouxcorentin?trk=public_post_feed-actor-name" target="_blank" rel="noopener noreferrer">
-        <Icon name="simple-icons:linkedin" />
-        <span>LinkedIn</span>
-    </a>
-
-    <a class="social-link facebook" href="https://www.facebook.com/p/Corentin-Roux-61560735591765/" target="_blank" rel="noopener noreferrer">
-        <Icon name="simple-icons:facebook" />
-        <span>Facebook</span>
-    </a>
-
-    <a class="social-link instagram" href="https://www.instagram.com/corentin.roux.osteo" target="_blank" rel="noopener noreferrer">
-        <Icon name="simple-icons:instagram" />
-        <span>Instagram</span>
-    </a>
-
-     <a class="social-link doctolib"
-        href="https://www.doctolib.fr/osteopathe/..."
-        target="_blank"
-        rel="noopener noreferrer">
-         <Icon name="lucide:stethoscope" />
-         <span>Doctolib</span>
-     </a>
-
-    <a class="social-link google" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
-        <Icon name="simple-icons:googlemaps" />
-        <span>Fiche Google</span>
-    </a>
-</div>
-</section><br>
-
-
-
-
 
 <style>
-  .footnote {
-    font-size: 1rem !important;
-    color: #9b7b48;
-    text-align: center;
-    font-style: italic;
-}
-
-  .nav-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      width: 225px;
-      height: 60px;
-
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 600;
-
-      transition: all 0.2s ease;
-  }
-
-  .nav-button:hover {
-      transform: translateY(-2px);
-  }
-
-  .nav-button svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-  }
-
-  .googlemaps {
-      background: #9b7b48;
-  }
-
-  .googlemaps:hover {
-      background: #9b7b48;
-  }
-
-  .waze {
-      background: #9b7b48;
-  }
-
-  .waze:hover {
-      background: #9b7b48;
-  }
-
-.split {
-  display: flex;
-  gap: 2rem;
-}
-
-.left,
-.right {
-  flex: 1;
-}
-
-.vert {
-    color: #9b7b48;
-    font-weight: 600;
-}
-
-.cadre {
-    border: 5px solid #9b7b48;
-    border-radius: 12px;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.presentation h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #2f2f2f;
-    text-align: center;
-}
-
-  .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-  }
-
-  .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      padding: 11px 16px;
-      border-radius: 999px;
-
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,.12);
-  }
-
-  .social-link svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-  }
-
-  .social-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,.18);
-  }
-
-  .linkedin {
-      background: #0A66C2;
-  }
-
-  .linkedin:hover {
-      background: #004182;
-  }
-
-  .facebook {
-      background: #1877F2;
-  }
-
-  .facebook:hover {
-      background: #166FE5;
-  }
-
-  .instagram {
-      background: radial-gradient(
-              circle at 30% 107%,
-              #fdf497 0%,
-              #fdf497 5%,
-              #fd5949 45%,
-              #d6249f 60%,
-              #285AEB 90%
-      );
-  }
-
-  .doctolib {
-      background: #0596DE;
-      color: white;
-  }
-
-  .doctolib:hover {
-      background: #0079B8;
-  }
-
-  .google {
-      background: #34A853;
-  }
-
-  .google:hover {
-      background: #2d9148;
-  }
-
-  .mappy {
-      background: #9b7b48; /* orange Mappy */
-      color: white;
-  }
-
-  .mappy:hover {
-      background: #9b7b48;
-  }
-
-/* Images responsives */
-.split img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .split {
-        flex-direction: column;
-        gap: 2.5rem;
+    .presentation {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 30px;
     }
 
     .presentation h1 {
-        font-size: 1.8rem;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #2f2f2f;
+        text-align: center;
+    }
+
+    .articles {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .article-card {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2.5rem;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .article-card h2 {
+        font-size: 2rem;
+        line-height: 1.3;
+        color: #2f2f2f;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .article-card h3 {
+        font-size: 1.5rem;
+        color: #2f2f2f;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .article-card p {
+        font-size: 1.2rem;
+        line-height: 1.8;
         margin-bottom: 20px;
+        color: #555;
+        text-align: center;
+    }
+
+    .split {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
     }
 
     .left,
     .right {
+        flex: 1;
+    }
+
+    .map-buttons {
+        flex-wrap: nowrap;
+    }
+
+    .map-buttons .nav-button {
+        width: 180px;
+    }
+
+    .button-wrapper,
+    .link-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 2rem 0;
+    }
+
+    .article-image {
         width: 100%;
+        height: auto;
+        border-radius: 20px;
+        display: block;
+    }
+    .location-text {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .left p,
-    .right p,
-    .content p {
-        font-size: 1rem;
-        line-height: 1.6;
+    .visual-wrapper {
+        width: 100%;
+        height: 360px;
+        margin: 1rem 0 2rem;
+        border-radius: 14px;
+        overflow: hidden;
     }
 
-    .split img {
-        width: 100% !important;
-        max-width: 360px;
+    .map,
+    .home-map-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 0;
+    }
+
+    .home-map-image {
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .phone-image {
+        width: 250px;
+        max-width: 100%;
+        height: auto;
+        filter: brightness(90%);
         display: block;
         margin: 0 auto;
     }
 
-    .social-links {
-        gap: 8px;
-    }
 
+    .nav-button,
     .social-link {
-        font-size: 0.85rem;
-        padding: 8px 10px;
-    }
-}
-</style>
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
 
+        color: white;
+        background: #9b7b48;
+        text-decoration: none;
+        font-weight: 600;
+
+        transition: all 0.2s ease;
+    }
+
+    .booking-online {
+        max-width: 850px;
+        margin: 0 auto 3rem;
+        text-align: center;
+    }
+
+    .booking-contact {
+        margin-top: 1rem;
+    }
+
+    .nav-button {
+        width: 225px;
+        height: 60px;
+        border-radius: 12px;
+    }
+    .social-link {
+        padding: 11px 16px;
+        border-radius: 999px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-button:hover,
+    .social-link:hover {
+        transform: translateY(-2px);
+    }
+
+    .nav-button svg,
+    .social-link svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+    }
+
+    .price-box {
+        border: 4px solid #9b7b48;
+        border-radius: 18px;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.35);
+    }
+
+    .small-text {
+        font-size: 0.95rem !important;
+        font-style: italic;
+    }
+
+    .schedule strong {
+        color: #9b7b48;
+    }
+
+    .contact {
+        text-align: center;
+    }
+
+    .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .presentation {
+            padding: 40px 20px;
+        }
+
+        .presentation h1 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .article-card {
+            padding: 1.5rem;
+            border-radius: 18px;
+        }
+
+        .map-buttons {
+
+            flex-direction: column;
+
+            align-items: center;
+
+        }
+
+        .map-buttons .nav-button {
+
+            width: 100%;
+
+            max-width: 260px;
+
+        }
+        .article-card h2 {
+            font-size: 1.5rem;
+        }
+
+        .article-card h3 {
+            font-size: 1.25rem;
+        }
+
+        .article-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .split {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .article-image {
+            width: 320px;
+        }
+
+        .phone-image {
+            width: 220px;
+        }
+
+        .nav-button {
+            width: 100%;
+            max-width: 260px;
+        }
+
+        .social-link {
+            font-size: 0.85rem;
+            padding: 8px 12px;
+        }
+    }
+</style>
