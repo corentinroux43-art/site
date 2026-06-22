@@ -1,33 +1,63 @@
-<a
-    href="/corentin-roux-osteopathe.vcf"
-    download
-    class="contact-button"
->
+<button id="download-vcard" class="contact-button">
     📇 Ajouter à mes contacts
-</a>
+</button>
+
+<script>
+    const button = document.getElementById('download-vcard');
+
+    button?.addEventListener('click', () => {
+        const vcardLines = [
+            'BEGIN:VCARD',
+            'VERSION:2.1',
+            'N:Roux;Corentin;;;',
+            'FN:Corentin Roux',
+            "ORG;CHARSET=ISO-8859-1;ENCODING=QUOTED-PRINTABLE:Cabinet d'Ost=E9opathie Corentin Roux",
+            'TITLE;CHARSET=ISO-8859-1;ENCODING=QUOTED-PRINTABLE:Ost=E9opathe D.O.',
+            'TEL;WORK;VOICE:+33-6-00-00-00-00',
+            'EMAIL;PREF:corentin.roux.osteo@gmail.com',
+            'ADR;WORK;CHARSET=ISO-8859-1;ENCODING=QUOTED-PRINTABLE:;;11 Rue Bayon;Saint-Just-Malmont;;;France',
+            'URL:https://rouxcorentin.fr/',
+            'END:VCARD'
+        ];
+
+        const blob = new Blob(
+            [vcardLines.join('\r\n')],
+            { type: 'text/x-vcard;charset=ISO-8859-1' }
+        );
+
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+
+        a.href = url;
+        a.download = 'corentin-roux-osteopathe.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        URL.revokeObjectURL(url);
+    });
+</script>
 
 <style>
 .contact-button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-
     padding: 0.9rem 1.5rem;
-
     background: #6b8f71;
     color: white;
     text-decoration: none;
-
+    border: none;
     border-radius: 999px;
     font-weight: 600;
-
+    cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,.12);
-}
+    }
 
 .contact-button:hover {
     transform: translateY(-2px);
     background: #5b7a60;
     box-shadow: 0 8px 20px rgba(0,0,0,.18);
-}
+    }
 </style>
