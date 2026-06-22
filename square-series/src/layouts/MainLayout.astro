@@ -45,6 +45,37 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux
 
 <body>
 <TopBar />
+
+<div class="saviez-vous">
+        <span class="label">💡 Le saviez-vous ?</span>
+
+        <div class="ticker">
+            <div class="ticker-content">
+            <span>Une même douleur peut avoir des causes très différentes d'une personne à l'autre.</span>
+            <span>Les vertèbres ne « se remettent pas en place » lors d'une manipulation. </span>
+            <span>Le bruit de craquement articulaire est principalement dû à la formation puis à l'éclatement de bulles de gaz dans l'articulation.</span>
+            <span>Les douleurs lombaires sont l'une des premières causes de consultation médicale dans le monde.</span>
+            <span> assis longtemps est souvent plus contraignant pour le dos que marcher.</span>
+            <span>Une douleur persistante n'est pas toujours le signe d'une lésion persistante.</span>
+            <span>Le sommeil joue un rôle majeur dans la récupération des tissus et la perception de la douleur.</span>
+            <span>Le stress peut modifier la manière dont le cerveau interprète les signaux douloureux.</span>
+            <span>Les personnes actives physiquement récupèrent généralement mieux après un épisode douloureux.</span>
+            <span>Les muscles représentent près de 40 % du poids du corps chez l'adulte.</span>
+            <span>Le diaphragme réalise environ 20 000 mouvements respiratoires par jour.</span>
+            <span>Le cerveau ne possède pas de récepteurs de la douleur, contrairement aux tissus qui l'entourent.</span>
+            <span>La marche est l'une des activités les plus recommandées dans la prise en charge des douleurs lombaires.</span>
+            <span>Les disques intervertébraux se réhydratent principalement pendant le sommeil.</span>
+            <span>Une mauvaise posture n'est pas systématiquement responsable d'une douleur.</span>
+            <span>Il n'existe pas une posture parfaite à maintenir toute la journée.</span>
+            <span>Le corps humain compte plus de 360 articulations.</span>
+            <span>Les pieds absorbent plusieurs centaines de tonnes de contraintes chaque jour lors de la marche.</span>
+            <span>Une respiration lente peut influencer le rythme cardiaque et favoriser la détente.</span>
+            <span>Les douleurs cervicales sont devenues plus fréquentes avec l'augmentation du temps passé devant les écrans.</span>
+            </div>
+        </div>
+    </div>
+
+
 <NavigationButtons />
 
 <main>
@@ -82,5 +113,49 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux
     main {
         width: min(1100px, calc(100% - 2rem));
         margin: 3rem auto;
+    }
+
+.saviez-vous {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(248, 245, 240, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    overflow: hidden;
+    width : 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+}
+
+.label {
+    font-weight: 700;
+    color: #6b7d5d; /* vert olive */
+    white-space: nowrap;
+}
+
+.ticker {
+    overflow: hidden;
+    flex: 1;
+}
+
+.ticker-content {
+    white-space: nowrap;
+    display: inline-block;
+    animation: scroll 300s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(5%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.ticker-content span {
+        margin-right: 300px;
     }
 </style>
