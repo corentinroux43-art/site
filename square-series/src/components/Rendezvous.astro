@@ -6,13 +6,74 @@ import exemplesmsrendezvous from "../assets/exemple-SMS-rendez-vous.png";
 import { Icon } from "astro-icon/components";
 ---
 
-<br><br><br><br><br><br><br><br>
 <div class="presentation">
-    <h1 style="text-align: center;">Prendre rendez-vous avec votre ostéopathe à Saint-Just-Malmont</h1>
+    <h1 style="text-align: center;">Prendre rendez-vous</h1>
   </div><br><br>
+
+<div class="presentation">
+    <h2 style="text-align: center;">Comment prendre Rendez-vous ?</h2><br><br>
+  </div>
 <section class="split">
   <div class="left">
-    <h2 style="text-align: center;"><strong>Au Cabinet</strong></h2>
+    <p style="text-align: center;">
+    <strong>Le plus rapide et le plus sûr : </strong>
+    </p>
+   <p style="text-align: center;">
+    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir votre créneau.
+    </p><br><br>
+    <div style="display: flex; justify-content: center;">
+      <Button
+        text="Cliquer ici pour accéder a la prise de rendez vous en ligne"
+        href="https://rouxcorentin.fr/prendre-rendez-vous/" // A Modifier plus tard
+      />
+    </div><br><br>
+   <p style="text-align: center;">
+    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous.
+   </p>
+   <p style="text-align: center;">
+    Toutefois, si vous préférez échanger directement plutôt que de réserver en ligne, vous pouvez me contacter par téléphone ou par SMS au <a href="tel:06XXXXXXXX">
+  06 XX XX XX XX
+</a> en indiquant votre nom, votre prénom, le lieu de consultation souhaité ainsi que les créneaux horaires qui vous conviendraient.
+    </p>
+    <p style="text-align: center;">
+   Je reste également joignable par e-mail à l'adresse <a href="mailto:corentin.roux.osteo@gmail.com">
+  corentin.roux.osteo@gmail.com
+</a> pour toute question ou demande d'information complémentaire.
+    </p>
+  </div>
+ <div style="text-align: center;">
+  <img
+    src={exemplesmsrendezvous.src}
+    alt="Exemple de demande de rendez-vous pour une consultation d'ostéopathie"
+    style="width: 250px; height: auto; filter: brightness(90%);"
+  />
+</div>
+</section><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 style="text-align: center;">Où prendre Rendez-vous ?</h2><br><br>
+<section class="split">
+  <div class="left">
+    <h2 style="text-align: center;">Au Cabinet</h2>
     <p style="text-align: center;"> 11 rue Bayon 43240 Saint-Just-Malmont</p><br><br>
     <iframe
   src="https://www.google.com/maps?q=11+Rue+Bayon+43240+Saint-Just-Malmont&output=embed"
@@ -48,8 +109,8 @@ import { Icon } from "astro-icon/components";
 
 
   <div class="right">
-    <h2 style="text-align: center;"><strong>A Domicile</strong></h2>
-    <p style="text-align: center;"> Dans un rayon de ... Km autour de Saint-Just-Malmont</p>
+    <h2 style="text-align: center;">A Domicile</h2>
+    <p style="text-align: center;"> Dans un périmètre de 10 km autour de Saint-Just-Malmont</p>
     <br><br>
     <img
   src={perimetredomicileosteopathie.src}
@@ -136,45 +197,7 @@ margin-right: auto;"
 
 
 
-<div class="presentation">
-    <h2 style="text-align: center;">Comment prendre Rendez-vous ?</h2><br><br>
-  </div>
-<section class="split">
-  <div class="left">
-    <p style="text-align: center;">
-    <strong>Le plus rapide et le plus sûr : </strong>
-    </p>
-   <p style="text-align: center;">
-    Prenez rendez-vous en quelques clics grâce à la prise de rendez-vous en ligne. Il vous suffit de cliquer sur le bouton ci-dessous pour accéder à l'agenda Osteo2LS de Corentin ROUX et choisir votre créneau.
-    </p><br><br>
-    <div style="display: flex; justify-content: center;">
-      <Button
-        text="Cliquer ici pour accéder a la prise de rendez vous en ligne"
-        href="https://rouxcorentin.fr/prendre-rendez-vous/" // A Modifier plus tard
-      />
-    </div><br><br>
-   <p style="text-align: center;">
-    L'agenda en ligne reste le moyen le plus simple et le plus rapide pour prendre rendez-vous.
-   </p>
-   <p style="text-align: center;">
-    Toutefois, si vous préférez échanger directement plutôt que de réserver en ligne, vous pouvez me contacter par téléphone ou par SMS au <a href="tel:06XXXXXXXX">
-  06 XX XX XX XX
-</a> en indiquant votre nom, votre prénom, le lieu de consultation souhaité ainsi que les créneaux horaires qui vous conviendraient.
-    </p>
-    <p style="text-align: center;">
-   Je reste également joignable par e-mail à l'adresse <a href="mailto:corentin.roux.osteo@gmail.com">
-  corentin.roux.osteo@gmail.com
-</a> pour toute question ou demande d'information complémentaire.
-    </p>
-  </div>
- <div style="text-align: center;">
-  <img
-    src={exemplesmsrendezvous.src}
-    alt="Exemple de demande de rendez-vous pour une consultation d'ostéopathie"
-    style="width: 250px; height: auto; filter: brightness(90%);"
-  />
-</div>
-</section><br><br><br><br>
+
 
 
 
@@ -231,7 +254,7 @@ margin-right: auto;"
 <style>
   .footnote {
     font-size: 1rem !important;
-    color: #5d5a31;
+    color: #9b7b48;
     text-align: center;
     font-style: italic;
 }
@@ -264,19 +287,19 @@ margin-right: auto;"
   }
 
   .googlemaps {
-      background: #34A853;
+      background: #9b7b48;
   }
 
   .googlemaps:hover {
-      background: #2d9148;
+      background: #9b7b48;
   }
 
   .waze {
-      background: #33CCFF;
+      background: #9b7b48;
   }
 
   .waze:hover {
-      background: #0fb9f7;
+      background: #9b7b48;
   }
 
 .split {
@@ -290,19 +313,19 @@ margin-right: auto;"
 }
 
 .vert {
-    color: #403c16;
+    color: #9b7b48;
     font-weight: 600;
 }
 
 .cadre {
-    border: 5px solid #725e2b;
+    border: 5px solid #9b7b48;
     border-radius: 12px;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.05);
 }
 
 .presentation h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 40px;
     color: #2f2f2f;
@@ -389,12 +412,12 @@ margin-right: auto;"
   }
 
   .mappy {
-      background: #FF6B00; /* orange Mappy */
+      background: #9b7b48; /* orange Mappy */
       color: white;
   }
 
   .mappy:hover {
-      background: #E65C00;
+      background: #9b7b48;
   }
 
 /* Images responsives */
