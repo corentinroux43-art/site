@@ -1,0 +1,41 @@
+---
+const {
+    text = "* Les consultations à domicile sont proposées à Saint-Just-Malmont ainsi que dans les communes voisines telles que Firminy, Unieux, Le Chambon-Feugerolles, Aurec-sur-Loire, Saint-Didier-en-Velay, Saint-Genest-Malifaux, Pont-Salomon et La Chapelle-d'Aurec.",
+} = Astro.props;
+---
+
+<p class="footnote">
+    {text}
+</p>
+
+<style>
+    .footnote {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -4rem;
+
+        font-size: 0.75rem;
+        line-height: 1.5;
+
+        color: #5d5a31;
+        text-align: center;
+        font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+        .footnote {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -2rem;
+
+            font-size: 0.75rem;
+            line-height: 1.5;
+
+            color: #5d5a31;
+            text-align: center;
+            font-style: italic;
+        }
+    }
+</style>

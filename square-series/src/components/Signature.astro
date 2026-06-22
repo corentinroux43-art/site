@@ -1,0 +1,31 @@
+---
+import signature from "../assets/signature.png";
+---
+
+<img
+        src={signature.src}
+        alt="Signature de Corentin Roux, ostéopathe à Saint-Just-Malmont"
+        class="signature"
+/>
+
+<style>
+    .signature {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -7rem;
+        width: min(500px, 80%);
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+        .signature {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -4rem;
+            width: min(500px, 80%);
+            height: auto;
+        }
+    }
+</style>

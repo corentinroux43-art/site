@@ -1,0 +1,50 @@
+---
+const {
+    href,
+    icon,
+    label,
+} = Astro.props;
+---
+
+<a
+        href={href}
+        class="floating-button"
+        aria-label={label}
+>
+    {icon}
+</a>
+
+<style>
+    .floating-button {
+        width: 45px;
+        height: 45px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: var(--green);
+        color: white;
+
+        text-decoration: none;
+        font-size: 1.4rem;
+
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+        transition: all 0.2s ease;
+    }
+
+    .floating-button:hover {
+        transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+        .floating-button {
+            width: 42px;
+            height: 42px;
+            font-size: 1.2rem;
+        }
+    }
+</style>
