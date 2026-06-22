@@ -1,106 +1,46 @@
 ---
 import TopBar from "../components/TopBar.astro";
 import NavigationButtons from "../components/NavigationButtons.astro";
+import DidYouKnow from "../components/DidYouKnow.astro";
 
-const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux, ostéopathe à Saint-Just-Malmont. Consultations au cabinet et à domicile.", schema } = Astro.props;
+const {
+    title = "Corentin Roux - Ostéopathe D.O.",
+    description = "Corentin Roux, ostéopathe à Saint-Just-Malmont. Consultations au cabinet et à domicile.",
+    schema,
+} = Astro.props;
+
+const floatingLinks = [
+    { href: "/prendre-rendez-vous", icon: "📅", label: "Prendre rendez-vous" },
+    { href: "/jeux-salle-attente", icon: "🎮", label: "Jeux de salle d'attente" },
+    { href: "/questions-frequentes", icon: "❓", label: "Questions fréquentes" },
+];
 ---
 
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={Astro.url.href} />
-
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content="https://rouxcorentin.fr/logo.png" />
 
     {schema && (
-  <script
-    type="application/ld+json"
-    set:html={JSON.stringify(schema)}
-  />
-)}
-
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "name": "Corentin Roux Ostéopathe",
-  "url": "https://rouxcorentin.fr",
-  "telephone": "+33XXXXXXXXX",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "11 rue Bayon",
-    "postalCode": "43240",
-    "addressLocality": "Saint-Just-Malmont",
-    "addressCountry": "FR"
-  }
-})} />
-
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
 </head>
 
 <body>
 <TopBar />
 
-<div class="floating-buttons">
+<nav class="floating-buttons" aria-label="Accès rapides">
+    {floatingLinks.map((link) => (
+            <a href={link.href} class="floating-button" aria-label={link.label}>
+                <span aria-hidden="true">{link.icon}</span>
+            </a>
+    ))}
+</nav>
 
-  <div class="floating-container">
-    <a href="/prendre-rendez-vous" class="floating-rdv">
-      📅
-    </a>
-    <span class="tooltip">Prendre rendez-vous</span>
-  </div>
-
-  <div class="floating-container">
-    <a href="/jeux-salle-attente" class="floating-rdv">
-      🎮
-    </a>
-    <span class="tooltip">Jeux de salle d'attente</span>
-  </div>
-
-  <div class="floating-container">
-    <a href="/questions-frequentes" class="floating-rdv">
-      ❓
-    </a>
-    <span class="tooltip">Questions fréquentes</span>
-  </div>
-
-</div>
-
-
-<div class="saviez-vous">
-        <span class="label">💡 Le saviez-vous ?</span>
-
-        <div class="ticker">
-            <div class="ticker-content">
-            <span>Une même douleur peut avoir des causes très différentes d'une personne à l'autre.</span>
-            <span>Les vertèbres ne « se remettent pas en place » lors d'une manipulation. </span>
-            <span>Le bruit de craquement articulaire est principalement dû à la formation puis à l'éclatement de bulles de gaz dans l'articulation.</span>
-            <span>Les douleurs lombaires sont l'une des premières causes de consultation médicale dans le monde.</span>
-            <span> assis longtemps est souvent plus contraignant pour le dos que marcher.</span>
-            <span>Une douleur persistante n'est pas toujours le signe d'une lésion persistante.</span>
-            <span>Le sommeil joue un rôle majeur dans la récupération des tissus et la perception de la douleur.</span>
-            <span>Le stress peut modifier la manière dont le cerveau interprète les signaux douloureux.</span>
-            <span>Les personnes actives physiquement récupèrent généralement mieux après un épisode douloureux.</span>
-            <span>Les muscles représentent près de 40 % du poids du corps chez l'adulte.</span>
-            <span>Le diaphragme réalise environ 20 000 mouvements respiratoires par jour.</span>
-            <span>Le cerveau ne possède pas de récepteurs de la douleur, contrairement aux tissus qui l'entourent.</span>
-            <span>La marche est l'une des activités les plus recommandées dans la prise en charge des douleurs lombaires.</span>
-            <span>Les disques intervertébraux se réhydratent principalement pendant le sommeil.</span>
-            <span>Une mauvaise posture n'est pas systématiquement responsable d'une douleur.</span>
-            <span>Il n'existe pas une posture parfaite à maintenir toute la journée.</span>
-            <span>Le corps humain compte plus de 360 articulations.</span>
-            <span>Les pieds absorbent plusieurs centaines de tonnes de contraintes chaque jour lors de la marche.</span>
-            <span>Une respiration lente peut influencer le rythme cardiaque et favoriser la détente.</span>
-            <span>Les douleurs cervicales sont devenues plus fréquentes avec l'augmentation du temps passé devant les écrans.</span>
-            </div>
-        </div>
-    </div>
-
+<DidYouKnow />
 
 <NavigationButtons />
 
@@ -111,7 +51,19 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux
 </html>
 
 <style is:global>
+    :root {
+        --green: #6c8b6f;
+        --green-dark: #5f7252;
+        --cream: rgba(248, 245, 240, 0.68);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
     body {
+        min-height: 100vh;
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
 
@@ -120,140 +72,73 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-
-        min-height: 100vh;
     }
 
     @media (max-width: 768px) {
         body {
             background-image: url("/Backgroundphone.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
+            background-attachment: scroll;
         }
     }
 </style>
 
 <style>
-.floating-buttons {
-    position: fixed;
-    top: 90px;
-    right: 20px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    z-index: 9999;
-}
-
-.floating-container {
-    position: relative;
-}
-
-.floating-rdv {
-    width: 45px;
-    height: 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #6c8b6f;
-    color: white;
-    text-decoration: none;
-
-    font-size: 24px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-    transition: transform 0.2s ease;
-}
-
-.floating-rdv:hover {
-    transform: scale(1.08);
-}
-
-.tooltip {
-    position: absolute;
-    right: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    background: rgba(0,0,0,0.85);
-    color: white;
-
-    padding: 8px 12px;
-    border-radius: 8px;
-
-    white-space: nowrap;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition: all 0.2s ease;
-}
-
-.floating-container:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-
-
-
-
-
     main {
         width: min(1100px, calc(100% - 2rem));
         margin: 3rem auto;
     }
 
-.saviez-vous {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: rgba(248, 245, 240, 0.3);
-    border-radius: 12px;
-    padding: 1rem;
-    overflow: hidden;
-    width : 950px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5rem;
-}
-
-.label {
-    font-weight: 700;
-    color: #6b7d5d; /* vert olive */
-    white-space: nowrap;
-}
-
-.ticker {
-    overflow: hidden;
-    flex: 1;
-}
-
-.ticker-content {
-    white-space: nowrap;
-    display: inline-block;
-    animation: scroll 300s linear infinite;
-}
-
-@keyframes scroll {
-    from {
-        transform: translateX(5%);
+    .floating-buttons {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
-    to {
-        transform: translateX(-100%);
-    }
-}
 
-.ticker-content span {
-        margin-right: 300px;
+    .floating-button {
+        width: 45px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--green);
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .floating-button:hover,
+    .floating-button:focus-visible {
+        transform: scale(1.08);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .floating-button:focus-visible {
+        outline: 3px solid white;
+        outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+        main {
+            width: calc(100% - 1.25rem);
+            margin: 2rem auto;
+        }
+
+        .floating-buttons {
+            top: auto;
+            right: 12px;
+            bottom: 16px;
+        }
+
+        .floating-button {
+            width: 42px;
+            height: 42px;
+            font-size: 21px;
+        }
     }
 </style>
