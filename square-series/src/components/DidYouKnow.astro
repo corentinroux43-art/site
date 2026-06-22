@@ -48,8 +48,14 @@ const facts = [
 <style>
     .saviez-vous {
         width: min(950px, calc(100% - 2rem));
-        margin: 2rem auto 5rem;
         padding: 1rem 1.2rem;
+
+        margin-top: -3rem;
+        margin-bottom: 3rem;
+
+        margin-right:auto;
+        margin-left:auto;
+
 
         display: flex;
         align-items: center;
@@ -106,14 +112,26 @@ const facts = [
     @media (max-width: 768px) {
         .saviez-vous {
             width: calc(100% - 1.25rem);
-            margin: 1.25rem auto 2rem;
-            padding: 1rem;
+
+            min-height: auto;
+            padding: 0.5rem 0.9rem;
+
+            margin-top: -5rem;
+            margin-bottom: 1rem;
+
+            margin-right: auto;
+            margin-left: auto;
 
             flex-direction: column;
             align-items: flex-start;
-            gap: 0.75rem;
+            gap: 0.3rem;
 
-            border-radius: 16px;
+            border-radius: 14px;
+        }
+
+        .saviez-vous-title {
+            font-size: 0.9rem;
+            line-height: 1;
         }
 
         .facts-wrapper {
@@ -125,13 +143,14 @@ const facts = [
             display: inline-flex;
             width: max-content;
             white-space: nowrap;
-            animation: scroll-facts 180s linear infinite;
+            animation: scroll-facts 200s linear infinite;
         }
 
         .facts-desktop span {
-            margin-right: 6rem;
+            margin-right: 5rem;
             color: #344033;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            line-height: 1.2;
         }
 
         .facts-mobile {
