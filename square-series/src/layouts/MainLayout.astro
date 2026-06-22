@@ -46,6 +46,32 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux
 <body>
 <TopBar />
 
+<div class="floating-buttons">
+
+  <div class="floating-container">
+    <a href="/prendre-rendez-vous" class="floating-rdv">
+      📅
+    </a>
+    <span class="tooltip">Prendre rendez-vous</span>
+  </div>
+
+  <div class="floating-container">
+    <a href="/jeux-salle-attente" class="floating-rdv">
+      🎮
+    </a>
+    <span class="tooltip">Jeux de salle d'attente</span>
+  </div>
+
+  <div class="floating-container">
+    <a href="/questions-frequentes" class="floating-rdv">
+      ❓
+    </a>
+    <span class="tooltip">Questions fréquentes</span>
+  </div>
+
+</div>
+
+
 <div class="saviez-vous">
         <span class="label">💡 Le saviez-vous ?</span>
 
@@ -110,6 +136,78 @@ const { title = "Corentin Roux - Ostéopathe D.O.", description = "Corentin Roux
 </style>
 
 <style>
+.floating-buttons {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    z-index: 9999;
+}
+
+.floating-container {
+    position: relative;
+}
+
+.floating-rdv {
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #c97d60;
+    color: white;
+    text-decoration: none;
+
+    font-size: 24px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    transition: transform 0.2s ease;
+}
+
+.floating-rdv:hover {
+    transform: scale(1.08);
+}
+
+.tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: rgba(0,0,0,0.85);
+    color: white;
+
+    padding: 8px 12px;
+    border-radius: 8px;
+
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.2s ease;
+}
+
+.floating-container:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+
+
+
+
     main {
         width: min(1100px, calc(100% - 2rem));
         margin: 3rem auto;
