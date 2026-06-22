@@ -3,6 +3,7 @@ import Button from "../components/Button.astro";
 import cabinetsaintjustmalmontgooglemaps from "../assets/cabinet-saint-just-malmont-google-maps.png";
 import perimetredomicileosteopathie from "../assets/perimetre-domicile-osteopathie.png";
 import exemplesmsrendezvous from "../assets/exemple-SMS-rendez-vous.png";
+import { Icon } from "astro-icon/components";
 ---
 
 <br><br><br><br><br><br><br><br>
@@ -218,25 +219,33 @@ margin-right: auto;"
 </a><br><br><br><br><br>
 
  <div class="social-links">
-  <a class="social-link linkedin" href="https://fr.linkedin.com/in/rouxcorentin?trk=public_post_feed-actor-name" target="_blank" rel="noopener noreferrer">
-    LinkedIn
-  </a>
+    <a class="social-link linkedin" href="https://fr.linkedin.com/in/rouxcorentin?trk=public_post_feed-actor-name" target="_blank" rel="noopener noreferrer">
+        <Icon name="simple-icons:linkedin" />
+        <span>LinkedIn</span>
+    </a>
 
-  <a class="social-link facebook" href="https://www.facebook.com/p/Corentin-Roux-61560735591765/" target="_blank" rel="noopener noreferrer">
-    Facebook
-  </a>
+    <a class="social-link facebook" href="https://www.facebook.com/p/Corentin-Roux-61560735591765/" target="_blank" rel="noopener noreferrer">
+        <Icon name="simple-icons:facebook" />
+        <span>Facebook</span>
+    </a>
 
-  <a class="social-link instagram" href="https://www.instagram.com/corentin.roux.osteo" target="_blank" rel="noopener noreferrer">
-    Instagram
-  </a>
+    <a class="social-link instagram" href="https://www.instagram.com/corentin.roux.osteo" target="_blank" rel="noopener noreferrer">
+        <Icon name="simple-icons:instagram" />
+        <span>Instagram</span>
+    </a>
 
-  <a class="social-link website" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
-    Doctolib
-  </a>
+     <a class="social-link doctolib"
+        href="https://www.doctolib.fr/osteopathe/..."
+        target="_blank"
+        rel="noopener noreferrer">
+         <Icon name="lucide:stethoscope" />
+         <span>Doctolib</span>
+     </a>
 
-  <a class="social-link google" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
-    Fiche Google
-  </a>
+    <a class="social-link google" href="https://rouxcorentin.fr/" target="_blank" rel="noopener noreferrer">
+        <Icon name="simple-icons:googlemaps" />
+        <span>Fiche Google</span>
+    </a>
 </div>
 </section><br>
 
@@ -282,62 +291,84 @@ margin-right: auto;"
     text-align: center;
 }
 
-.social-links {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; /* permet de passer à la ligne si écran petit */
-  gap: 10px;
-  justify-content: center;
-}
+  .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+  }
 
-.social-link {
-  display: inline-block;
-  padding: 10px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
-}
+  .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
 
-/* Hover global */
-.social-link:hover {
-  transform: translateX(4px);
-}
+      padding: 11px 16px;
+      border-radius: 999px;
 
-/* Couleurs par réseau */
-.linkedin {
-  background: #0a66c2;
-  color: white;
-}
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
 
-.linkedin:hover {
-  background: #004182;
-}
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  }
 
-.facebook {
-  background: #1877f2;
-  color: white;
-}
+  .social-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+  }
 
-.facebook:hover {
-  background: #0f56b3;
-}
+  .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.18);
+  }
 
-.instagram {
-  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
-  color: white;
-}
+  .linkedin {
+      background: #0A66C2;
+  }
 
-.website {
-  background: #100d57;
-  color: white;
-}
+  .linkedin:hover {
+      background: #004182;
+  }
 
-.google {
-  background: #66896f;
-  color: white;
-}
+  .facebook {
+      background: #1877F2;
+  }
+
+  .facebook:hover {
+      background: #166FE5;
+  }
+
+  .instagram {
+      background: radial-gradient(
+              circle at 30% 107%,
+              #fdf497 0%,
+              #fdf497 5%,
+              #fd5949 45%,
+              #d6249f 60%,
+              #285AEB 90%
+      );
+  }
+
+  .doctolib {
+      background: #0596DE;
+      color: white;
+  }
+
+  .doctolib:hover {
+      background: #0079B8;
+  }
+
+  .google {
+      background: #34A853;
+  }
+
+  .google:hover {
+      background: #2d9148;
+  }
 
 /* Images responsives */
 .split img {
