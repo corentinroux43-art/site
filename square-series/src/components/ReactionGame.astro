@@ -1,0 +1,210 @@
+<section class="reaction-game" data-reaction-game>
+  <h2>⚡ Test de réflexe</h2>
+
+  <p>
+    Attends que le cercle devienne vert puis clique le plus vite possible.
+  </p>
+
+  <div class="circle" data-circle>
+    Attends...
+  </div>
+
+  <p class="result" data-result></p>
+
+  <p class="best-score" data-best-score>
+    🏆 Meilleur temps : -
+  </p>
+
+  <button data-restart>
+    Rejouer
+  </button>
+</section>
+
+<style>
+  .reaction-game {
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: #fff8ef;
+    border-radius: 24px;
+  }
+
+  .circle {
+    width: 160px;
+    height: 160px;
+
+    margin: 2rem auto;
+
+    border-radius: 50%;
+
+    background: #b76e4c;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    text-align: center;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: background 0.2s;
+  }
+
+  .circle.ready {
+    background: #6c8b6f;
+  }
+
+  .result {
+    min-height: 28px;
+    font-weight: bold;
+    color: #435c45;
+  }
+
+  .best-score {
+    font-weight: bold;
+    color: #6c8b6f;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    padding: 0.8rem 1.4rem;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #6c8b6f;
+    color: white;
+
+    cursor: pointer;
+  }
+</style>
+
+<script is:inline>
+  document
+    .querySelectorAll("[data-reaction-game]")
+    .forEach((game) => {
+
+      const circle =
+        game.querySelector("[data-circle]");
+
+      const result =
+        game.querySelector("[data-result]");
+
+      const bestScore =
+        game.querySelector("[data-best-score]");
+
+      const restart =
+        game.querySelector("[data-restart]");
+
+      let ready = false;
+      let startTime = 0;
+      let timer = null;
+
+      let bestReaction =
+        Number(
+          localStorage.getItem(
+            "reaction-best"
+          )
+        ) || null;
+
+      if (bestReaction) {
+        bestScore.textContent =
+          "🏆 Meilleur temps : " +
+          bestReaction +
+          " ms";
+      }
+
+      function startGame() {
+
+        ready = false;
+
+        clearTimeout(timer);
+
+        circle.classList.remove("ready");
+
+        circle.textContent =
+          "Attends...";
+
+        result.textContent = "";
+
+        const delay =
+          1500 +
+          Math.random() * 3000;
+
+        timer = setTimeout(() => {
+
+          ready = true;
+
+          startTime = Date.now();
+
+          circle.classList.add("ready");
+
+          circle.textContent =
+            "CLIQUE !";
+
+        }, delay);
+      }
+
+      circle.addEventListener(
+        "click",
+        () => {
+
+          if (!ready) {
+
+            result.textContent =
+              "❌ Trop tôt !";
+
+            startGame();
+
+            return;
+          }
+
+          const reactionTime =
+            Date.now() - startTime;
+
+          result.textContent =
+            "⚡ Temps : " +
+            reactionTime +
+            " ms";
+
+          circle.textContent =
+            "Bravo !";
+
+          ready = false;
+
+          clearTimeout(timer);
+
+          if (
+            bestReaction === null ||
+            reactionTime < bestReaction
+          ) {
+
+            bestReaction =
+              reactionTime;
+
+            localStorage.setItem(
+              "reaction-best",
+              bestReaction
+            );
+
+            bestScore.textContent =
+              "🏆 Meilleur temps : " +
+              bestReaction +
+              " ms";
+          }
+        }
+      );
+
+      restart.addEventListener(
+        "click",
+        startGame
+      );
+
+      startGame();
+    });
+</script>

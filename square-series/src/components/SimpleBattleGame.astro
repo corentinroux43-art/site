@@ -1,0 +1,145 @@
+<div class="battle-game" data-rps-game>
+  <h2>Pierre • Feuille • Ciseaux</h2>
+
+  <p>Faites votre choix :</p>
+
+  <div class="choices">
+    <button type="button" data-choice="rock">🪨</button>
+    <button type="button" data-choice="paper">📄</button>
+    <button type="button" data-choice="scissors">✂️</button>
+  </div>
+
+  <p class="result" data-result>
+    Choisissez un élément
+  </p>
+
+  <p class="score" data-score>
+    Score : 0
+  </p>
+</div>
+
+<style>
+  .battle-game {
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: #fff8ef;
+    border-radius: 24px;
+  }
+
+  .choices {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .choices button {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 16px;
+    background: white;
+    cursor: pointer;
+  }
+
+  .choices button:hover {
+    transform: scale(1.05);
+  }
+
+  .result,
+  .score {
+    font-weight: bold;
+    color: #435c45;
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll("[data-rps-game]").forEach(function(game) {
+
+    const result = game.querySelector("[data-result]");
+    const scoreText = game.querySelector("[data-score]");
+    const buttons = game.querySelectorAll("[data-choice]");
+
+    let score = 0;
+
+    const icons = {
+      rock: "🪨",
+      paper: "📄",
+      scissors: "✂️"
+    };
+
+    const choices = [
+      "rock",
+      "paper",
+      "scissors"
+    ];
+
+    function getWinner(player, computer) {
+
+      if (player === computer) {
+        return "draw";
+      }
+
+      if (
+        (player === "rock" && computer === "scissors") ||
+        (player === "paper" && computer === "rock") ||
+        (player === "scissors" && computer === "paper")
+      ) {
+        return "win";
+      }
+
+      return "lose";
+    }
+
+    buttons.forEach(function(button) {
+
+      button.addEventListener("click", function() {
+
+        const player =
+          button.getAttribute("data-choice");
+
+        const computer =
+          choices[
+            Math.floor(
+              Math.random() * choices.length
+            )
+          ];
+
+        const outcome =
+          getWinner(player, computer);
+
+        if (outcome === "win") {
+          score++;
+        }
+
+        if (outcome === "lose") {
+          score = Math.max(0, score - 1);
+        }
+
+        let text = "";
+
+        if (outcome === "win") {
+          text = "Gagné !";
+        } else if (outcome === "lose") {
+          text = "Perdu !";
+        } else {
+          text = "Égalité";
+        }
+
+        result.textContent =
+          "Vous : " +
+          icons[player] +
+          " | Ordinateur : " +
+          icons[computer] +
+          " → " +
+          text;
+
+        scoreText.textContent =
+          "Score : " + score;
+      });
+    });
+  });
+</script>

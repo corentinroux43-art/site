@@ -1,0 +1,177 @@
+<div class="anxiety-check" data-anxiety-game>
+  <h2>Auto-évaluation de l’anxiété</h2>
+
+  <p>
+    Questionnaire indicatif, sans valeur de diagnostic médical.
+  </p>
+
+  <div class="question" data-question>
+    Chargement...
+  </div>
+
+  <div class="answers">
+    <button type="button" data-value="0">Jamais</button>
+    <button type="button" data-value="1">Parfois</button>
+    <button type="button" data-value="2">Souvent</button>
+    <button type="button" data-value="3">Très souvent</button>
+  </div>
+
+  <p class="progress" data-progress></p>
+  <p class="result" data-result></p>
+
+  <button type="button" class="restart" data-restart>
+    Recommencer
+  </button>
+
+  <p>Si vous vous interrogez sur votre niveau d’anxiété ou souhaitez découvrir des questionnaires d’auto-évaluation validés, n’hésitez pas à venir m’en parler. Nous pourrons échanger sur vos symptômes et voir si une prise en charge ostéopathique peut s’intégrer à votre accompagnement, en complément d’un suivi médical lorsque cela est nécessaire.
+  </p>
+</div>
+
+<style>
+  .anxiety-check {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: #fff8ef;
+    border-radius: 24px;
+  }
+
+  .question {
+    min-height: 100px;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: white;
+    border: 2px solid #d4c2aa;
+    border-radius: 18px;
+    color: #435c45;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .answers {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  button {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 999px;
+    background: #6c8b6f;
+    color: white;
+    cursor: pointer;
+  }
+
+  .restart {
+    margin-top: 1rem;
+    background: #b76e4c;
+  }
+
+  .progress,
+  .result {
+    font-weight: bold;
+    color: #435c45;
+    white-space: pre-line;
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll("[data-anxiety-game]").forEach(function(game) {
+    const questionBox = game.querySelector("[data-question]");
+    const progressBox = game.querySelector("[data-progress]");
+    const resultBox = game.querySelector("[data-result]");
+    const restartBtn = game.querySelector("[data-restart]");
+    const buttons = game.querySelectorAll("[data-value]");
+
+    const questions = [
+      { type: "mental", text: "Vous sentez-vous souvent tendu, nerveux ou inquiet ?" },
+      { type: "mental", text: "Avez-vous parfois du mal à arrêter vos inquiétudes ?" },
+      { type: "mental", text: "Avez-vous tendance à vous inquiéter pour plusieurs sujets à la fois ?" },
+      { type: "mental", text: "Avez-vous du mal à vous détendre après une journée stressante ?" },
+      { type: "mental", text: "Vous arrive-t-il de vous sentir agité ou incapable de rester tranquille ?" },
+      { type: "mental", text: "Vous sentez-vous plus irritable lorsque vous êtes stressé ?" },
+      { type: "mental", text: "Avez-vous parfois peur que quelque chose de négatif arrive ?" },
+
+      { type: "body", text: "Ressentez-vous parfois des palpitations ou un cœur qui bat vite ?" },
+      { type: "body", text: "Ressentez-vous parfois une gêne respiratoire liée au stress ?" },
+      { type: "body", text: "Avez-vous parfois des tremblements ou secousses musculaires ?" },
+      { type: "body", text: "Ressentez-vous des tensions musculaires inhabituelles ?" },
+      { type: "body", text: "Avez-vous parfois des vertiges ou une sensation d’instabilité ?" },
+      { type: "body", text: "Avez-vous parfois des sueurs, frissons ou bouffées de chaleur ?" },
+      { type: "body", text: "Avez-vous parfois des troubles digestifs associés au stress ?" },
+      { type: "body", text: "Ressentez-vous parfois une boule dans la gorge ou une oppression ?" }
+    ];
+
+    let index = 0;
+    let mentalScore = 0;
+    let bodyScore = 0;
+
+    function showQuestion() {
+      if (index >= questions.length) {
+        showResult();
+        return;
+      }
+
+      questionBox.textContent = questions[index].text;
+      progressBox.textContent = "Question " + (index + 1) + " / " + questions.length;
+    }
+
+    function level(score, max) {
+      const ratio = score / max;
+
+      if (ratio < 0.25) return "faible";
+      if (ratio < 0.5) return "modéré";
+      if (ratio < 0.75) return "élevé";
+      return "très élevé";
+    }
+
+    function showResult() {
+      const mentalMax = 21;
+      const bodyMax = 24;
+
+      questionBox.textContent = "Auto-évaluation terminée.";
+      progressBox.textContent = "";
+
+      resultBox.textContent =
+        "Score anxiété mentale : " + mentalScore + " / " + mentalMax +
+        " — niveau " + level(mentalScore, mentalMax) +
+        "\n\nScore manifestations physiques : " + bodyScore + " / " + bodyMax +
+        " — niveau " + level(bodyScore, bodyMax) +
+        "\n\nCes résultats sont indicatifs et ne remplacent pas un avis médical.";
+    }
+
+    function restart() {
+      index = 0;
+      mentalScore = 0;
+      bodyScore = 0;
+      resultBox.textContent = "";
+      showQuestion();
+    }
+
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        if (index >= questions.length) return;
+
+        const value = Number(button.dataset.value);
+
+        if (questions[index].type === "mental") {
+          mentalScore += value;
+        } else {
+          bodyScore += value;
+        }
+
+        index++;
+        showQuestion();
+      });
+    });
+
+    restartBtn.addEventListener("click", restart);
+
+    restart();
+  });
+</script>

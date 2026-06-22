@@ -1,0 +1,317 @@
+<section class="osteo-quiz" data-quiz>
+  <h2>Vrai ou faux ?</h2>
+  <p>Teste tes connaissances sur le corps et l’ostéopathie.</p>
+
+  <div class="score" data-score>Score : 0</div>
+
+  <div class="question" data-question>
+    Chargement...
+  </div>
+
+  <div class="buttons">
+    <button type="button" data-true>Vrai</button>
+    <button type="button" data-false>Faux</button>
+  </div>
+
+  <p class="feedback" data-feedback></p>
+
+  <button type="button" class="restart" data-restart>
+    Recommencer
+  </button>
+</section>
+
+<style>
+  .osteo-quiz {
+    max-width: 650px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: #fff8ef;
+    border-radius: 24px;
+  }
+
+  .score {
+    margin: 1rem 0;
+    font-weight: bold;
+    color: #435c45;
+  }
+
+  .question {
+    min-height: 90px;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 18px;
+    border: 2px solid #d4c2aa;
+    background: white;
+    color: #435c45;
+    font-size: 1.15rem;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  button {
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    background: #6c8b6f;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  button:hover {
+    background: #5a735d;
+  }
+
+  .feedback {
+    min-height: 45px;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #435c45;
+  }
+
+  .restart {
+    margin-top: 1rem;
+    background: #b76e4c;
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll("[data-quiz]").forEach((quiz) => {
+    const questionBox = quiz.querySelector("[data-question]");
+    const scoreBox = quiz.querySelector("[data-score]");
+    const feedbackBox = quiz.querySelector("[data-feedback]");
+    const trueBtn = quiz.querySelector("[data-true]");
+    const falseBtn = quiz.querySelector("[data-false]");
+    const restartBtn = quiz.querySelector("[data-restart]");
+
+    const questions = [
+  {
+    text: "Une douleur peut parfois être ressentie à distance de sa zone d’origine.",
+    answer: true,
+    info: "Vrai. Certaines douleurs peuvent être projetées ou influencées par d’autres zones."
+  },
+  {
+    text: "Une bonne mobilité articulaire signifie forcément une absence de douleur.",
+    answer: false,
+    info: "Faux. On peut être mobile et ressentir une douleur pour d’autres raisons."
+  },
+  {
+    text: "Le diaphragme peut influencer la mobilité du thorax et de l’abdomen.",
+    answer: true,
+    info: "Vrai. Il participe à la respiration et aux mouvements de ces régions."
+  },
+  {
+    text: "Une douleur récente et intense doit toujours être traitée uniquement par manipulation.",
+    answer: false,
+    info: "Faux. Il faut d’abord évaluer la situation et réorienter si nécessaire."
+  },
+  {
+    text: "Le stress peut modifier la perception de la douleur.",
+    answer: true,
+    info: "Vrai. Le contexte émotionnel peut influencer la manière dont la douleur est ressentie."
+  },
+  {
+    text: "Toutes les douleurs lombaires ont la même origine.",
+    answer: false,
+    info: "Faux. Les causes possibles sont nombreuses."
+  },
+  {
+    text: "Un manque de sommeil peut influencer la récupération physique.",
+    answer: true,
+    info: "Vrai. Le sommeil participe aux processus de récupération."
+  },
+  {
+    text: "Une articulation douloureuse est forcément abîmée.",
+    answer: false,
+    info: "Faux. Douleur et lésion ne sont pas toujours proportionnelles."
+  },
+  {
+    text: "La respiration peut avoir un effet sur certaines tensions corporelles.",
+    answer: true,
+    info: "Vrai. Elle peut influencer le tonus musculaire et la détente."
+  },
+  {
+    text: "Une posture idéale unique existe pour tout le monde.",
+    answer: false,
+    info: "Faux. Il vaut mieux varier les positions plutôt que chercher une posture parfaite."
+  },
+  {
+    text: "La marche peut participer à l’entretien de la mobilité générale.",
+    answer: true,
+    info: "Vrai. C’est une activité simple qui mobilise de nombreuses régions du corps."
+  },
+  {
+    text: "Un craquement articulaire signifie forcément qu’une vertèbre était déplacée.",
+    answer: false,
+    info: "Faux. Le bruit articulaire n’indique pas forcément un déplacement."
+  },
+  {
+    text: "Le bassin participe à la transmission des contraintes entre le tronc et les jambes.",
+    answer: true,
+    info: "Vrai. Il joue un rôle mécanique important."
+  },
+  {
+    text: "Une douleur qui réveille la nuit doit toujours être banalisée.",
+    answer: false,
+    info: "Faux. Certaines douleurs nocturnes nécessitent un avis médical."
+  },
+  {
+    text: "Les muscles peuvent réagir à une surcharge inhabituelle.",
+    answer: true,
+    info: "Vrai. Une activité inhabituelle peut provoquer tensions ou courbatures."
+  },
+  {
+    text: "Plus une manipulation est forte, plus elle est efficace.",
+    answer: false,
+    info: "Faux. L’efficacité ne dépend pas de la force utilisée."
+  },
+  {
+    text: "Le corps peut compenser certaines pertes de mobilité.",
+    answer: true,
+    info: "Vrai. D’autres zones peuvent travailler davantage pour compenser."
+  },
+  {
+    text: "Une douleur irradiant dans le bras ou la jambe doit être évaluée avec attention.",
+    answer: true,
+    info: "Vrai. Elle peut nécessiter un examen précis et parfois une réorientation."
+  },
+  {
+    text: "Après une séance, une légère fatigue peut parfois apparaître.",
+    answer: true,
+    info: "Vrai. Certaines personnes ressentent une fatigue transitoire."
+  },
+  {
+    text: "L’ostéopathie doit remplacer les examens médicaux lorsqu’ils sont nécessaires.",
+    answer: false,
+    info: "Faux. Les examens médicaux restent indispensables dans certaines situations."
+  },
+  {
+    text: "La mâchoire peut être liée à des tensions cervicales chez certaines personnes.",
+    answer: true,
+    info: "Vrai. Des liens fonctionnels peuvent exister entre ces régions."
+  },
+  {
+    text: "Une douleur thoracique brutale peut nécessiter une prise en charge urgente.",
+    answer: true,
+    info: "Vrai. Elle ne doit pas être ignorée."
+  },
+  {
+    text: "Toutes les douleurs disparaissent immédiatement après une séance.",
+    answer: false,
+    info: "Faux. L’évolution dépend de la situation, de l’ancienneté et du contexte."
+  },
+  {
+    text: "Un travail prolongé sur écran peut favoriser certaines tensions du cou et des épaules.",
+    answer: true,
+    info: "Vrai. Surtout si les pauses et les changements de position sont rares."
+  },
+  {
+    text: "Les ligaments servent notamment à stabiliser les articulations.",
+    answer: true,
+    info: "Vrai. Ils participent à la stabilité articulaire."
+  },
+  {
+    text: "Une douleur est toujours proportionnelle à la gravité d’un problème.",
+    answer: false,
+    info: "Faux. La douleur dépend de nombreux facteurs."
+  },
+  {
+    text: "Le mouvement adapté peut parfois aider à diminuer certaines douleurs.",
+    answer: true,
+    info: "Vrai. Selon le contexte, le mouvement progressif peut être bénéfique."
+  },
+  {
+    text: "Il faut toujours rester totalement immobile en cas de mal de dos.",
+    answer: false,
+    info: "Faux. Le repos complet prolongé n’est pas toujours conseillé."
+  },
+  {
+    text: "L’ostéopathe doit adapter sa prise en charge à chaque patient.",
+    answer: true,
+    info: "Vrai. L’âge, l’état de santé, les antécédents et le motif comptent."
+  },
+  {
+    text: "Une douleur accompagnée de fièvre doit être considérée avec prudence.",
+    answer: true,
+    info: "Vrai. Cela peut nécessiter un avis médical."
+  }
+];
+
+    let order = [];
+    let index = 0;
+    let score = 0;
+    let locked = false;
+
+    function shuffle(array) {
+      return array
+        .map((item) => ({ item, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ item }) => item);
+    }
+
+    function startQuiz() {
+      order = shuffle(questions);
+      index = 0;
+      score = 0;
+      locked = false;
+
+      scoreBox.textContent = "Score : 0";
+      feedbackBox.textContent = "";
+
+      showQuestion();
+    }
+
+    function showQuestion() {
+      locked = false;
+
+      if (index >= order.length) {
+        questionBox.textContent =
+          "Quiz terminé ! Score final : " + score + " / " + order.length;
+        feedbackBox.textContent = "Bravo, tu es arrivé au bout du quiz.";
+        return;
+      }
+
+      questionBox.textContent = order[index].text;
+      feedbackBox.textContent = "";
+    }
+
+    function answer(value) {
+      if (locked) return;
+      if (index >= order.length) return;
+
+      locked = true;
+
+      const currentQuestion = order[index];
+
+      if (value === currentQuestion.answer) {
+        score++;
+        scoreBox.textContent = "Score : " + score;
+        feedbackBox.textContent = "✅ Bonne réponse. " + currentQuestion.info;
+      } else {
+        feedbackBox.textContent = "❌ Mauvaise réponse. " + currentQuestion.info;
+      }
+
+      setTimeout(() => {
+        index++;
+        showQuestion();
+      }, 2000);
+    }
+
+    trueBtn.addEventListener("click", () => answer(true));
+    falseBtn.addEventListener("click", () => answer(false));
+    restartBtn.addEventListener("click", startQuiz);
+
+    startQuiz();
+  });
+</script>

@@ -1,0 +1,146 @@
+<div class="simple-game" data-simple-osteo-game>
+  <h2>Trouve l’os</h2>
+  <p>Clique uniquement sur 🦴 avant la fin du chrono.</p>
+
+  <p class="score" data-score>Score : 0</p>
+  <p class="timer" data-timer>Temps : 10s</p>
+  <p class="message" data-message></p>
+
+  <div class="zone" data-zone></div>
+
+  <button type="button" data-restart>Recommencer</button>
+</div>
+
+<style>
+  .simple-game {
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: #fff8ef;
+    border-radius: 24px;
+  }
+
+  .score,
+  .timer,
+  .message {
+    font-weight: bold;
+    color: #435c45;
+  }
+
+  .zone {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    gap: 12px;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .item {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 16px;
+    background: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .item:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  button {
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    background: #6c8b6f;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll("[data-simple-osteo-game]").forEach((game) => {
+    const zone = game.querySelector("[data-zone]");
+    const scoreText = game.querySelector("[data-score]");
+    const timerText = game.querySelector("[data-timer]");
+    const message = game.querySelector("[data-message]");
+    const restart = game.querySelector("[data-restart]");
+
+    let score = 0;
+    let timeLeft = 10;
+    let finished = false;
+    let timerInterval = null;
+
+    function shuffle(array) {
+      return [...array].sort(() => Math.random() - 0.5);
+    }
+
+    function createGrid() {
+      zone.innerHTML = "";
+
+      const icons = shuffle(["🦴", "💀", "🩻", "💪", "🦵", "🧠", "🫁", "🫀", "💣"]);
+
+      icons.forEach((icon) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "item";
+        btn.textContent = icon;
+
+        btn.addEventListener("click", () => {
+          if (finished) return;
+
+          if (icon === "🦴") {
+            score++;
+          } else {
+            score = Math.max(0, score - 1);
+          }
+
+          scoreText.textContent = "Score : " + score;
+          createGrid();
+        });
+
+        zone.appendChild(btn);
+      });
+    }
+
+    function endGame() {
+      finished = true;
+      clearInterval(timerInterval);
+      message.textContent = "Terminé ! Score final : " + score;
+
+      zone.querySelectorAll("button").forEach((btn) => {
+        btn.disabled = true;
+      });
+    }
+
+    function startGame() {
+      score = 0;
+      timeLeft = 10;
+      finished = false;
+
+      clearInterval(timerInterval);
+
+      scoreText.textContent = "Score : 0";
+      timerText.textContent = "Temps : 10s";
+      message.textContent = "";
+
+      createGrid();
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerText.textContent = "Temps : " + timeLeft + "s";
+
+        if (timeLeft <= 0) {
+          endGame();
+        }
+      }, 1000);
+    }
+
+    restart.addEventListener("click", startGame);
+
+    startGame();
+  });
+</script>
