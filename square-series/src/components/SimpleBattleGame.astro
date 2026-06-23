@@ -9,6 +9,10 @@
     <button type="button" data-choice="scissors">✂️</button>
   </div>
 
+  <div class="computer-wheel" data-wheel>
+    ❔
+  </div>
+
   <p class="result" data-result>
     Choisissez un élément
   </p>
@@ -49,6 +53,36 @@
     transform: scale(1.05);
   }
 
+  .computer-wheel {
+    width: 100px;
+    height: 100px;
+    margin: 1.5rem auto;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #d4c2aa;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 3rem;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  }
+
+  .computer-wheel.spinning {
+    animation: wheel-spin 0.12s linear infinite;
+  }
+
+  @keyframes wheel-spin {
+    from {
+      transform: rotate(0deg) scale(1);
+    }
+
+    to {
+      transform: rotate(360deg) scale(1.05);
+    }
+  }
+
   .result,
   .score {
     font-weight: bold;
@@ -58,12 +92,13 @@
 
 <script is:inline>
   document.querySelectorAll("[data-rps-game]").forEach(function(game) {
-
     const result = game.querySelector("[data-result]");
     const scoreText = game.querySelector("[data-score]");
+    const wheel = game.querySelector("[data-wheel]");
     const buttons = game.querySelectorAll("[data-choice]");
 
     let score = 0;
+    let isPlaying = false;
 
     const icons = {
       rock: "🪨",
@@ -71,14 +106,9 @@
       scissors: "✂️"
     };
 
-    const choices = [
-      "rock",
-      "paper",
-      "scissors"
-    ];
+    const choices = ["rock", "paper", "scissors"];
 
     function getWinner(player, computer) {
-
       if (player === computer) {
         return "draw";
       }
@@ -94,51 +124,70 @@
       return "lose";
     }
 
+    function play(player) {
+      if (isPlaying) return;
+
+      isPlaying = true;
+      result.textContent = "L'ordinateur réfléchit...";
+      wheel.classList.add("spinning");
+
+      let count = 0;
+
+      const spin = setInterval(function() {
+        const randomChoice =
+          choices[Math.floor(Math.random() * choices.length)];
+
+        wheel.textContent = icons[randomChoice];
+        count++;
+
+        if (count >= 18) {
+          clearInterval(spin);
+
+          const computer =
+            choices[Math.floor(Math.random() * choices.length)];
+
+          wheel.textContent = icons[computer];
+          wheel.classList.remove("spinning");
+
+          const outcome = getWinner(player, computer);
+
+          if (outcome === "win") {
+            score++;
+          }
+
+          if (outcome === "lose") {
+            score = Math.max(0, score - 1);
+          }
+
+          let text = "";
+
+          if (outcome === "win") {
+            text = "Gagné !";
+          } else if (outcome === "lose") {
+            text = "Perdu !";
+          } else {
+            text = "Égalité";
+          }
+
+          result.textContent =
+            "Vous : " +
+            icons[player] +
+            " | Ordinateur : " +
+            icons[computer] +
+            " → " +
+            text;
+
+          scoreText.textContent = "Score : " + score;
+
+          isPlaying = false;
+        }
+      }, 80);
+    }
+
     buttons.forEach(function(button) {
-
       button.addEventListener("click", function() {
-
-        const player =
-          button.getAttribute("data-choice");
-
-        const computer =
-          choices[
-            Math.floor(
-              Math.random() * choices.length
-            )
-          ];
-
-        const outcome =
-          getWinner(player, computer);
-
-        if (outcome === "win") {
-          score++;
-        }
-
-        if (outcome === "lose") {
-          score = Math.max(0, score - 1);
-        }
-
-        let text = "";
-
-        if (outcome === "win") {
-          text = "Gagné !";
-        } else if (outcome === "lose") {
-          text = "Perdu !";
-        } else {
-          text = "Égalité";
-        }
-
-        result.textContent =
-          "Vous : " +
-          icons[player] +
-          " | Ordinateur : " +
-          icons[computer] +
-          " → " +
-          text;
-
-        scoreText.textContent =
-          "Score : " + score;
+        const player = button.getAttribute("data-choice");
+        play(player);
       });
     });
   });

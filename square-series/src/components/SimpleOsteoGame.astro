@@ -1,9 +1,9 @@
 <div class="simple-game" data-simple-osteo-game>
   <h2>Trouve l’os</h2>
-  <p>Clique uniquement sur 🦴 avant la fin du chrono.</p>
+  <p>Cliquez sur « Commencer » pour lancer la partie. Un chronomètre de 30 secondes démarre : votre objectif est de cliquer sur le plus grand nombre possible de 🦴 avant la fin du temps imparti.</p>
 
   <p class="score" data-score>Score : 0</p>
-  <p class="timer" data-timer>Temps : 10s</p>
+  <p class="timer" data-timer>Temps : 30s</p>
   <p class="message" data-message></p>
 
   <div class="zone" data-zone></div>
@@ -70,7 +70,7 @@
     const restart = game.querySelector("[data-restart]");
 
     let score = 0;
-    let timeLeft = 10;
+    let timeLeft = 30;
     let finished = false;
     let timerInterval = null;
 
@@ -118,13 +118,13 @@
 
     function startGame() {
       score = 0;
-      timeLeft = 10;
+      timeLeft = 30;
       finished = false;
 
       clearInterval(timerInterval);
 
       scoreText.textContent = "Score : 0";
-      timerText.textContent = "Temps : 10s";
+      timerText.textContent = "Temps : 30s";
       message.textContent = "";
 
       createGrid();
