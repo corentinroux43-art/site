@@ -3,7 +3,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 import CoherenceCardiaque from '../components/CoherenceCardiaque.astro';
 import FlappyBird from '../components/FlappyBird.astro';
 import VertebraStackGame from "../components/VertebraStackGame.astro";
-import OsteoFruit from '../components/OsteoFruit.astro';
 import ReactionGame from '../components/ReactionGame.astro';
 import MemoryOsteoGame from '../components/MemoryOsteoGame.astro';
 import OsteoQuizGame from '../components/OsteoQuizGame.astro';
@@ -39,12 +38,6 @@ import signature from '../assets/signature.png';
         <span>🦖</span>
         <h3>Le squelette coureur</h3>
         <p>Place les éléments.</p>
-      </button>
-
-      <button class="game-card" data-open="fruit">
-        <span>💣</span>
-        <h3>Attrape les os</h3>
-        <p>Évite les bombes.</p>
       </button>
 
       <button class="game-card" data-open="reaction">
@@ -99,10 +92,6 @@ import signature from '../assets/signature.png';
 
       <div class="game-panel" data-panel="vertebra">
         <VertebraStackGame />
-      </div>
-
-      <div class="game-panel" data-panel="fruit">
-        <OsteoFruit />
       </div>
 
       <div class="game-panel" data-panel="reaction">
