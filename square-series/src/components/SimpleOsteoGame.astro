@@ -11,7 +11,7 @@
   <button type="button" data-restart>Recommencer</button>
 </div>
 
-<style>
+<style is:global>
   .simple-game {
     max-width: 500px;
     margin: 3rem auto;
@@ -41,7 +41,10 @@
     height: 70px;
     border: none;
     border-radius: 16px;
-    background: white;
+    background: radial-gradient(circle at 30% 30%,
+            #b8d2bb 0%,
+            #8FAF95 60%,
+            #6c8b6f 100%);
     font-size: 2rem;
     cursor: pointer;
   }
