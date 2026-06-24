@@ -123,7 +123,7 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
 <style>
   .games-section {
     max-width: 1100px;
-    margin: 10rem auto 3rem auto;
+    margin: 6rem auto 3rem auto;
     padding: 2rem;
     text-align: center;
 }
@@ -131,7 +131,7 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
   .games-section h1 {
     color: #2f2f2f;
     margin-bottom: 0.5rem;
-    font-size: 2.2rem;
+    font-size: 3.5rem;
   }
 
   .intro {
@@ -234,20 +234,45 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
     scroll-behavior: smooth;
   }
 
-  @media (max-width: 600px) {
-    .games-section {
-      padding: 1rem;
-    }
-
-    .game-modal {
-      padding: 0.7rem;
-    }
-
-    .modal-content {
-      padding: 1rem;
-      border-radius: 20px;
-    }
+  @media (max-width: 768px) {
+  .games-section {
+    width: calc(100% - 1rem);
+    padding: 1rem 0;
   }
+
+  .games-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .game-card {
+    min-height: 150px;
+    padding: 1rem 0.6rem;
+    border-radius: 18px;
+  }
+
+  .game-card span {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .game-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .game-card p {
+    font-size: 0.8rem;
+  }
+
+  .game-modal {
+    padding: 0.7rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+    border-radius: 20px;
+  }
+}
 </style>
 
 <script is:inline>

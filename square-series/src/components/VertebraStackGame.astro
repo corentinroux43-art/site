@@ -2,10 +2,12 @@
   <h2>Le squelette coureur</h2>
   <p>Clique sur le jeu ou appuie sur <strong>Espace</strong> pour sauter.</p>
 
-  <div class="game" data-game>
-    <div class="score" data-score>Score : 0</div>
-    <div class="player" data-player>🦴</div>
-    <div class="obstacle" data-obstacle>📦</div>
+  <div class="game-viewport">
+    <div class="game" data-game>
+      <div class="score" data-score>Score : 0</div>
+      <div class="player" data-player>🦴</div>
+      <div class="obstacle" data-obstacle>📦</div>
+    </div>
   </div>
 
   <button data-restart>Recommencer</button>
@@ -13,22 +15,32 @@
 
 <style>
   .osteo-runner {
+    width: 100%;
     max-width: 800px;
     margin: 3rem auto;
     padding: 2rem;
+    box-sizing: border-box;
     text-align: center;
     background: #fff8ef;
     border-radius: 24px;
   }
 
+  .game-viewport {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+  }
+
   .game {
     position: relative;
+    width: 100%;
     height: 220px;
     overflow: hidden;
     border: 3px solid #d4c2aa;
     border-radius: 18px;
     background: linear-gradient(#eaf4ea, #fff8ef);
     cursor: pointer;
+    box-sizing: border-box;
   }
 
   .game::after {
@@ -88,6 +100,66 @@
     color: white;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    .osteo-runner {
+      padding: 0.5rem;
+      margin: 0 auto;
+      border-radius: 16px;
+    }
+
+    .osteo-runner h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .osteo-runner p {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .game-viewport {
+      width: 100%;
+      height: 140px;
+    }
+
+    .game {
+      height: 140px;
+      border-radius: 12px;
+    }
+
+    .player {
+      left: 15px;
+      bottom: 25px;
+      font-size: 22px;
+    }
+
+    .obstacle {
+      bottom: 25px;
+      font-size: 20px;
+    }
+
+    .score {
+      top: 8px;
+      right: 10px;
+      font-size: 0.8rem;
+    }
+
+    .game::after {
+      bottom: 22px;
+      height: 3px;
+    }
+
+    .game.game-over::before {
+      font-size: 1.2rem;
+    }
+
+    button[data-restart] {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+    }
+  }
 </style>
 
 <script is:inline>
@@ -109,40 +181,61 @@
     let speed = 5;
     let scoredThisObstacle = false;
 
-    const ground = 38;
-    const playerX = 60;
-    const playerWidth = 40;
-    const obstacleWidth = 40;
+    const playerWidth = 20;
+    const obstacleWidth = 20;
+
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    function getGround() {
+      return isMobile() ? 25 : 38;
+    }
+
+    function getPlayerX() {
+      return isMobile() ? 15 : 60;
+    }
+
+    function getStartOffset() {
+      return isMobile() ? 30 : 80;
+    }
+
+    function getRestartOffset() {
+      return isMobile() ? 30 : 80;
+    }
 
     function jump() {
       if (gameOver || jumping) return;
 
-      velocity = 15;
+      velocity = isMobile() ? 10 : 15;
       jumping = true;
     }
 
     function restart() {
       score = 0;
-      speed = 5;
+      speed = isMobile() ? 3 : 5;
       gameOver = false;
 
       playerY = 0;
       velocity = 0;
       jumping = false;
 
-      obstacleX = game.clientWidth + 200;
+      obstacleX = game.clientWidth + getStartOffset();
       scoredThisObstacle = false;
 
       scoreDisplay.textContent = "Score : 0";
       game.classList.remove("game-over");
 
-      player.style.bottom = ground + "px";
+      player.style.bottom = getGround() + "px";
       obstacle.style.left = obstacleX + "px";
     }
 
     function loop() {
       if (!gameOver) {
-        velocity -= 0.8;
+        const playerX = getPlayerX();
+        const ground = getGround();
+
+        velocity -= isMobile() ? 0.55 : 0.8;
         playerY += velocity;
 
         if (playerY <= 0) {
@@ -160,11 +253,11 @@
           score++;
           scoreDisplay.textContent = "Score : " + score;
           scoredThisObstacle = true;
-          speed += 0.5;
+          speed += isMobile() ? 0.20 : 0.6;
         }
 
         if (obstacleX < -80) {
-          obstacleX = game.clientWidth + 150;
+          obstacleX = game.clientWidth + getRestartOffset();
           scoredThisObstacle = false;
         }
 
@@ -172,7 +265,8 @@
           obstacleX < playerX + playerWidth &&
           obstacleX + obstacleWidth > playerX;
 
-        const playerIsTooLow = playerY < 45;
+        const playerIsTooLow =
+          playerY < (isMobile() ? 25 : 45);
 
         if (obstacleTouchesPlayer && playerIsTooLow) {
           gameOver = true;
