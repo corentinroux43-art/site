@@ -28,49 +28,7 @@ jobs:
         run: |
           printf '%s' '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITECABINET_87A92 }}' > "${{ runner.temp }}/firebase-key.json"
 
-      - name: Install Google Auth Library
-        run: npm install google-auth-library
-
-      - name: Generate Firebase access token
-        id: firebase_auth
-        run: |
-          TOKEN=$(node - <<'NODE'
-          const { GoogleAuth } = require('google-auth-library');
-
-          async function main() {
-            const auth = new GoogleAuth({
-              keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-              scopes: [
-                'https://www.googleapis.com/auth/cloud-platform',
-                'https://www.googleapis.com/auth/firebase'
-              ],
-            });
-
-            const client = await auth.getClient();
-            const token = await client.getAccessToken();
-
-            if (!token || !token.token) {
-              throw new Error('No access token generated');
-            }
-
-            console.log(token.token);
-          }
-
-          main().catch((err) => {
-            console.error(err);
-            process.exit(1);
-          });
-          NODE
-          )
-
-          echo "::add-mask::$TOKEN"
-          echo "FIREBASE_TOKEN=$TOKEN" >> "$GITHUB_ENV"
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-key.json
-
-      - run: npx firebase-tools@15.22.1 --version
-
       - name: Deploy to Firebase Hosting
         run: npx firebase-tools@15.22.1 deploy --only hosting --project sitecabinet-87a92
         env:
-          FIREBASE_TOKEN: ${{ env.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-key.json
