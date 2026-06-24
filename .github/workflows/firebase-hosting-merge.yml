@@ -28,9 +28,14 @@ jobs:
         working-directory: ./square-series
 
       - name: Authenticate to Google Cloud
+        id: auth
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITECABINET_87A92 }}
+          create_credentials_file: true
+          export_environment_variables: true
 
       - name: Deploy to Firebase Hosting
         run: npx firebase-tools@15.22.1 deploy --only hosting --project sitecabinet-87a92
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.auth.outputs.credentials_file_path }}
