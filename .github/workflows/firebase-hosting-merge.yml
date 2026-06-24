@@ -18,18 +18,11 @@ jobs:
           cache: npm
           cache-dependency-path: ./square-series/package-lock.json
 
-      - run: node --version
-
       - run: npm ci
         working-directory: ./square-series
 
       - run: npm run build
         working-directory: ./square-series
-
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools@15.22.1
-
-      - run: firebase --version
 
       - name: Write Firebase service account
         run: |
@@ -41,6 +34,6 @@ jobs:
           jq -r '.client_email' "${{ runner.temp }}/firebase-key.json"
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --project sitecabinet-87a92
+        run: npx firebase-tools@15.22.1 deploy --only hosting --project sitecabinet-87a92
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-key.json
