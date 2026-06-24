@@ -11,7 +11,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ./square-series/package-lock.json
+
+      - run: npm ci
+        working-directory: ./square-series
+
+      - run: npm run build
+        working-directory: ./square-series
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
