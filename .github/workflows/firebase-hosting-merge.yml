@@ -18,6 +18,8 @@ jobs:
           cache: npm
           cache-dependency-path: ./square-series/package-lock.json
 
+      - run: node --version
+
       - run: npm ci
         working-directory: ./square-series
 
@@ -32,6 +34,8 @@ jobs:
         run: |
           test -s "${{ runner.temp }}/firebase-key.json"
           jq -r '.client_email' "${{ runner.temp }}/firebase-key.json"
+
+      - run: npx firebase-tools@15.22.1 --version
 
       - name: Deploy to Firebase Hosting
         run: npx firebase-tools@15.22.1 deploy --only hosting --project sitecabinet-87a92
