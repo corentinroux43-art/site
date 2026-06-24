@@ -1,6 +1,6 @@
 <section class="memory-game" data-memory-game>
   <h2>Memory ostéopathie</h2>
-  <p>Retrouve les paires d’icônes.</p>
+  <p>Retrouvez les paires d’icônes.</p>
 
   <div class="stats">
     <span data-moves>Coups : 0</span>
@@ -84,7 +84,7 @@
     color: white;
     cursor: pointer;
   }
-  
+
 
   @media (max-width: 700px) {
     .grid {
@@ -152,7 +152,7 @@
       if (card.classList.contains("matched")) return;
 
       card.classList.add("flipped");
-      
+
       const scale = window.innerWidth <= 700 ? 2.7 : 3;
 
         card.innerHTML =
