@@ -2,18 +2,19 @@
   <h2>Memory ostéopathie</h2>
   <p>Retrouvez les paires d’icônes.</p>
 
-  <div class="stats">
-    <span data-moves>Coups : 0</span>
-    <span data-message></span>
+  <div class="stats">   {/* Zone de statistiques */}
+    <span data-moves>Coups : 0</span>  {/* Compteur de coups */}
+    <span data-message></span>   {/* Message */}
   </div>
 
-  <div class="grid" data-grid></div>
+  <div class="grid" data-grid>   {/* Grille de cartes */}
+  </div>
 
-  <button data-restart>Recommencer</button>
+  <button data-restart>Recommencer</button>  {/* Recommencer */}
 </section>
 
 <style is:global>
-  .memory-game {
+  .memory-game {   /* Jeu complet */
     max-width: 1000px;
     margin: 3rem auto;
     padding: 2rem;
@@ -22,7 +23,7 @@
     border-radius: 24px;
   }
 
-  .stats {
+  .stats {   /* Zone de statistique */
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -31,7 +32,7 @@
     color: #435c45;
   }
 
-  .grid {
+  .grid {   /* Grille de cartes */
     display: grid;
     grid-template-columns: repeat(4, 100px);
     gap: 20px;
@@ -39,7 +40,7 @@
     margin: 2rem auto;
   }
 
-  .card {
+  .card {   /* Carte cachée */
     width: 100px;
     height: 100px;
 
@@ -47,9 +48,9 @@
     border-radius: 20px;
 
     background: radial-gradient(circle at 30% 30%,
-            #b8d2bb 0%,
-            #8FAF95 60%,
-            #6c8b6f 100%);
+      #b8d2bb 0%,
+      #8FAF95 60%,
+      #6c8b6f 100%);
     color: white;
 
     display: flex;
@@ -60,23 +61,23 @@
     transition: transform 0.15s ease;
   }
 
-  .card:hover {
+  .card:hover {   /* Animation au survol */
     transform: scale(1.05);
   }
 
-  .card.flipped,
-  .card.matched {
+  .card.flipped,    /* Carte retournée */
+  .card.matched {   /* Carte trouvée */
     background: #fff;
     color: #435c45;
     border: 2px solid #d4c2aa;
   }
 
-  .card.matched {
+  .card.matched {   /* Carte trouvée */
     opacity: 0.55;
     cursor: default;
   }
 
-  button[data-restart] {
+  button[data-restart] {   /* Bouton recommencer */
     padding: 0.8rem 1.4rem;
     border: none;
     border-radius: 999px;
@@ -86,13 +87,13 @@
   }
 
 
-  @media (max-width: 700px) {
-    .grid {
+  @media (max-width: 700px) {   /* Version mobile */
+    .grid {   /* Grille de cartes */
       grid-template-columns: repeat(4, 85px);
       gap: 8px;
     }
 
-    .card {
+    .card {  /* Cartes retournées */
       width: 85px;
       height: 85px;
       border-radius: 14px;
@@ -101,25 +102,24 @@
 </style>
 
 <script is:inline>
-  document.querySelectorAll("[data-memory-game]").forEach((game) => {
+  document.querySelectorAll("[data-memory-game]").forEach((game) => {  /* Récupération de tous les éléments */
     const grid = game.querySelector("[data-grid]");
     const movesText = game.querySelector("[data-moves]");
     const message = game.querySelector("[data-message]");
     const restart = game.querySelector("[data-restart]");
-
     const icons = ["🦴", "💀", "💪", "🦵", "🧠", "⭐", "❤️", "⚡"];
 
-    let firstCard = null;
+    let firstCard = null;    /* Parametres du jeu */
     let secondCard = null;
     let lock = false;
     let moves = 0;
     let matchedPairs = 0;
 
-    function shuffle(array) {
+    function shuffle(array) {   /* Mélange les cartes */
       return [...array].sort(() => Math.random() - 0.5);
     }
 
-    function startGame() {
+    function startGame() {   /* initialise partie */
       grid.innerHTML = "";
       firstCard = null;
       secondCard = null;
@@ -146,7 +146,7 @@
       });
     }
 
-    function flipCard(card) {
+    function flipCard(card) {   /* Retourne une carte quand on clique dessus */
       if (lock) return;
       if (card.classList.contains("flipped")) return;
       if (card.classList.contains("matched")) return;
@@ -174,7 +174,7 @@
       checkPair();
     }
 
-    function checkPair() {
+    function checkPair() {   /* Vérifie si 2 cartes sont identiques */
       const isMatch =
         firstCard.dataset.icon === secondCard.dataset.icon;
 
@@ -196,7 +196,7 @@
 
       lock = true;
 
-      setTimeout(() => {
+      setTimeout(() => {   /* Attend 8sec avant de cacher 2 mauvaises cartes */
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
 
@@ -209,8 +209,8 @@
       }, 800);
     }
 
-    restart.addEventListener("click", startGame);
+    restart.addEventListener("click", startGame);   /* Recommencer */
 
-    startGame();
+    startGame(); /* Lance automatiquement la partie au chargement */
   });
 </script>

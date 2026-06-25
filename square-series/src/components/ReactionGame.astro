@@ -9,7 +9,8 @@
     Attendez...
   </div>
 
-  <p class="result" data-result></p>
+  <p class="result" data-result>
+  </p>
 
   <p class="best-score" data-best-score>
     🏆 Meilleur temps : -
@@ -21,7 +22,7 @@
 </section>
 
 <style>
-  .reaction-game {
+  .reaction-game {   /* Cadre du jeu */
     max-width: 500px;
     margin: 3rem auto;
     padding: 2rem;
@@ -30,7 +31,7 @@
     border-radius: 24px;
   }
 
-  .circle {
+  .circle {   /* Cercle Attendez*/
     width: 160px;
     height: 160px;
 
@@ -55,23 +56,23 @@
     transition: background 0.2s;
   }
 
-  .circle.ready {
+  .circle.ready {   /* Cercle Cliquez */
     background: #6c8b6f;
   }
 
-  .result {
+  .result {   /* Texte du résultat */
     min-height: 28px;
     font-weight: bold;
     color: #435c45;
   }
 
-  .best-score {
+  .best-score {   /* Texte du meilleur score */
     font-weight: bold;
     color: #6c8b6f;
     margin-bottom: 1rem;
   }
 
-  button {
+  button {   /* Bouton */
     padding: 0.8rem 1.4rem;
 
     border: none;
@@ -85,7 +86,7 @@
 </style>
 
 <script is:inline>
-  document
+  document   /* Récupération des documents */
     .querySelectorAll("[data-reaction-game]")
     .forEach((game) => {
 
@@ -101,13 +102,13 @@
       const restart =
         game.querySelector("[data-restart]");
 
-      let ready = false;
+      let ready = false; /* Stock le départ */
       let startTime = 0;
       let timer = null;
 
       let bestReaction =
         Number(
-          localStorage.getItem(
+          localStorage.getItem(   /* récupere le meilleur score dans le navigateur */
             "reaction-best"
           )
         ) || null;
@@ -119,7 +120,7 @@
           " ms";
       }
 
-      function startGame() {
+      function startGame() {   /* Nouvelle partie */
 
         ready = false;
 
@@ -134,7 +135,7 @@
 
         const delay =
           1500 +
-          Math.random() * 3000;
+          Math.random() * 3000;   /* Délais aléatoire avant que le cercle ne devienne vert */
 
         timer = setTimeout(() => {
 
@@ -150,11 +151,11 @@
         }, delay);
       }
 
-      circle.addEventListener(
+      circle.addEventListener(   /* Détecte le clic du joueur */
         "click",
         () => {
 
-          if (!ready) {
+          if (!ready) {  /* Vérifie si le joueur clique trop tôt */
 
             result.textContent =
               "❌ Trop tôt !";
@@ -164,7 +165,7 @@
             return;
           }
 
-          const reactionTime =
+          const reactionTime =   /* calcul temps de réaction */
             Date.now() - startTime;
 
           result.textContent =
@@ -187,7 +188,7 @@
             bestReaction =
               reactionTime;
 
-            localStorage.setItem(
+            localStorage.setItem(   /* Enregistre le meilleur score dans le navigateur */
               "reaction-best",
               bestReaction
             );
@@ -200,11 +201,11 @@
         }
       );
 
-      restart.addEventListener(
+      restart.addEventListener( /* Recommencer */
         "click",
         startGame
       );
 
-      startGame();
+      startGame(); /* Lance automatiquement une partie au chargement */
     });
 </script>
