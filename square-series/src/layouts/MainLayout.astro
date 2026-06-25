@@ -6,85 +6,84 @@ import FloatingButton from "../components/FloatingButton.astro";
 import Signature from "../components/Signature.astro";
 import Footnote from "../components/FootNote.astro";
 
-const {
+const {   /* Parametres du Layout */
     title = "Corentin Roux - Ostéopathe D.O.",
     description = "Corentin Roux, ostéopathe à Saint-Just-Malmont. Consultations au cabinet et à domicile.",
     schema,
 } = Astro.props;
 
-const floatingLinks = [
+const floatingLinks = [   /* Configuration des boutons flottants */
     { href: "/prendre-rendez-vous", icon: "📅", label: "Prendre rendez-vous" },
     { href: "/jeux-salle-attente", icon: "🎮", label: "Jeux de salle d'attente" },
     { href: "/questions-frequentes", icon: "❓", label: "Questions fréquentes" },
 ];
 
-const backToTopLink = {
+const backToTopLink = {   /* Configuration du bouton retour arriere */
     href: "#top",
     icon: "↑",
     label: "Retour en haut",
 };
 ---
 
-<html lang="fr">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="fr"> {/* Structure de la page */}
+    <head>   {/* En-tête - SEO et métadonnées */}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
 
-    {schema && (
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-    )}
-</head>
+        {schema && (
+            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        )}
+    </head>
 
-<body id="top">
-<TopBar />
+    <body id="top">   {/* Contenu */}
+        <TopBar />   {/* Barre supérieur */}
 
-<nav class="floating-buttons" aria-label="Accès rapides">
-    {floatingLinks.map((link) => (
+        <nav class="floating-buttons" aria-label="Accès rapides">   {/* Boutons flottants */}
+            {floatingLinks.map((link) => (
             <FloatingButton href={link.href} icon={link.icon} label={link.label} />
-    ))}
-</nav>
+            ))}
+        </nav>
 
-<nav class="back-to-top-button" aria-label="Retour en haut">
-    <FloatingButton
+        <nav class="back-to-top-button" aria-label="Retour en haut">   {/* Bouton retour en haut */}
+            <FloatingButton
             href={backToTopLink.href}
             icon={backToTopLink.icon}
             label={backToTopLink.label}
-    />
-</nav>
+            />
+        </nav>
 
-<DidYouKnow />
+        <DidYouKnow />   {/* Banniere le saviez vous */}
 
-<NavigationButtons />
+        <NavigationButtons />   {/* Boutons de séléction de page */}
 
-<main>
-    <slot />
-
-    <Signature />
-    <Footnote />
-</main>
-</body>
+        <main>   {/* Contenu principal */}
+            <slot />   {/* Affichage du contenu */}
+            <Signature />   {/* Siganture */}
+            <Footnote />   {/* Note de pied de page */}
+        </main>
+    </body>
 </html>
 
-<style is:global>
-    :root {
+<style is:global>   /* Style globale */
+    :root {   /* Couleurs */
         --green: #6c8b6f;
         --green-dark: #5f7252;
         --cream: rgba(248, 245, 240, 0.68);
         --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
-    * {
+    * {   /* Tous les éléments de la page */
         box-sizing: border-box;
     }
 
-    html {
+    html {   /* Page entiere */
         scroll-behavior: smooth;
     }
 
-    body {
+    body {   /* Corps de la page/ image de fond */
         min-height: 100vh;
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
@@ -96,13 +95,13 @@ const backToTopLink = {
         background-attachment: fixed;
     }
 
-    @media (max-width: 768px) {
-        body {
+    @media (max-width: 768px) { /* Version mobile */
+        body {   /* Corps de la page */
             background-image: none;
             background-color: #C69661;
         }
 
-        body::before {
+        body::before {   /* image décorative */
             content: "";
             position: fixed;
             inset: 0;
@@ -122,12 +121,12 @@ const backToTopLink = {
 </style>
 
 <style>
-    main {
+    main {   /* Zone du contenu */
         width: min(1100px, calc(100% - 2rem));
         margin: 3rem auto;
     }
 
-    .floating-buttons {
+    .floating-buttons {   /* Groupe de boutons flottants */
         position: fixed;
         top: 90px;
         right: 20px;
@@ -138,7 +137,7 @@ const backToTopLink = {
         gap: 12px;
     }
 
-    .back-to-top-button {
+    .back-to-top-button {   /* Bouton de retour en haut */
         position: fixed;
         bottom: 30px;
         right: 20px;
@@ -147,18 +146,18 @@ const backToTopLink = {
     }
 
     @media (max-width: 768px) {
-        main {
+        main {   /* Contenu principal */
             width: calc(100% - 1.25rem);
             margin: 2rem auto;
         }
 
-        .floating-buttons {
+        .floating-buttons {   /* Groupe de boutons flottants */
             top: auto;
             right: 12px;
             bottom: 16px;
         }
 
-        .back-to-top-button {
+        .back-to-top-button {   /* Bouton de retour en haut */
             right: 12px;
             bottom: 210px;
         }
