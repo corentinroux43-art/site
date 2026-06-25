@@ -23,7 +23,7 @@
 </div>
 
 <style>
-  .battle-game {
+  .battle-game {   /* Cadre du jeu */
     max-width: 500px;
     margin: 3rem auto;
     padding: 2rem;
@@ -32,14 +32,14 @@
     border-radius: 24px;
   }
 
-  .choices {
+  .choices {   /* Zone des boutons */
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin: 1.5rem 0;
   }
 
-  .choices button {
+  .choices button {  /* Bouton de choix */
     width: 70px;
     height: 70px;
     font-size: 2rem;
@@ -49,11 +49,11 @@
     cursor: pointer;
   }
 
-  .choices button:hover {
+  .choices button:hover {   /* Bouton au survol */
     transform: scale(1.05);
   }
 
-  .computer-wheel {
+  .computer-wheel {  /* Roue ordinateur */
     width: 100px;
     height: 100px;
     margin: 1.5rem auto;
@@ -69,11 +69,17 @@
     box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   }
 
-  .computer-wheel.spinning {
+  .computer-wheel.spinning {  /* Animation roue */
     animation: wheel-spin 0.12s linear infinite;
   }
 
-  @keyframes wheel-spin {
+  .result,  /* Texte Résultat et score */
+  .score {
+    font-weight: bold;
+    color: #435c45;
+  }
+
+  @keyframes wheel-spin {  /* Animation rotation */
     from {
       transform: rotate(0deg) scale(1);
     }
@@ -82,33 +88,27 @@
       transform: rotate(360deg) scale(1.05);
     }
   }
-
-  .result,
-  .score {
-    font-weight: bold;
-    color: #435c45;
-  }
 </style>
 
 <script is:inline>
-  document.querySelectorAll("[data-rps-game]").forEach(function(game) {
+  document.querySelectorAll("[data-rps-game]").forEach(function(game) {  /* Récupération des données */
     const result = game.querySelector("[data-result]");
     const scoreText = game.querySelector("[data-score]");
     const wheel = game.querySelector("[data-wheel]");
     const buttons = game.querySelectorAll("[data-choice]");
 
-    let score = 0;
+    let score = 0;    /* Parametres */
     let isPlaying = false;
 
-    const icons = {
+    const icons = { /* Associe chaque choix a son émoji */
       rock: "🪨",
       paper: "📄",
       scissors: "✂️"
     };
 
-    const choices = ["rock", "paper", "scissors"];
+    const choices = ["rock", "paper", "scissors"]; /* Liste des choix possibles */
 
-    function getWinner(player, computer) {
+    function getWinner(player, computer) { /* compare les résultats */
       if (player === computer) {
         return "draw";
       }
@@ -124,7 +124,7 @@
       return "lose";
     }
 
-    function play(player) {
+    function play(player) {   /* Lance la manche */
       if (isPlaying) return;
 
       isPlaying = true;
@@ -133,7 +133,7 @@
 
       let count = 0;
 
-      const spin = setInterval(function() {
+      const spin = setInterval(function() {  /* Change rapidement l'émoji pendant l'animation */
         const randomChoice =
           choices[Math.floor(Math.random() * choices.length)];
 
@@ -143,13 +143,13 @@
         if (count >= 18) {
           clearInterval(spin);
 
-          const computer =
+          const computer =  /* Choix aléatoire */
             choices[Math.floor(Math.random() * choices.length)];
 
           wheel.textContent = icons[computer];
           wheel.classList.remove("spinning");
 
-          const outcome = getWinner(player, computer);
+          const outcome = getWinner(player, computer); /* Trouver le gagnant */
 
           if (outcome === "win") {
             score++;
@@ -169,7 +169,7 @@
             text = "Égalité";
           }
 
-          result.textContent =
+          result.textContent =  /* Affiche le résultat complet de la manche */
             "Vous : " +
             icons[player] +
             " | Ordinateur : " +
@@ -177,14 +177,14 @@
             " → " +
             text;
 
-          scoreText.textContent = "Score : " + score;
+          scoreText.textContent = "Score : " + score;  /* Met a jour le score */
 
           isPlaying = false;
         }
       }, 80);
     }
 
-    buttons.forEach(function(button) {
+    buttons.forEach(function(button) {  /* Ajoute un clic sur chaque bouton */
       button.addEventListener("click", function() {
         const player = button.getAttribute("data-choice");
         play(player);
