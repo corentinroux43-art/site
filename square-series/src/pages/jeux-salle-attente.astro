@@ -14,8 +14,8 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
 <MainLayout
   id="top"
   title="Cabinet d'ostéopathie à Saint-Just-Malmont"
-  description="Découvrez le cabinet d'ostéopathie de Saint-Just-Malmont et son environnement chaleureux."
->
+  description="Découvrez le cabinet d'ostéopathie de Saint-Just-Malmont et son environnement chaleureux.">
+
   <section class="games-section">
     <h1>Jeux et exercices</h1>
     <p class="intro">Choisissez un jeu ou un exercice interactif.</p><br><br>
@@ -121,32 +121,32 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
 </MainLayout>
 
 <style>
-  .games-section {
+  .games-section {   /* Toute la page */
     max-width: 1100px;
     margin: 6rem auto 3rem auto;
     padding: 2rem;
     text-align: center;
-}
+  }
 
-  .games-section h1 {
+  .games-section h1 {   /* Titre h1 */
     color: #2f2f2f;
     margin-bottom: 0.5rem;
     font-size: 3.5rem;
   }
 
-  .intro {
+  .intro {   /* Texte d'introduction */
     color: #6f675f;
     margin-bottom: 2rem;
   }
 
-  .games-grid {
+  .games-grid {   /* Zone contenant les cartes */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-bottom: 6rem;
-}
+  }
 
-  .game-card {
+  .game-card {   /* Cartes */
     min-height: 210px;
     padding: 2rem 1.5rem;
     border: none;
@@ -158,29 +158,29 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
     text-align: center;
   }
 
-  .game-card:hover {
+  .game-card:hover {   /* Animation au survol d'une carte */
     transform: translateY(-6px);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
   }
 
-  .game-card span {
+  .game-card span {   /* Emoji du jeu */
     display: block;
     font-size: 3.5rem;
     margin-bottom: 1rem;
   }
 
-  .game-card h3 {
+  .game-card h3 {   /* Titre de la carte */
     margin: 0.5rem 0;
     color: #435c45;
     font-size: 1.3rem;
   }
 
-  .game-card p {
+  .game-card p {   /* Description de la carte */
     margin: 0;
     color: #6f675f;
   }
 
-  .game-modal {
+  .game-modal {   /* Fond derriere la carte */
     display: none;
     position: fixed;
     inset: 0;
@@ -189,13 +189,13 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
     padding: 2rem;
   }
 
-  .game-modal.active {
+  .game-modal.active {   /* popup */
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .modal-content {
+  .modal-content {   /* Cadre blanc de la popup */
     position: relative;
     width: min(1100px, 95vw);
     max-height: 90vh;
@@ -205,7 +205,7 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
     padding: 2rem;
   }
 
-  .close-modal {
+  .close-modal {   /* Bouton fermé X */
     position: sticky;
     top: 0;
     margin-left: auto;
@@ -221,68 +221,68 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
     font-size: 1.2rem;
   }
 
-  .game-panel {
+  .game-panel {   /* Conteneur du jeu */
     display: none;
   }
 
-  .game-panel.active {
+  .game-panel.active {   /* Jeu actuellement affiché */
     display: block;
   }
 
 
-  html {
+  html {   /* Défilement de la page */
     scroll-behavior: smooth;
   }
 
-  @media (max-width: 768px) {
-  .games-section {
-    width: calc(100% - 1rem);
-    padding: 1rem 0;
-  }
+  @media (max-width: 768px) {   /* Version mobile */
+    .games-section {   /* Toute la page */
+      width: calc(100% - 1rem);
+      padding: 1rem 0;
+    }
 
-  .games-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.9rem;
-  }
+    .games-grid {   /* Zone contenant les cartes */
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
 
-  .game-card {
-    min-height: 150px;
-    padding: 1rem 0.6rem;
-    border-radius: 18px;
-  }
+    .game-card {   /* Cartes */
+      min-height: 150px;
+      padding: 1rem 0.6rem;
+      border-radius: 18px;
+    }
 
-  .game-card span {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-  }
+    .game-card span {   /* Emoji du jeu */
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
 
-  .game-card h3 {
-    font-size: 0.95rem;
-  }
+    .game-card h3 {   /* Titre d'une carte */
+      font-size: 0.95rem;
+    }
 
-  .game-card p {
-    font-size: 0.8rem;
-  }
+    .game-card p {   /* Description d'une carte */
+      font-size: 0.8rem;
+    }
 
-  .game-modal {
-    padding: 0.7rem;
-  }
+    .game-modal {   /* Fond derriere la fenêtre */
+      padding: 0.7rem;
+    }
 
-  .modal-content {
-    padding: 1rem;
-    border-radius: 20px;
+    .modal-content {   /* cadre blanc de la pop-up */
+      padding: 1rem;
+      border-radius: 20px;
+    }
   }
-}
 </style>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {   /* Récupération des éléments */
     const modal = document.querySelector("[data-modal]");
     const closeBtn = document.querySelector("[data-close]");
     const cards = document.querySelectorAll("[data-open]");
     const panels = document.querySelectorAll("[data-panel]");
 
-    function openGame(gameName) {
+    function openGame(gameName) {   /* Ouverture du jeu */
       panels.forEach(function (panel) {
         panel.classList.remove("active");
       });
@@ -296,7 +296,7 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
       }
     }
 
-    function closeGame() {
+    function closeGame() {   /* Fermeture du jeu */
       modal.classList.remove("active");
       document.body.style.overflow = "";
 
@@ -305,21 +305,21 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
       });
     }
 
-    cards.forEach(function (card) {
+    cards.forEach(function (card) {   /* Ouverture du jeu lors d'un clic sur la carte */
       card.addEventListener("click", function () {
         openGame(card.getAttribute("data-open"));
       });
     });
 
-    closeBtn.addEventListener("click", closeGame);
+    closeBtn.addEventListener("click", closeGame);   /* Fermeture via le bouton X */
 
-    modal.addEventListener("click", function (event) {
+    modal.addEventListener("click", function (event) {   /* Fermeture en cliquant en dehors de la fenetre */
       if (event.target === modal) {
         closeGame();
       }
     });
 
-    document.addEventListener("keydown", function (event) {
+    document.addEventListener("keydown", function (event) {   /* Fermeture avec la touche Echap */
       if (event.key === "Escape") {
         closeGame();
       }
