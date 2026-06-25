@@ -1,10 +1,10 @@
 ---
-interface Props {
+interface Props {   /* Parametrage */
     text: string;
     href?: string;
 }
 
-const {
+const {   /* Valeur fixe */
     text,
     href = "#"
 } = Astro.props;
@@ -15,7 +15,7 @@ const {
 </a>
 
 <style>
-    .button {
+    .button {   /* Bouton complet */
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -30,11 +30,11 @@ const {
         text-decoration: none;
 
         font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "Segoe UI",
-                sans-serif;
+            -apple-system,
+            BlinkMacSystemFont,
+            "SF Pro Display",
+            "Segoe UI",
+            sans-serif;
 
         font-size: 0.95rem;
         font-weight: 600;
@@ -43,17 +43,30 @@ const {
         border-radius: 18px 18px 18px 18px;
 
         transition:
-                transform 0.25s ease,
-                background-color 0.25s ease,
-                box-shadow 0.25s ease;
+            transform 0.25s ease,
+            background-color 0.25s ease,
+            box-shadow 0.25s ease;
 
         box-shadow:
-                0 4px 12px rgba(155, 123, 72, 0.18);
+            0 4px 12px rgba(155, 123, 72, 0.18);
     }
 
-    @media (max-width: 768px) {
+     .button:hover {   /* Animation de survol du bouton */
+        background: #625928;
 
-        .button {
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 10px 24px rgba(200, 90, 90, 0.25);
+    }
+
+    .button:active {   /* Animation au clic */
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {   /* Version mobile */
+
+        .button {   /* Bouton complet */
 
             min-width: unset;
 
@@ -67,18 +80,5 @@ const {
 
         }
 
-    }
-
-    .button:hover {
-        background: #625928;
-
-        transform: translateY(-3px);
-
-        box-shadow:
-                0 10px 24px rgba(200, 90, 90, 0.25);
-    }
-
-    .button:active {
-        transform: translateY(-1px);
     }
 </style>

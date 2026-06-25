@@ -1,5 +1,5 @@
 ---
-const facts = [
+const facts = [   /* Phrases qui défilent */
     "Une même douleur peut avoir des causes très différentes d'une personne à l'autre.",
     "Les vertèbres ne « se remettent pas en place » lors d'une manipulation.",
     "Le bruit de craquement articulaire est principalement dû à la formation puis à l'éclatement de bulles de gaz dans l'articulation.",
@@ -22,31 +22,31 @@ const facts = [
 ];
 ---
 
-<section class="saviez-vous" aria-label="Le saviez-vous">
-    <div class="saviez-vous-title">
+<section class="saviez-vous" aria-label="Le saviez-vous"> {/* Bandeau complet */}
+    <div class="saviez-vous-title">   {/* Titre */}
         <span>💡</span>
         <strong>Le saviez-vous ?</strong>
     </div>
 
-    <div class="facts-wrapper">
-        <div class="facts-desktop">
+    <div class="facts-wrapper">   {/* Zone de défilement */}
+        <div class="facts-desktop">   {/* Texte ordinateur */}
             {[...facts, ...facts].map((fact) => (
-                    <span>{fact}</span>
+            <span>{fact}</span>
             ))}
         </div>
 
-        <div class="facts-mobile">
+        <div class="facts-mobile">   {/* Texte mobile */}
             {facts.map((fact, index) => (
-                    <p style={`--index: ${index}; --total: ${facts.length};`}>
-                        {fact}
-                    </p>
+            <p style={`--index: ${index}; --total: ${facts.length};`}>
+            {fact}
+             </p>
             ))}
         </div>
     </div>
 </section>
 
 <style>
-    .saviez-vous {
+    .saviez-vous {   /* Bandeau complet */
         width: min(950px, calc(100% - 2rem));
         padding: 1rem 1.2rem;
 
@@ -68,7 +68,7 @@ const facts = [
         box-shadow: var(--shadow);
     }
 
-    .saviez-vous-title {
+    .saviez-vous-title {   /* Titre */
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -78,28 +78,28 @@ const facts = [
         font-size: 1rem;
     }
 
-    .facts-wrapper {
+    .facts-wrapper {   /* Zone de texte */
         flex: 1;
         overflow: hidden;
     }
 
-    .facts-desktop {
+    .facts-desktop {   /* Conteneur des phrases */
         display: inline-flex;
         width: max-content;
         white-space: nowrap;
         animation: scroll-facts 240s linear infinite;
     }
 
-    .facts-desktop span {
+    .facts-desktop span {   /* Chaques phrases */
         margin-right: 14rem;
         color: #344033;
     }
 
-    .facts-mobile {
+    .facts-mobile {   /* Version mobile alternative */
         display: none;
     }
 
-    @keyframes scroll-facts {
+    @keyframes scroll-facts {   /* Animation */
         from {
             transform: translateX(0);
         }
@@ -109,8 +109,8 @@ const facts = [
         }
     }
 
-    @media (max-width: 768px) {
-        .saviez-vous {
+    @media (max-width: 768px) {   /* Version mobile */
+        .saviez-vous {   /* Bandeau complet */
             width: calc(100% - 1.25rem);
 
             min-height: auto;
@@ -129,44 +129,44 @@ const facts = [
             border-radius: 10px;
         }
 
-        .saviez-vous-title {
+        .saviez-vous-title {   /* Titre */
             font-size: 0.6rem;
             line-height: 1;
         }
 
-        .facts-wrapper {
+        .facts-wrapper {   /* Zone de texte */
             width: 100%;
             overflow: hidden;
         }
 
-        .facts-desktop {
+        .facts-desktop {   /* Conteneur des phrases */
             display: inline-flex;
             width: max-content;
             white-space: nowrap;
             animation: scroll-facts 200s linear infinite;
         }
 
-        .facts-desktop span {
+        .facts-desktop span {   /* Chaques phrases */
             margin-right: 5rem;
             color: #344033;
             font-size: 0.65rem;
             line-height: 1.2;
         }
 
-        .facts-mobile {
+        .facts-mobile {   /* Version mobile alternative */
             display: none;
         }
     }
 
-    @media (max-width: 420px) {
-        .facts-desktop span {
+    @media (max-width: 420px) {   /* Très petits téléphones */
+        .facts-desktop span {   /* Chaques phrases */
             margin-right: 4rem;
             font-size: 0.65rem;
         }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-        .facts-desktop {
+    @media (prefers-reduced-motion: reduce) {   /* Accessibilité */
+        .facts-desktop {   /* Conteneurs des phrases */
             animation: none;
         }
     }

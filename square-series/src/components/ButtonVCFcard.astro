@@ -3,10 +3,10 @@
 </button>
 
 <script>
-    const button = document.getElementById('download-vcard');
+    const button = document.getElementById('download-vcard');  /* Ajout du bouton */
 
-    button?.addEventListener('click', () => {
-        const vcardLines = [
+    button?.addEventListener('click', () => {   /* execution lorsqu'on clique sur le bouton */
+        const vcardLines = [   /* Infos de la carte */
             'BEGIN:VCARD',
             'VERSION:2.1',
             'N:Roux;Corentin;;;',
@@ -20,44 +20,44 @@
             'END:VCARD'
         ];
 
-        const blob = new Blob(
+        const blob = new Blob(   /* Création vichier VCF */
             [vcardLines.join('\r\n')],
             { type: 'text/x-vcard;charset=ISO-8859-1' }
         );
 
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        const url = URL.createObjectURL(blob);   /* Genere un lien */
+        const a = document.createElement('a');   /* Télecharger le fichier */
 
-        a.href = url;
+        a.href = url;   /* Associe le lien au fichier */
         a.download = 'corentin-roux-osteopathe.vcf';
-        document.body.appendChild(a);
+        document.body.appendChild(a);   /* Ajoute le lien de la page */
         a.click();
-        document.body.removeChild(a);
+        document.body.removeChild(a);   /* Supprime temporairement le lien de la page */
 
-        URL.revokeObjectURL(url);
+        URL.revokeObjectURL(url);   /* Libere la mémoire utilisé par le fichier temporaire */
     });
 </script>
 
 <style>
-.contact-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 1.5rem;
-    background: #9b7b48;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 999px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,.12);
-    }
+    .contact-button {   /* Bouton contact */
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.5rem;
+        background: #9b7b48;
+        color: white;
+        text-decoration: none;
+        border: none;
+        border-radius: 999px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,.12);
+        }
 
-.contact-button:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 20px rgba(0,0,0,.18);
-    }
+    .contact-button:hover {   /* Animation de survol du bouton */
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 20px rgba(0,0,0,.18);
+        }
 </style>
