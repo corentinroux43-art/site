@@ -1,16 +1,16 @@
 ---
-const {
+const {   /* Banniere */
     image = "/banniere-osteopathe-saint-just-malmont.png"
 } = Astro.props;
 ---
 
-<header class="hero">
+<header class="hero">   {/* En-tête de la page */}
     <img src={image} alt="Corentin Roux, ostéopathe à Saint-Just-Malmont" 
     loading="eager"/>
 </header>
 
 <style>
-    .hero {
+    .hero {   /* Banniere complete */
         width: min(1600px, calc(100% - 2rem));
         margin-top: -10rem;
         margin-bottom: -12rem;
@@ -18,7 +18,7 @@ const {
         margin-right: auto;
     }
 
-    .hero img {
+    .hero img {   /* Image de la banniere */
         display: block;
         width: 100%;
         height: auto;
@@ -27,25 +27,23 @@ const {
         margin: 0 auto;
     }
 
-    /* Tablette */
-    @media (max-width: 1024px) {
-        .hero {
+    @media (max-width: 1024px) {   /* Tablette */
+        .hero {   /* Banniere complete */
             margin: -8rem auto;
         }
 
-        .hero img {
+        .hero img {   /* Image de la banniere */
             max-height: 700px;
         }
     }
 
-    /* Téléphone */
-    @media (max-width: 768px) {
-        .hero {
+    @media (max-width: 768px) { /* Téléphone */
+        .hero {   /* Banniere complete */
             width: calc(100% - 1rem);
             margin: -4rem auto;
         }
 
-        .hero img {
+        .hero img {   /* Image de la banniere */
             width: 100%;
             max-width: 500px;
             height: auto;
