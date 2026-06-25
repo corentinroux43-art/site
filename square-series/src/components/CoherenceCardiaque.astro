@@ -12,7 +12,7 @@
 </section>
 
 <style>
-    .breathing-card {
+    .breathing-card {  /* Exercice complet */
         max-width: 500px;
         margin: 4rem auto;
         padding: 2rem;
@@ -22,18 +22,18 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
-    .breathing-card h2 {
+    .breathing-card h2 {  /* Titre */
         color: #2f2f2f;
         font-size: 2rem;
     }
 
-    #instruction {
+    #instruction {   /* Consignes */
         font-size: 1.2rem;
         color: #555;
         margin-bottom: 2rem;
     }
 
-    .breathing-button {
+    .breathing-button {   /* Bouton circulaire */
         width: 220px;
         height: 220px;
         border: none;
@@ -42,7 +42,7 @@
         cursor: pointer;
     }
 
-    #bubble {
+    #bubble {   /* Bulle */
         display: block;
         width: 140px;
         height: 140px;
@@ -56,11 +56,18 @@
         transform: scale(0.75);
     }
 
-    #bubble.active {
+    #bubble.active {   /* Bulle animée */
         animation: breathing 10s infinite ease-in-out;
     }
 
-    @keyframes breathing {
+    .breathing-note { /* Texte d'aide */
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: #777;
+        font-style: italic;
+    }
+
+    @keyframes breathing { /* Animation */
         0% {
             transform: scale(0.75);
         }
@@ -74,20 +81,13 @@
         }
     }
 
-    .breathing-note {
-        margin-top: 2rem;
-        font-size: 0.95rem;
-        color: #777;
-        font-style: italic;
-    }
-
-    @media (max-width: 768px) {
-        .breathing-button {
+    @media (max-width: 768px) { /* Version mobile */
+        .breathing-button {  /* Bouton circulaire */
             width: 180px;
             height: 180px;
         }
 
-        #bubble {
+        #bubble { /* Bulle */
             width: 120px;
             height: 120px;
         }
@@ -95,20 +95,20 @@
 </style>
 
 <script>
-    const button = document.getElementById("startBreathing");
+    const button = document.getElementById("startBreathing"); /* Recupère les différents éléments */
     const bubble = document.getElementById("bubble");
     const instruction = document.getElementById("instruction");
 
     let isActive = false;
 
-    button.addEventListener("click", () => {
+    button.addEventListener("click", () => {  /* Détecte un clic sur la bulle */
         isActive = !isActive;
 
         if (isActive) {
-            bubble.classList.add("active");
+            bubble.classList.add("active");  /* Lance l'animation */
             instruction.textContent = "Inspirez... puis expirez...";
         } else {
-            bubble.classList.remove("active");
+            bubble.classList.remove("active");   /* Arret animation */
             instruction.textContent = "Cliquez pour recommencer";
         }
     });

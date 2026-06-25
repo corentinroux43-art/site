@@ -2,7 +2,9 @@
   <h2>Vrai ou faux ?</h2>
   <p>Teste tes connaissances sur le corps et l’ostéopathie.</p>
 
-  <div class="score" data-score>Score : 0</div>
+  <div class="score" data-score>
+    Score : 0
+  </div>
 
   <div class="question" data-question>
     Chargement...
@@ -21,7 +23,7 @@
 </section>
 
 <style>
-  .osteo-quiz {
+  .osteo-quiz {  /* Cadre du Quiz */
     max-width: 650px;
     margin: 3rem auto;
     padding: 2rem;
@@ -30,13 +32,13 @@
     border-radius: 24px;
   }
 
-  .score {
+  .score {   /* Score */
     margin: 1rem 0;
     font-weight: bold;
     color: #435c45;
   }
 
-  .question {
+  .question {   /* Carte question */
     min-height: 90px;
     margin: 1.5rem 0;
     padding: 1.5rem;
@@ -52,14 +54,14 @@
     justify-content: center;
   }
 
-  .buttons {
+  .buttons {   /* Boutons vrai faux */
     display: flex;
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
   }
 
-  button {
+  button {   /* tous les boutons */
     padding: 0.8rem 1.4rem;
     border: none;
     border-radius: 999px;
@@ -69,25 +71,25 @@
     font-size: 1rem;
   }
 
-  button:hover {
+  button:hover {  /* Bouton au survol */
     background: #5a735d;
   }
 
-  .feedback {
+  .feedback {   /* message de réponse */
     min-height: 45px;
     margin-top: 1rem;
     font-weight: bold;
     color: #435c45;
   }
 
-  .restart {
+  .restart {   /* Bouton recommencer */
     margin-top: 1rem;
     background: #b76e4c;
   }
 </style>
 
 <script is:inline>
-  document.querySelectorAll("[data-quiz]").forEach((quiz) => {
+  document.querySelectorAll("[data-quiz]").forEach((quiz) => {  /* Récupération de tous les éléments */
     const questionBox = quiz.querySelector("[data-question]");
     const scoreBox = quiz.querySelector("[data-score]");
     const feedbackBox = quiz.querySelector("[data-feedback]");
@@ -95,7 +97,7 @@
     const falseBtn = quiz.querySelector("[data-false]");
     const restartBtn = quiz.querySelector("[data-restart]");
 
-    const questions = [
+    const questions = [   /* Liste des questions */
   {
     text: "Une douleur peut parfois être ressentie à distance de sa zone d’origine.",
     answer: true,
@@ -248,19 +250,19 @@
   }
 ];
 
-    let order = [];
+    let order = [];  /* Paramétrage */
     let index = 0;
     let score = 0;
     let locked = false;
 
-    function shuffle(array) {
+    function shuffle(array) {   /* Mélange les questions */
       return array
         .map((item) => ({ item, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ item }) => item);
     }
 
-    function startQuiz() {
+    function startQuiz() {   /* Initialise le quiz */
       order = shuffle(questions);
       index = 0;
       score = 0;
@@ -272,7 +274,7 @@
       showQuestion();
     }
 
-    function showQuestion() {
+    function showQuestion() {   /* Affiche la question suivante */
       locked = false;
 
       if (index >= order.length) {
@@ -286,7 +288,7 @@
       feedbackBox.textContent = "";
     }
 
-    function answer(value) {
+    function answer(value) {    /* Vérifie la réponse */
       if (locked) return;
       if (index >= order.length) return;
 
@@ -312,6 +314,6 @@
     falseBtn.addEventListener("click", () => answer(false));
     restartBtn.addEventListener("click", startQuiz);
 
-    startQuiz();
+    startQuiz(); /* Lance automatiquement le quiz au chargement */
   });
 </script>
