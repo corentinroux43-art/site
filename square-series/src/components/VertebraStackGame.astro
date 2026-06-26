@@ -14,7 +14,7 @@
 </section>
 
 <style>
-  .osteo-runner {
+  .osteo-runner { /* Cadre du jeu */
     width: 100%;
     max-width: 800px;
     margin: 3rem auto;
@@ -25,13 +25,13 @@
     border-radius: 24px;
   }
 
-  .game-viewport {
+  .game-viewport {  /* Fenetre du jeu */
     width: 100%;
     overflow: hidden;
     border-radius: 18px;
   }
 
-  .game {
+  .game {   /* Zone de jeu */
     position: relative;
     width: 100%;
     height: 220px;
@@ -43,7 +43,7 @@
     box-sizing: border-box;
   }
 
-  .game::after {
+  .game::after {  /* Sol */
     content: "";
     position: absolute;
     left: 0;
@@ -53,7 +53,7 @@
     background: #6c8b6f;
   }
 
-  .game.game-over::before {
+  .game.game-over::before {   /* Ecran de fin */
     content: "Partie terminée";
     position: absolute;
     inset: 0;
@@ -67,7 +67,7 @@
     z-index: 50;
   }
 
-  .score {
+  .score {   /* Score */
     position: absolute;
     top: 12px;
     right: 15px;
@@ -76,7 +76,7 @@
     z-index: 60;
   }
 
-  .player {
+  .player {  /* Joueur */
     position: absolute;
     left: 60px;
     bottom: 38px;
@@ -84,14 +84,14 @@
     z-index: 10;
   }
 
-  .obstacle {
+  .obstacle {  /* Obstacle */
     position: absolute;
     bottom: 38px;
     font-size: 36px;
     z-index: 10;
   }
 
-  button {
+  button {  /* Bouton recommencer */
     margin-top: 1.5rem;
     padding: 0.8rem 1.4rem;
     border: none;
@@ -101,60 +101,60 @@
     cursor: pointer;
   }
 
-  @media (max-width: 768px) {
-    .osteo-runner {
+  @media (max-width: 768px) {  /* Version mobile */
+    .osteo-runner {  /* Cadre du jeu */
       padding: 0.5rem;
       margin: 0 auto;
       border-radius: 16px;
     }
 
-    .osteo-runner h2 {
+    .osteo-runner h2 { /* Titre */
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
     }
 
-    .osteo-runner p {
+    .osteo-runner p {  /* Texte */
       font-size: 0.9rem;
       margin-bottom: 0.8rem;
     }
 
-    .game-viewport {
+    .game-viewport {  /* Fenetre du jeu */
       width: 100%;
       height: 140px;
     }
 
-    .game {
+    .game {   /* Zone de jeu */
       height: 140px;
       border-radius: 12px;
     }
 
-    .player {
+    .player {  /* Joueur */
       left: 15px;
       bottom: 25px;
       font-size: 22px;
     }
 
-    .obstacle {
+    .obstacle {   /* Obstacle */
       bottom: 25px;
       font-size: 20px;
     }
 
-    .score {
+    .score {   /* Score */
       top: 8px;
       right: 10px;
       font-size: 0.8rem;
     }
 
-    .game::after {
+    .game::after {  /* Sol */
       bottom: 22px;
       height: 3px;
     }
 
-    .game.game-over::before {
+    .game.game-over::before {  /* Ecran de fin */
       font-size: 1.2rem;
     }
 
-    button[data-restart] {
+    button[data-restart] {   /* Bouton recommencer */
       margin-top: 1rem;
       padding: 0.6rem 1rem;
       font-size: 0.85rem;
@@ -163,14 +163,14 @@
 </style>
 
 <script is:inline>
-  document.querySelectorAll("[data-runner]").forEach((runner) => {
+  document.querySelectorAll("[data-runner]").forEach((runner) => { /* Récupération des données */
     const game = runner.querySelector("[data-game]");
     const player = runner.querySelector("[data-player]");
     const obstacle = runner.querySelector("[data-obstacle]");
     const scoreDisplay = runner.querySelector("[data-score]");
     const restartBtn = runner.querySelector("[data-restart]");
 
-    let score = 0;
+    let score = 0;    /* Parametres */
     let gameOver = false;
 
     let playerY = 0;
@@ -184,34 +184,34 @@
     const playerWidth = 20;
     const obstacleWidth = 20;
 
-    function isMobile() {
+    function isMobile() {  /* verifie si la version mobile est bonne */
       return window.innerWidth <= 768;
     }
 
-    function getGround() {
+    function getGround() {  /* Retourne la hauteur du sol selon l'appareil */
       return isMobile() ? 25 : 38;
     }
 
-    function getPlayerX() {
+    function getPlayerX() { /* Retourne la position horizontale du joueur */
       return isMobile() ? 15 : 60;
     }
 
-    function getStartOffset() {
+    function getStartOffset() {  /* Definit où apparait le premier obstacle */
       return isMobile() ? 30 : 80;
     }
 
-    function getRestartOffset() {
+    function getRestartOffset() {  /* Definit ou réaparait l'obstacle apres etre sorti de l'écran */
       return isMobile() ? 30 : 80;
     }
 
-    function jump() {
+    function jump() {  /* Faire sauter le joueur */
       if (gameOver || jumping) return;
 
       velocity = isMobile() ? 10 : 15;
       jumping = true;
     }
 
-    function restart() {
+    function restart() {  /* Réinitialise le jeu */
       score = 0;
       speed = isMobile() ? 3 : 5;
       gameOver = false;
@@ -230,7 +230,7 @@
       obstacle.style.left = obstacleX + "px";
     }
 
-    function loop() {
+    function loop() {   /* Boucle principale du jeu */
       if (!gameOver) {
         const playerX = getPlayerX();
         const ground = getGround();
@@ -277,18 +277,18 @@
       requestAnimationFrame(loop);
     }
 
-    game.addEventListener("click", jump);
+    game.addEventListener("click", jump);  /* Permet de sauter en un clic */
 
-    document.addEventListener("keydown", (event) => {
+    document.addEventListener("keydown", (event) => {  /* Permet de sauter avec la barre espace */
       if (event.code === "Space") {
         event.preventDefault();
         jump();
       }
     });
 
-    restartBtn.addEventListener("click", restart);
+    restartBtn.addEventListener("click", restart);  /* Relance une nouvelle partie */
 
-    restart();
-    loop();
+    restart(); /* Initialise le jeu */
+    loop();  /* Démarre la boucle d'animation */
   });
 </script>
