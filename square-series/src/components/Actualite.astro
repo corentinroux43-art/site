@@ -7,7 +7,6 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
     <h1>Actualités du cabinet</h1>
     <div class="countdown-container">
         <p class="countdown-title">Ouverture du cabinet dans :</p>
-
         <div id="countdown">
             <span id="days">00</span>j
             <span id="hours">00</span>h
@@ -57,17 +56,17 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
                     </div>
                 </section>
 
-            <p>
-                Au-delà des résultats scientifiques, ce travail a renforcé ma conviction qu'une consultation doit
-                prendre en compte la personne dans sa globalité, en s'intéressant autant aux symptômes physiques
-                qu'au contexte de vie, au stress et aux émotions.
-            </p>
-            <p>
-                Cette démarche reflète ma volonté de proposer une pratique à la fois humaine, rigoureuse et fondée
-                sur les connaissances scientifiques actuelles. L'ostéopathie peut ainsi constituer un accompagnement
-                complémentaire pour les personnes traversant une période de stress, d'anxiété ou de fatigue, dans le
-                cadre d'une prise en charge adaptée à chaque situation.
-            </p>
+                <p>
+                    Au-delà des résultats scientifiques, ce travail a renforcé ma conviction qu'une consultation doit
+                    prendre en compte la personne dans sa globalité, en s'intéressant autant aux symptômes physiques
+                    qu'au contexte de vie, au stress et aux émotions.
+                </p>
+                <p>
+                    Cette démarche reflète ma volonté de proposer une pratique à la fois humaine, rigoureuse et fondée
+                    sur les connaissances scientifiques actuelles. L'ostéopathie peut ainsi constituer un accompagnement
+                    complémentaire pour les personnes traversant une période de stress, d'anxiété ou de fatigue, dans le
+                    cadre d'une prise en charge adaptée à chaque situation.
+                </p>
             </details>
         </article>
 
@@ -117,61 +116,61 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
 
 <style>
 
-    .actualite {
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    padding: 0.5rem;
-}
+    .actualite {     /* Bloc d'actualité */
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        padding: 0.5rem;
+    }
 
- .actualite summary {
-    cursor: pointer;
-    font-size: 1.5rem;      /* taille du titre */
-    font-weight: 700;       /* plus épais */
-    color: #483f18;
-    line-height: 1.4;
-    letter-spacing: 0.2px;
+    .actualite summary {  /* Titre de l'accordéon */
+        cursor: pointer;
+        font-size: 1.5rem;      
+        font-weight: 700;       
+        color: #483f18;
+        line-height: 1.4;
+        letter-spacing: 0.2px;
 
-    list-style: none;
+        list-style: none;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
 
-    transition: color 0.2s ease;
-}
+        transition: color 0.2s ease;
+    }
 
-.actualite summary:hover {
-    color: #656134;
-}
+    .actualite summary:hover {  /* Survol du titre */
+        color: #656134;
+    }
 
-.actualite summary::after {
-    content: "❯";
-    font-size: 1.2rem;
-    transition: transform 0.25s ease;
-    color: #483f18;
-    flex-shrink: 0;
-}
+    .actualite summary::after {  /* Fleche de l'accordéon */
+        content: "❯";
+        font-size: 1.2rem;
+        transition: transform 0.25s ease;
+        color: #483f18;
+        flex-shrink: 0;
+    }
 
-.actualite[open] summary::after {
-    transform: rotate(90deg);
-}
+    .actualite[open] summary::after {  /* Fleche ouverte */
+        transform: rotate(90deg);
+    }
 
-.actualite summary::-webkit-details-marker {
-    display: none;
-}
+    .actualite summary::-webkit-details-marker {  /* Marqueur par défaut */
+        display: none;
+    }
 
-    * {
+    * {  /* Tout les éléments */
         box-sizing: border-box;
     }
 
-    .presentation {
+    .presentation {   /* Section principale */
         max-width: 1200px;
         margin: 0 auto;
         padding: 80px 30px;
     }
 
-    .presentation h1 {
+    .presentation h1 {  /* Titre principal */
         font-size: 3.5rem;
         font-weight: 700;
         margin-bottom: 40px;
@@ -179,12 +178,12 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         text-align: center;
     }
 
-    .content {
+    .content {  /* Contenu */
         max-width: 900px;
         margin: 0 auto;
     }
 
-    .content p,
+    .content p,   /* Paragraphes */
     .article-card p {
         font-size: 1.2rem;
         line-height: 1.8;
@@ -192,17 +191,17 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         color: #555;
     }
 
-    .intro {
+    .intro {   /* Introduction */
         margin-bottom: 4rem;
     }
 
-    .articles {
+    .articles {   /* Liste des articles */
         display: flex;
         flex-direction: column;
         gap: 4rem;
     }
 
-    .article-card {
+    .article-card {  /* Carte d'article */
         width: 100%;
         max-width: 900px;
         margin: 0 auto;
@@ -212,7 +211,7 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
-    .article-card h2 {
+    .article-card h2 {  /* Titre d'article' */
         font-size: 2rem;
         line-height: 1.3;
         color: #2f2f2f;
@@ -220,23 +219,23 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         text-align: center;
     }
 
-    .article-card:last-child {
+    .article-card:last-child {  /* Derniere carte */
     margin-bottom: 100px;
-}
+    }
 
-    .split {
+    .split {  /* Mise en page image, texte */
         display: flex;
         align-items: center;
         gap: 2rem;
         margin-bottom: 2rem;
     }
 
-    .left,
+    .left,  /* Colonne gauche, droite */
     .right {
         flex: 1;
     }
 
-    .article-image {
+    .article-image {   /* Image */
         width: 370px;
         max-width: 100%;
         height: auto;
@@ -246,7 +245,7 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         margin: 0 auto;
     }
 
-    .footnote {
+    .footnote {   /* Note de bas de page */
         max-width: 900px;
         margin: 4rem auto 0;
         font-size: 0.75rem;
@@ -256,18 +255,18 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         font-style: italic;
     }
 
-    .countdown-container {
+    .countdown-container {   /* Bloc compte a rebours */
         text-align: center;
         margin-bottom: 60px;
     }
 
-    .countdown-title {
+    .countdown-title {  /* Titre compte a rebours */
         font-size: 1.3rem;
         color: #555;
         margin-bottom: 15px;
     }
 
-    #countdown {
+    #countdown {  /* Compte a rebours */
         font-size: 2.5rem;
         font-weight: 700;
         color: #656134;
@@ -277,7 +276,7 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         flex-wrap: wrap;
     }
 
-    #countdown span {
+    #countdown span {  /* Cases du chronometre */
         background: transparent;
         padding: 15px 20px;
         border-radius: 12px;
@@ -285,53 +284,50 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-
-
-
-    @media (max-width: 768px) {
-        .presentation {
+    @media (max-width: 768px) {  /* Version mobile */
+        .presentation {  /* Section principale */
             padding: 40px 20px;
         }
 
-        .presentation h1 {
+        .presentation h1 {   /* Titre */
             font-size: 2.2rem;
             margin-bottom: 25px;
         }
 
-        .content p,
+        .content p,  /* Contenu */
         .article-card p {
             font-size: 1rem;
             line-height: 1.7;
             text-align: justify;
         }
 
-        .article-card {
+        .article-card {  /* Carte d'article */
             padding: 1.5rem;
             border-radius: 18px;
         }
 
-        .article-card h2 {
+        .article-card h2 { /* Titre d'article' */
             font-size: 1.5rem;
         }
 
-        .split {
+        .split {  /* Mise en page image, texte */
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .article-image {
+        .article-image {  /* Image */
             width: 280px;
         }
     }
 
-    @media (max-width: 480px) {
-        #countdown {
+    @media (max-width: 480px) {  /* Version petit mobile */
+        #countdown {  /* Compte a rebours */
             font-size: 1.2rem;
             gap: 8px;
             flex-wrap: nowrap;
         }
 
-        #countdown span {
+        #countdown span {  /* Cases du chronometre */
             min-width: 70px;
             padding: 10px 12px;
         }
@@ -339,29 +335,29 @@ import consentementosteopathie from "../assets/consentement-osteopathie.png";
 </style>
 
 <script>
-    const targetDate = new Date("2026-08-01T06:00:00");
+    const targetDate = new Date("2026-08-01T06:00:00");  /* Date d'ouverture du cabinet */
 
-    function updateCountdown() {
-        const now = new Date();
-        const diff = targetDate - now;
+    function updateCountdown() {   /* Met a jour le compte a rebours */
+        const now = new Date();   /* Repere l'heure actuelle */
+        const diff = targetDate - now;  /* Calcul le temps restant */
 
         if (diff <= 0) {
-            document.getElementById("countdown").innerHTML =
+            document.getElementById("countdown").innerHTML = /* Affiche un message lorsque le cabinet est ouvert */
                 "Votre cabinet a ouvert ses portes !";
             return;
         }
 
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24)); /* Calcul des temps restants */
         const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((diff / (1000 * 60)) % 60);
         const seconds = Math.floor((diff / 1000) % 60);
 
-        document.getElementById("days").textContent = days;
+        document.getElementById("days").textContent = days; /* Met a jour l'affichage */
         document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
         document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
         document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    updateCountdown();  
+    setInterval(updateCountdown, 1000); /* Mise a jour automatique */
 </script>
