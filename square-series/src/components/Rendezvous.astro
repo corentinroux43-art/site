@@ -24,8 +24,8 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
 
                 <div class="button-wrapper">
                     <Button
-                            text="Accéder à la prise de rendez-vous en ligne"
-                            href="https://rouxcorentin.fr/prendre-rendez-vous/"
+                        text="Accéder à la prise de rendez-vous en ligne"
+                        href="https://rouxcorentin.fr/prendre-rendez-vous/"
                     />
                 </div>
 
@@ -50,9 +50,9 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
 
                 <div class="right">
                     <img
-                            src={exemplesmsrendezvous.src}
-                            alt="Exemple de demande de rendez-vous par SMS"
-                            class="phone-image"
+                        src={exemplesmsrendezvous.src}
+                        alt="Exemple de demande de rendez-vous par SMS"
+                        class="phone-image"
                     />
                 </div>
             </section>
@@ -71,29 +71,29 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
 
                     <div class="visual-wrapper">
                         <iframe
-                                src="https://www.google.com/maps?q=11+Rue+Bayon+43240+Saint-Just-Malmont&output=embed"
-                                class="map"
-                                allowfullscreen=""
-                                loading="lazy"
+                            src="https://www.google.com/maps?q=11+Rue+Bayon+43240+Saint-Just-Malmont&output=embed"
+                            class="map"
+                            allowfullscreen=""
+                            loading="lazy"
                         ></iframe>
                     </div>
 
                     <div class="link-buttons map-buttons">
                         <a
-                                href="https://www.google.com/maps/search/?api=1&query=11+Rue+Bayon+43240+Saint-Just-Malmont"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="nav-button"
+                            href="https://www.google.com/maps/search/?api=1&query=11+Rue+Bayon+43240+Saint-Just-Malmont"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="nav-button"
                         >
                             <Icon name="simple-icons:googlemaps" />
                             <span>Google Maps</span>
                         </a>
 
                         <a
-                                href="https://waze.com/ul?q=11%20Rue%20Bayon%2043240%20Saint-Just-Malmont&navigate=yes"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="nav-button"
+                            href="https://waze.com/ul?q=11%20Rue%20Bayon%2043240%20Saint-Just-Malmont&navigate=yes"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="nav-button"
                         >
                             <Icon name="simple-icons:waze" />
                             <span>Waze</span>
@@ -236,13 +236,13 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
 </section>
 
 <style>
-    .presentation {
+    .presentation {  /* Section principale */
         max-width: 1200px;
         margin: 0 auto;
         padding: 80px 30px;
     }
 
-    .presentation h1 {
+    .presentation h1 {  /* Titre principal */
         font-size: 3.5rem;
         font-weight: 700;
         margin-bottom: 40px;
@@ -250,13 +250,13 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         text-align: center;
     }
 
-    .articles {
+    .articles {  /* Liste des sections */
         display: flex;
         flex-direction: column;
         gap: 4rem;
     }
 
-    .article-card {
+    .article-card {  /* Carte */
         max-width: 1000px;
         margin: 0 auto;
         padding: 2.5rem;
@@ -265,7 +265,7 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
-    .article-card h2 {
+    .article-card h2 {  /* Titre de section */
         font-size: 2rem;
         line-height: 1.3;
         color: #2f2f2f;
@@ -273,14 +273,14 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         text-align: center;
     }
 
-    .article-card h3 {
+    .article-card h3 {  /* Sous-titre */
         font-size: 1.5rem;
         color: #2f2f2f;
         text-align: center;
         margin-bottom: 1rem;
     }
 
-    .article-card p {
+    .article-card p {  /* Paragraphes */
         font-size: 1.2rem;
         line-height: 1.8;
         margin-bottom: 20px;
@@ -288,26 +288,26 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         text-align: center;
     }
 
-    .split {
+    .split {  /* Mis en page en colonnes */
         display: flex;
         align-items: flex-start;
         gap: 2rem;
     }
 
-    .left,
+    .left,  /* Colonne gauche, droite */
     .right {
         flex: 1;
     }
 
-    .map-buttons {
+    .map-buttons {  /* Bouton maps */
         flex-wrap: nowrap;
     }
 
-    .map-buttons .nav-button {
+    .map-buttons .nav-button {  /* Largeur des boutons carte */
         width: 180px;
     }
 
-    .button-wrapper,
+    .button-wrapper, /* Groupe de boutons */
     .link-buttons {
         display: flex;
         justify-content: center;
@@ -316,20 +316,20 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         margin: 2rem 0;
     }
 
-    .article-image {
+    .article-image {  /* Image */
         width: 100%;
         height: auto;
         border-radius: 20px;
         display: block;
     }
-    .location-text {
+    .location-text {  /* Texte localisation */
         min-height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .visual-wrapper {
+    .visual-wrapper {  /* Cadre de la carte */
         width: 100%;
         height: 360px;
         margin: 1rem 0 2rem;
@@ -337,7 +337,7 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         overflow: hidden;
     }
 
-    .map,
+    .map,  /* Carte interractive et image de carte */
     .home-map-image {
         width: 100%;
         height: 100%;
@@ -345,12 +345,12 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         border: 0;
     }
 
-    .home-map-image {
+    .home-map-image { /* Image de carte */
         object-fit: contain;
         background: rgba(255, 255, 255, 0.25);
     }
 
-    .phone-image {
+    .phone-image {  /* Téléphone */
         width: 200px;
         max-width: 100%;
         height: auto;
@@ -360,7 +360,7 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
     }
 
 
-    .nav-button,
+    .nav-button,  /* Boutons principaux et réseaux */
     .social-link {
         display: inline-flex;
         align-items: center;
@@ -375,60 +375,60 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         transition: all 0.2s ease;
     }
 
-    .booking-online {
+    .booking-online {  /* Bloc prise de RDV en ligne */
         max-width: 850px;
         margin: 0 auto 3rem;
         text-align: center;
     }
 
-    .booking-contact {
+    .booking-contact {  /* Block contact */
         margin-top: 1rem;
     }
 
-    .nav-button {
+    .nav-button { /* Bouton de navigation */
         width: 225px;
         height: 60px;
         border-radius: 12px;
     }
-    .social-link {
+    .social-link {  /* Bouton de reseau social */
         padding: 11px 16px;
         border-radius: 999px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     }
 
-    .nav-button:hover,
+    .nav-button:hover,  /* Survol des boutons */
     .social-link:hover {
         transform: translateY(-2px);
     }
 
-    .nav-button svg,
+    .nav-button svg,   /* Icones des boutons */
     .social-link svg {
         width: 22px;
         height: 22px;
         fill: currentColor;
     }
 
-    .price-box {
+    .price-box {  /* Encadré tarif */
         border: 4px solid #9b7b48;
         border-radius: 18px;
         padding: 1.5rem;
         background: rgba(255, 255, 255, 0.35);
     }
 
-    .small-text {
+    .small-text { /* Petit texte */
         font-size: 0.95rem !important;
         font-style: italic;
     }
 
-    .schedule strong {
+    .schedule strong {  /* Horaire important */
         color: #9b7b48;
     }
 
-    .contact {
+    .contact { /* Bloc contact */
         text-align: center;
     }
 
-    .social-links {
+    .social-links {  /* Réseaux sociaux */
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
@@ -436,22 +436,22 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
         margin-top: 2rem;
     }
 
-    @media (max-width: 768px) {
-        .presentation {
+    @media (max-width: 768px) {  /* Version mobile */
+        .presentation {  /* Section principale */
             padding: 40px 20px;
         }
 
-        .presentation h1 {
+        .presentation h1 {  /* Titre principal */
             font-size: 2.2rem;
             margin-bottom: 25px;
         }
 
-        .article-card {
+        .article-card {   /* Carte */
             padding: 1.5rem;
             border-radius: 18px;
         }
 
-        .map-buttons {
+        .map-buttons {   /* Boutons de carte */
 
             flex-direction: column;
 
@@ -459,45 +459,45 @@ import ButtonVCFcard from "./ButtonVCFcard.astro";
 
         }
 
-        .map-buttons .nav-button {
+        .map-buttons .nav-button {  /* Largeur des boutons carte */
 
             width: 100%;
 
             max-width: 260px;
 
         }
-        .article-card h2 {
+        .article-card h2 {  /* Titre de section */
             font-size: 1.5rem;
         }
 
-        .article-card h3 {
+        .article-card h3 {  /* Sous-titre */
             font-size: 1.25rem;
         }
 
-        .article-card p {
+        .article-card p {  /* Paragraphes */
             font-size: 1rem;
             line-height: 1.7;
         }
 
-        .split {
+        .split {  /* Mise en page en colonnes */
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .article-image {
+        .article-image {  /* Image */
             width: 320px;
         }
 
-        .phone-image {
+        .phone-image {  /* Téléphone */
             width: 220px;
         }
 
-        .nav-button {
+        .nav-button {  /* Boutons principaux */
             width: 100%;
             max-width: 260px;
         }
 
-        .social-link {
+        .social-link {  /* Réseaux sociaux */
             font-size: 0.85rem;
             padding: 8px 12px;
         }
