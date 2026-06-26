@@ -28,7 +28,7 @@
 </div>
 
 <style>
-  .anxiety-check {
+  .anxiety-check {  /* Cadre du questionnaire */
     max-width: 700px;
     margin: 3rem auto;
     padding: 2rem;
@@ -37,7 +37,7 @@
     border-radius: 24px;
   }
 
-  .question {
+  .question {   /* Block de questions */
     min-height: 100px;
     margin: 1.5rem 0;
     padding: 1.5rem;
@@ -51,14 +51,14 @@
     justify-content: center;
   }
 
-  .answers {
+  .answers {  /* Zone de réponses */
     display: flex;
     justify-content: center;
     gap: 0.7rem;
     flex-wrap: wrap;
   }
 
-  button {
+  button {   /* Tous les boutons */
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 999px;
@@ -67,12 +67,12 @@
     cursor: pointer;
   }
 
-  .restart {
+  .restart {   /* Bouton recommencer */
     margin-top: 1rem;
     background: #b76e4c;
   }
 
-  .progress,
+  .progress,   /* Progression et résultat */
   .result {
     font-weight: bold;
     color: #435c45;
@@ -81,14 +81,14 @@
 </style>
 
 <script is:inline>
-  document.querySelectorAll("[data-anxiety-game]").forEach(function(game) {
+  document.querySelectorAll("[data-anxiety-game]").forEach(function(game) { /* Récupération des données */
     const questionBox = game.querySelector("[data-question]");
     const progressBox = game.querySelector("[data-progress]");
     const resultBox = game.querySelector("[data-result]");
     const restartBtn = game.querySelector("[data-restart]");
     const buttons = game.querySelectorAll("[data-value]");
 
-    const questions = [
+    const questions = [  /* Liste de questions */
       { type: "mental", text: "Vous sentez-vous souvent tendu, nerveux ou inquiet ?" },
       { type: "mental", text: "Avez-vous parfois du mal à arrêter vos inquiétudes ?" },
       { type: "mental", text: "Avez-vous tendance à vous inquiéter pour plusieurs sujets à la fois ?" },
@@ -107,11 +107,11 @@
       { type: "body", text: "Ressentez-vous parfois une boule dans la gorge ou une oppression ?" }
     ];
 
-    let index = 0;
+    let index = 0;   /* Parametre */
     let mentalScore = 0;
     let bodyScore = 0;
 
-    function showQuestion() {
+    function showQuestion() {  /* Affiche la question suivante */
       if (index >= questions.length) {
         showResult();
         return;
@@ -121,7 +121,7 @@
       progressBox.textContent = "Question " + (index + 1) + " / " + questions.length;
     }
 
-    function level(score, max) {
+    function level(score, max) {  /* Transforme le score en niveau */
       const ratio = score / max;
 
       if (ratio < 0.25) return "faible";
@@ -130,7 +130,7 @@
       return "très élevé";
     }
 
-    function showResult() {
+    function showResult() {  /* Affiche les deux scores finaux */
       const mentalMax = 21;
       const bodyMax = 24;
 
@@ -145,7 +145,7 @@
         "\n\nCes résultats sont indicatifs et ne remplacent pas un avis médical.";
     }
 
-    function restart() {
+    function restart() {  /* Remise a 0 des scores et des questions */
       index = 0;
       mentalScore = 0;
       bodyScore = 0;
@@ -157,21 +157,21 @@
       button.addEventListener("click", function() {
         if (index >= questions.length) return;
 
-        const value = Number(button.dataset.value);
+        const value = Number(button.dataset.value);  /* Transforme la réponse cliqué en nombre */
 
         if (questions[index].type === "mental") {
-          mentalScore += value;
+          mentalScore += value; /* +1 score mental */
         } else {
-          bodyScore += value;
+          bodyScore += value; /* +1 score physique */
         }
 
-        index++;
+        index++;   /* Passe a la question suivante */
         showQuestion();
       });
     });
 
-    restartBtn.addEventListener("click", restart);
+    restartBtn.addEventListener("click", restart);   /* Relance le questionnaire au clic */
 
-    restart();
+    restart();   /* Lancement automatique du questionnaire */
   });
 </script>
