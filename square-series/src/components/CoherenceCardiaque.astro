@@ -9,6 +9,7 @@
     <p class="breathing-note">
         Inspirez lorsque la bulle grandit, expirez lorsqu'elle diminue...
     </p>
+    <p id="timer">05:00</p>
 </section>
 
 <style>
@@ -67,6 +68,13 @@
         font-style: italic;
     }
 
+    #timer {    /* Chronometre */
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #435c45;
+        margin-bottom: 1.5rem;
+    }
+
     @keyframes breathing { /* Animation */
         0% {
             transform: scale(0.75);
@@ -95,21 +103,69 @@
 </style>
 
 <script>
-    const button = document.getElementById("startBreathing"); /* Recupère les différents éléments */
+    const button = document.getElementById("startBreathing"); /* Récupération des données */
     const bubble = document.getElementById("bubble");
     const instruction = document.getElementById("instruction");
+    const timerDisplay = document.getElementById("timer");
 
-    let isActive = false;
+    let isActive = false;  /* Parametres */
+    let timerInterval = null;
+    let remainingTime = 300; // 5 minutes
+
+    function updateTimer() {  /* Met a jour l'affichage du chronometre */
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+
+        timerDisplay.textContent =
+            String(minutes).padStart(2, "0") +
+            ":" +
+            String(seconds).padStart(2, "0");
+    }
 
     button.addEventListener("click", () => {  /* Détecte un clic sur la bulle */
+
         isActive = !isActive;
 
         if (isActive) {
-            bubble.classList.add("active");  /* Lance l'animation */
-            instruction.textContent = "Inspirez... puis expirez...";
+
+            bubble.classList.add("active");  /* Lance l'animation de la bulle */
+            instruction.textContent = "Inspirez... puis expirez...";  /* Modifie le texte des consignes affichées */
+
+            remainingTime = 300;
+            updateTimer();
+
+            clearInterval(timerInterval);  /* Arrete le chronometre précedent s'il existe */
+
+            timerInterval = setInterval(() => {
+
+                remainingTime--;
+
+                updateTimer();  /* Actualise l'affichage apres chaque seconde */
+
+                if (remainingTime <= 0) {
+
+                    clearInterval(timerInterval);
+
+                    bubble.classList.remove("active");
+                    instruction.textContent = "✔ Exercice terminé.";  /* Affiche le message de fin d'exercice */
+
+                    isActive = false;
+                }
+
+            }, 1000);
+
         } else {
-            bubble.classList.remove("active");   /* Arret animation */
-            instruction.textContent = "Cliquez pour recommencer";
+
+            bubble.classList.remove("active");
+            instruction.textContent = "Cliquez pour recommencer"; /* Recommencer */
+
+            clearInterval(timerInterval);
+
+            remainingTime = 300;
+            updateTimer(); /* Affiche immédiatement 5.00 a démarage de la page */
         }
+
     });
+
+    updateTimer();
 </script>
