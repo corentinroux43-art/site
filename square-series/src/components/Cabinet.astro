@@ -9,9 +9,9 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
 
     <div class="intro-section">
         <img
-                src={cabinetillustration.src}
-                alt="Cabinet d'ostéopathie de Corentin Roux à Saint-Just-Malmont"
-                class="cabinet-image"
+            src={cabinetillustration.src}
+            alt="Cabinet d'ostéopathie de Corentin Roux à Saint-Just-Malmont"
+            class="cabinet-image"
         />
 
         <div class="content intro">
@@ -53,22 +53,20 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
             </p><br><br>
 
             <div class="carousel">
-            <button class="carousel-btn prev" type="button">‹</button>
-
-            <div class="carousel-track">
+                <button class="carousel-btn prev" type="button">‹</button>
+                <div class="carousel-track">
                     <img
-                            src={exterieurcabinetosteopathiesaintjustmalmont.src}
-                            alt="Extérieur du cabinet de Saint-Just-Malmont"
-                            class="cabinet-photo"
+                        src={exterieurcabinetosteopathiesaintjustmalmont.src}
+                        alt="Extérieur du cabinet de Saint-Just-Malmont"
+                        class="cabinet-photo"
                     />
                     <img
-                            src={interieurcabinetosteopathiesaintjustmalmont.src}
-                            alt="Intérieur du cabinet de Saint-Just-Malmont"
-                            class="cabinet-photo"
+                        src={interieurcabinetosteopathiesaintjustmalmont.src}
+                        alt="Intérieur du cabinet de Saint-Just-Malmont"
+                        class="cabinet-photo"
                     />
-                 </div>
-
-            <button class="carousel-btn next" type="button">›</button>
+                </div>
+                <button class="carousel-btn next" type="button">›</button>
             </div>
         </article>
 
@@ -165,17 +163,17 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
 </section>
 
 <style>
-    * {
+    * {  /* Tous les éléments */
         box-sizing: border-box;
     }
 
-    .presentation {
+    .presentation {  /* Section principale */
         max-width: 1200px;
         margin: 0 auto;
         padding: 80px 30px;
     }
 
-    .presentation h1 {
+    .presentation h1 {  /* Titre principal */
         font-size: 3.5rem;
         font-weight: 700;
         margin-bottom: 40px;
@@ -183,7 +181,7 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         text-align: center;
     }
 
-    .intro-section {
+    .intro-section {  /* Présentation d'introduction */
         display: flex;
         align-items: center;
         gap: 3rem;
@@ -191,7 +189,7 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         margin: 0 auto 4rem;
     }
 
-    .cabinet-image {
+    .cabinet-image {   /* Image d'introduction */
         width: 320px;
         flex-shrink: 0;
         border-radius: 20px;
@@ -199,17 +197,17 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         display: block;
     }
 
-    .content,
+    .content,  /* Zone de contenu */
     article {
         max-width: 900px;
         margin: 0 auto;
     }
 
-    .intro {
+    .intro {   /* Introduction */
         margin: 0;
     }
 
-    .content p,
+    .content p,  /* paragraphes */
     article p {
         font-size: 1.2rem;
         line-height: 1.8;
@@ -217,13 +215,13 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         color: #555;
     }
 
-    .articles {
+    .articles {  /* Listes d'articles */
         display: flex;
         flex-direction: column;
         gap: 3rem;
     }
 
-    article h2 {
+    article h2 {  /* Titres d'articles */
         font-size: 2rem;
         line-height: 1.3;
         color: #2f2f2f;
@@ -231,7 +229,7 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         text-align: center;
     }
 
-    .split {
+    .split {  /* Disposition image, texte */
         display: flex;
         gap: 2rem;
         justify-content: center;
@@ -239,12 +237,12 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         margin-top: 2rem;
     }
 
-    .left,
+    .left,  /* Colonne gauche, droite */
     .right {
         flex: 1;
     }
 
-    .cabinet-photo {
+    .cabinet-photo {  /* Photo du cabinet */
         width: 100%;
         max-width: 400px;
         height: 280px;
@@ -255,12 +253,12 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         margin: 0 auto;
     }
 
-    .highlight {
+    .highlight {  /* Texte mis en valeur */
         color: #39371d;
         font-weight: bold;
     }
 
-    .cadre {
+    .cadre {  /* Encadré */
         border: 5px solid #725e2b;
         border-radius: 12px;
         padding: 1rem;
@@ -268,124 +266,124 @@ import cabinetillustration from '../assets/cabinet-illustration.png';
         margin-top: 1.5rem;
     }
 
-    .cadre p {
+    .cadre p {  /* Texte de l'encadré */
         margin-bottom: 0;
     }
 
-    @media (max-width: 768px) {
-        .presentation {
+    .carousel {
+        position: relative;
+        width: 100%;
+        max-width: 650px;
+        overflow: hidden;
+        border-radius: 18px;
+        margin: 0 auto; /* centre horizontalement */
+    }
+
+    .carousel-track {  /* Bande des images */
+        display: flex;
+        transition: transform 0.4s ease;
+    }
+
+    .carousel-track img {  /* Images du caroussel */
+        min-width: 100%;
+        height: 380px;
+        object-fit: cover;
+    }
+
+    .carousel-btn {  /* Boutons du caroussel */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        border: none;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.85);
+        cursor: pointer;
+        font-size: 32px;
+    }
+
+    .prev {  /* Bouton précédent */
+        left: 12px;
+    }
+
+    .next {  /* Bouton suivant */
+        right: 12px;
+    }
+
+    @media (max-width: 768px) {  /* Version mobile */
+        .presentation {  /* Section principal */
             padding: 40px 20px;
         }
 
-        .presentation h1 {
+        .presentation h1 {  /* Titre principal */
             font-size: 2.2rem;
             margin-bottom: 25px;
         }
 
-        .intro-section {
+        .intro-section { /* Présentation d'inctroduction */
             flex-direction: column;
             gap: 2rem;
             text-align: center;
         }
 
-        .cabinet-image {
+        .cabinet-image {  /* Image d'introduction' */
             width: 220px;
         }
 
-        .content,
+        .content,  /* Zone de contenu */
         article {
             max-width: 100%;
         }
 
-        .content p,
+        .content p,  /* Paragraphes */
         article p {
             font-size: 1rem;
             line-height: 1.7;
             text-align: justify;
         }
 
-        article h2 {
+        article h2 {  /* Titres d'articles */
             font-size: 1.45rem;
             margin-top: 2.5rem;
         }
 
-        .split {
+        .split {  /* Disposition image, texte */
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .cabinet-photo {
+        .cabinet-photo {  /* Photo du cabinet */
             max-width: 320px;
             height: auto;
         }
 
-        .cadre {
+        .cadre {  /* Encadré */
             padding: 1rem;
         }
     }
-
-    .carousel {
-  position: relative;
-  width: 100%;
-  max-width: 650px;
-  overflow: hidden;
-  border-radius: 18px;
-  margin: 0 auto; /* centre horizontalement */
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.4s ease;
-}
-
-.carousel-track img {
-  min-width: 100%;
-  height: 380px;
-  object-fit: cover;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  border: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.85);
-  cursor: pointer;
-  font-size: 32px;
-}
-
-.prev {
-  left: 12px;
-}
-
-.next {
-  right: 12px;
-}
 </style>
 
 <script>
-  const carousel = document.querySelector('.carousel');
+  const carousel = document.querySelector('.carousel');  /* Récupération des données */
   const track = carousel.querySelector('.carousel-track');
   const slides = track.querySelectorAll('img');
   const prev = carousel.querySelector('.prev');
   const next = carousel.querySelector('.next');
 
-  let index = 0;
+  let index = 0; /* Stock l'image actuellement affiché */
 
-  function updateCarousel() {
+  function updateCarousel() {  /* Déplacement du caroussel */
     track.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  next.addEventListener('click', () => {
+  next.addEventListener('click', () => {  /* Passe a l'image suivante lors d'un clic */
     index = (index + 1) % slides.length;
     updateCarousel();
   });
 
-  prev.addEventListener('click', () => {
+  prev.addEventListener('click', () => {  /* Revient a l'image precedente lors d'un clic */
     index = (index - 1 + slides.length) % slides.length;
     updateCarousel();
   });
