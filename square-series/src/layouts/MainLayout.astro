@@ -26,17 +26,39 @@ const backToTopLink = {   /* Configuration du bouton retour arriere */
 ---
 
 <html lang="fr"> {/* Structure de la page */}
-    <head>   {/* En-tête - SEO et métadonnées */}
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>{title}</title>
-        <meta name="description" content={description} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Corentin Roux" />
+    <meta name="theme-color" content="#6c8b6f" />
 
-        {schema && (
-            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-        )}
-    </head>
+    <link rel="canonical" href={new URL(Astro.url.pathname, "https://rouxcorentin.fr").toString()} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Cabinet d'ostéopathie Corentin Roux" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, "https://rouxcorentin.fr").toString()} />
+    <meta property="og:image" content="https://rouxcorentin.fr/og-image.jpg" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    {schema && (
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(schema)}
+            />
+    )}
+</head>
 
     <body id="top">   {/* Contenu */}
         <TopBar />   {/* Barre supérieur */}
