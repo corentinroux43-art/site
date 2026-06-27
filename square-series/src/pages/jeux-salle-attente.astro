@@ -1,14 +1,14 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import CoherenceCardiaque from '../components/CoherenceCardiaque.astro';
-import FlappyBird from '../components/FlappyBird.astro';
-import VertebraStackGame from "../components/VertebraStackGame.astro";
-import ReactionGame from '../components/ReactionGame.astro';
-import MemoryOsteoGame from '../components/MemoryOsteoGame.astro';
-import OsteoQuizGame from '../components/OsteoQuizGame.astro';
-import SimpleOsteoGame from '../components/SimpleOsteoGame.astro';
-import AnxietySelfCheck from '../components/AnxietySelfCheck.astro';
-import SimpleBattleGame from '../components/SimpleBattleGame.astro';
+import FlappyOsteo from '../components/FlappyOsteo.astro';
+import Osteorunner from "../components/Osteorunner.astro";
+import Reactivite from '../components/Reactivite.astro';
+import Memory from '../components/Memory.astro';
+import Quiz from '../components/Quiz.astro';
+import Trouvelos from '../components/Trouvelos.astro';
+import Anxiete from '../components/Anxiete.astro';
+import PierreFeuilleCiseaux from '../components/PierreFeuilleCiseaux.astro';
 ---
 
 <MainLayout
@@ -82,7 +82,7 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
       <button class="close-modal" data-close aria-label="Fermer">✕</button>
 
       <div class="game-panel" data-panel="flappy">
-        <FlappyBird />
+        <FlappyOsteo />
       </div>
 
       <div class="game-panel" data-panel="breathing">
@@ -90,31 +90,31 @@ import SimpleBattleGame from '../components/SimpleBattleGame.astro';
       </div>
 
       <div class="game-panel" data-panel="vertebra">
-        <VertebraStackGame />
+        <Osteorunner />
       </div>
 
       <div class="game-panel" data-panel="reaction">
-        <ReactionGame />
+        <Reactivite />
       </div>
 
       <div class="game-panel" data-panel="memory">
-        <MemoryOsteoGame />
+        <Memory />
       </div>
 
       <div class="game-panel" data-panel="quiz">
-        <OsteoQuizGame />
+        <Quiz />
       </div>
 
       <div class="game-panel" data-panel="simple">
-        <SimpleOsteoGame />
+        <Trouvelos />
       </div>
 
       <div class="game-panel" data-panel="anxiety">
-        <AnxietySelfCheck />
+        <Anxiety />
       </div>
 
       <div class="game-panel" data-panel="battle">
-        <SimpleBattleGame />
+        <PierreFeuilleCiseaux />
       </div>
     </div>
   </div>
